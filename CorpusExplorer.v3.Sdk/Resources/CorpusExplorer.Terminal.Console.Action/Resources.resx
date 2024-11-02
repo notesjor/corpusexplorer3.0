@@ -1,0 +1,501 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="DescBasicInformation" xml:space="preserve">
+    <value>basic-information - basic information tokens/sentences/documents</value>
+  </data>
+  <data name="Param" xml:space="preserve">
+    <value>param</value>
+  </data>
+  <data name="Value" xml:space="preserve">
+    <value>value</value>
+  </data>
+  <data name="Tokens" xml:space="preserve">
+    <value>tokens</value>
+  </data>
+  <data name="TokenFactor" xml:space="preserve">
+    <value>token-factor</value>
+  </data>
+  <data name="Sentences" xml:space="preserve">
+    <value>sentences</value>
+  </data>
+  <data name="Documents" xml:space="preserve">
+    <value>documents</value>
+  </data>
+  <data name="Types" xml:space="preserve">
+    <value>types</value>
+  </data>
+  <data name="TTR" xml:space="preserve">
+    <value>TTR (type/token-ratio)</value>
+  </data>
+  <data name="TSR" xml:space="preserve">
+    <value>TSR (type/sentence-ratio)</value>
+  </data>
+  <data name="TDR" xml:space="preserve">
+    <value>TDR (type/document-ratio)</value>
+  </data>
+  <data name="ToSR" xml:space="preserve">
+    <value>ToSR (token/sentence-ratio)</value>
+  </data>
+  <data name="ToDR" xml:space="preserve">
+    <value>ToDR (token/document-ratio)</value>
+  </data>
+  <data name="SDR" xml:space="preserve">
+    <value>SDR (sentence/document-ratio)</value>
+  </data>
+  <data name="DescCluster" xml:space="preserve">
+    <value>cluster [QUERY] [TASK] {ARGUMENTS} - executes a [TASK] for every cluster (generated by [QUERY])</value>
+  </data>
+  <data name="DescClusterList" xml:space="preserve">
+    <value>cluster-list [QUERY] - works like cluster but returns clusters with document GUIDs.</value>
+  </data>
+  <data name="DescPositionFrequency" xml:space="preserve">
+    <value>position-frequency [LAYER1] [WORD] - left/right position of words around [WORD]</value>
+  </data>
+  <data name="DescConvert" xml:space="preserve">
+    <value>convert [OUTPUT] - see help section [OUTPUT] for more information</value>
+  </data>
+  <data name="DescCooccurrence" xml:space="preserve">
+    <value>cooccurrence [LAYER] {minSIGNI} {minFREQ} - significant cooccurrences for all [LAYER] values</value>
+  </data>
+  <data name="DescCooccurrenceProfile" xml:space="preserve">
+    <value>cooccurrence-profile [LAYER] [WORD] - significant cooccurrence profile for [WORD] on [LAYER].</value>
+  </data>
+  <data name="DescCooccurrenceSelect" xml:space="preserve">
+    <value>cooccurrence-select [LAYER] [WORDS] - significant cooccurrences for all [LAYER] values.</value>
+  </data>
+  <data name="DescCooccurrencePolarisation" xml:space="preserve">
+    <value>cooccurrence-polarisation [LAYER] [TOKEN_A] [TOKEN_B] - significant cooccurrence polarisation for [LAYER] between [TOKEN_A] and [TOKEN_B].</value>
+  </data>
+  <data name="DescCrossFrequency" xml:space="preserve">
+    <value>cross-frequency {LAYER} - calculates the cross-frequency based on [LAYER]</value>
+  </data>
+  <data name="DescDocumentCount" xml:space="preserve">
+    <value>how-many-documents - sum of all documents</value>
+  </data>
+  <data name="DescFrequency1" xml:space="preserve">
+    <value>frequency1 {LAYER} - count token frequency on {LAYER} (default: Wort)</value>
+  </data>
+  <data name="DescFrequency1Selected" xml:space="preserve">
+    <value>frequency1-select [LAYER] [WORDS/FILE/SDM] - count token frequency on 1 [LAYER] - [WORDS] = space separated tokens [FILE] = one line one token [SDM] = SDM-File</value>
+  </data>
+  <data name="DescFrequency2" xml:space="preserve">
+    <value>frequency2 {LAYER1} {LAYER2} - count token frequency on 2 layers (default: Lemma, Wort)</value>
+  </data>
+  <data name="DescFrequency3" xml:space="preserve">
+    <value>frequency3 {LAYER1} {LAYER2} {LAYER3} - count token frequency on 3 layers (default: POS, Lemma, Wort)</value>
+  </data>
+  <data name="DescGetDocument" xml:space="preserve">
+    <value>get-document [GUID] {LAYER} - get all layer-information for specific [GUID] document. Use {LAYER} to filter output.</value>
+  </data>
+  <data name="DescGetDocumentDisplayname" xml:space="preserve">
+    <value>get-document-displaynames - get all document GUID / display-names.</value>
+  </data>
+  <data name="DescGetDocumentMetadata" xml:space="preserve">
+    <value>get-document-metadata [GUID] - get all metadata for specific [GUID] document.</value>
+  </data>
+  <data name="DescKwicAllInDocument" xml:space="preserve">
+    <value>kwic-document [LAYER] [WORDS+SPAN] [META] - [WORDS+SPAN] = space separated tokens (optional SPAN) - a document must contains all token. If flag META is set, schow all metadata (not only guid).</value>
+  </data>
+  <data name="DescKwicAllInSentence" xml:space="preserve">
+    <value>kwic-sentence [LAYER] [WORDS+SPAN] - [WORDS+SPAN] = space separated tokens (optional SPAN) - a sentence must contains all token. If flag META is set, schow all metadata (not only guid).</value>
+  </data>
+  <data name="DescSimilarity" xml:space="preserve">
+    <value>similarity [META] {LAYER} - [META] similarity based on {LAYER} (default: WORT)</value>
+  </data>
+  <data name="DescKwicAny" xml:space="preserve">
+    <value>kwic-any [LAYER] [WORDS+SPAN] [META] - KWIC any occurrence - [WORDS+SPAN] = space separated tokens (optional SPAN). If flag META is set, schow all metadata (not only guid).</value>
+  </data>
+  <data name="DescKwicPhrase" xml:space="preserve">
+    <value>kwic-phrase [LAYER] [WORDS+SPAN] [META] - [WORDS+SPAN] = space separated tokens (optional SPAN) - all token in one sentence + given order.  If flag META is set, schow all metadata (not only guid).</value>
+  </data>
+  <data name="DescKwicFirstAny" xml:space="preserve">
+    <value>kwic-first-any [LAYER] [WORDS+SPAN] [META]- KWIC any occurrence - [WORDS+SPAN] = space separated tokens (optional SPAN). KWIC must contains first token + any other token. If flag META is set, schow all metadata (not only guid).</value>
+  </data>
+  <data name="DescKwicNer" xml:space="preserve">
+    <value>ner [NERFILE] - performs a named entity recorgnition + kwic-resuls</value>
+  </data>
+  <data name="DescKwicSig" xml:space="preserve">
+    <value>kwic-sig [LAYER] [y/n] [WORDS] - KWIC with significance metrics - [WORDS] = space separated tokens - Enable HTML-Highlight [y/n]</value>
+  </data>
+  <data name="DescKwit" xml:space="preserve">
+    <value>kwit [LAYER1] [LAYER2] [minFREQ] {ANY/FIRST/SENTENCE/PHRASE} [WORDS] - Builds a KWIT-Tree. Search all [WORDS] in [LAYER1] (with minimum frequency [minFREQ]) - Output in [LAYER2] - [WORDS] = space separated tokens. {A/F/S/P} = Serch Operator (default: PHRASE)</value>
+  </data>
+  <data name="DescLayerNames" xml:space="preserve">
+    <value>layer-names - all available names for [LAYER]</value>
+  </data>
+  <data name="DescLayerTypes" xml:space="preserve">
+    <value>get-types [LAYER] - list all [LAYER]-values (types)</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>type</value>
+  </data>
+  <data name="Layernames" xml:space="preserve">
+    <value>layernames</value>
+  </data>
+  <data name="Layer" xml:space="preserve">
+    <value>layer</value>
+  </data>
+  <data name="Content" xml:space="preserve">
+    <value>content</value>
+  </data>
+  <data name="Category" xml:space="preserve">
+    <value>category</value>
+  </data>
+  <data name="Guid" xml:space="preserve">
+    <value>GUID</value>
+  </data>
+  <data name="Frequency" xml:space="preserve">
+    <value>frequency</value>
+  </data>
+  <data name="FrequencyRel" xml:space="preserve">
+    <value>frequency (relativ)</value>
+  </data>
+  <data name="WordA" xml:space="preserve">
+    <value>Word (A)</value>
+  </data>
+  <data name="WordB" xml:space="preserve">
+    <value>Word (B)</value>
+  </data>
+  <data name="Significance" xml:space="preserve">
+    <value>Significance</value>
+  </data>
+  <data name="TokenCount" xml:space="preserve">
+    <value>TOKEN-COUNT</value>
+  </data>
+  <data name="Other" xml:space="preserve">
+    <value>OTHER</value>
+  </data>
+  <data name="DescMeta" xml:space="preserve">
+    <value>meta - lists all meta-categories, labels and token/type/document-count</value>
+  </data>
+  <data name="DescMetaCategories" xml:space="preserve">
+    <value>meta-categories - all available names for meta categories</value>
+  </data>
+  <data name="DescMetaByDocument" xml:space="preserve">
+    <value>meta-by-document - list all documents with meta-data</value>
+  </data>
+  <data name="DescMtld" xml:space="preserve">
+    <value>mtld [LAYER] [META] - calculates MTLD for [LAYER] clustered by [META]</value>
+  </data>
+  <data name="DescNer" xml:space="preserve">
+    <value>ner [NERFILE] - performs a named entity recorgnition</value>
+  </data>
+  <data name="DescNgram" xml:space="preserve">
+    <value>ngram [N] {LAYER} {minFREQ} - [N] sized N-gram based on {LAYER} (default: Wort)</value>
+  </data>
+  <data name="DescNgramSelect" xml:space="preserve">
+    <value>ngram-select [N] [LAYER] [minFREQ] [WORDS/FILE] - all [N]-grams on [LAYER] containing [WORDS] or FILE:[FILE].</value>
+  </data>
+  <data name="DescQuery" xml:space="preserve">
+    <value>query [QUERY] [OUTPUT] - see help section [OUTPUT] for more information</value>
+  </data>
+  <data name="DescQueryList" xml:space="preserve">
+    <value>query-list [QUERY] [NAME] - works like query, but returns a [NAME]ed list of document GUIDs.</value>
+  </data>
+  <data name="DescHowManySentences" xml:space="preserve">
+    <value>how-many-sentences - sum of all sentences</value>
+  </data>
+  <data name="DescBurrowsDelta" xml:space="preserve">
+    <value>style-burrowsd [META1] [META2] - compares [META1] with [META2] based on "Burrows Delta"</value>
+  </data>
+  <data name="DescStyleNGram" xml:space="preserve">
+    <value>style-ngram [LAYER] [META] [N] [minFREQ] - style analytics based on ngram</value>
+  </data>
+  <data name="DescHowManyToken" xml:space="preserve">
+    <value>how-many-tokens - sum of all tokens</value>
+  </data>
+  <data name="DescHowManyTypes" xml:space="preserve">
+    <value>how-many-types [LAYER] - sum of all [LAYER]-values (types)</value>
+  </data>
+  <data name="DescVocabularyComplexity" xml:space="preserve">
+    <value>vocabulary-complexity {LAYER} - vocabulary complexity in {LAYER}</value>
+  </data>
+  <data name="DescVocd" xml:space="preserve">
+    <value>vocd [LAYER] [META] - calculates VOCD for [LAYER] clustered by [META]</value>
+  </data>
+  <data name="DisambiguationeActionDescription" xml:space="preserve">
+    <value>disambiguation [LAYER] [WORD] - allows to disambiguate a [WORD] on [LAYER]</value>
+  </data>
+  <data name="editdist_desc" xml:space="preserve">
+    <value>editdist [LAYER] - caculates the edit distance for all (to all) documents in [LAYER]</value>
+  </data>
+  <data name="keyword_desc" xml:space="preserve">
+    <value>keyword [LAYER] [TSV_RefFile] [COL_Token] [COL_RelFreq] - calculates the keynes of any [LAYER]-value by using a reference list [TSV_RefFile].</value>
+  </data>
+  <data name="CorrespondingValuesActionDescription" xml:space="preserve">
+    <value>corresponding [LAYER1] [LAYER2] - find all corresponding values betweet LAYER1 &amp; LAYER2 (e. g. 1: Lemma / 2: Wort)</value>
+  </data>
+  <data name="MetaSelectedActionDescription" xml:space="preserve">
+    <value>meta-select [category_1..n] - lists all meta-categories, labels and token/type/document-count for [category_1..n]</value>
+  </data>
+  <data name="MetaSelectedDomainActionDescription" xml:space="preserve">
+    <value>meta-select+domain [category_1..n] - lists all meta-categories, labels and token/type/document-count for [category_1..n] (reduces all URLs &gt; domain name only)</value>
+  </data>
+  <data name="DescCooccurrencesCross" xml:space="preserve">
+    <value>cooccurrence-cross [LAYER] [WORDS] - significant cooccurrence cross for [WORDS] on [LAYER].</value>
+  </data>
+  <data name="DescHash" xml:space="preserve">
+    <value>hash [LAYER] [ALGO] - calculates a hashsum for all documents in [LAYER]. [ALGO] = MD5, SHA1, SHA256, SHA512</value>
+  </data>
+  <data name="DescTf" xml:space="preserve">
+    <value>tf [META] {LAYER} - term frequency for [META] on {LAYER} (default: WORT)</value>
+  </data>
+  <data name="DescFreq1Raw" xml:space="preserve">
+    <value>frequency1-raw {LAYER} - count token frequency on [LAYER] (no rel. frequency)</value>
+  </data>
+  <data name="DescFreq2Raw" xml:space="preserve">
+    <value>frequency2-raw {LAYER1} {LAYER2} - count token frequency on 2 layers (no rel. frequency)</value>
+  </data>
+  <data name="DescFreq3Raw" xml:space="preserve">
+    <value>frequency3-raw {LAYER1} {LAYER2} {LAYER3} - count token frequency on 3 layers (no rel. frequency)</value>
+  </data>
+  <data name="DescIdf" xml:space="preserve">
+    <value>idf [META] {LAYER} - inverse document frequency for [META] on {LAYER} (default: WORT)</value>
+  </data>
+  <data name="DescTfIdf" xml:space="preserve">
+    <value>tf-idf [META] {LAYER} - term frequency * inverse term frequency for [META] on {LAYER} (default: WORT)</value>
+  </data>
+  <data name="DescTokeList" xml:space="preserve">
+    <value>token-list [LAYER] - list of all tokens in [LAYER]</value>
+  </data>
+  <data name="DescTokeListSelect" xml:space="preserve">
+    <value>token-list-select [LAYER] [REGEX] - list of all tokens in [LAYER] who are matching the [REGEX]-expression</value>
+  </data>
+  <data name="DescKwitSelect" xml:space="preserve">
+    <value>kwit-n [LAYER1] [LAYER2] [minFREQ] [PRE] [POST] [WORDS] - Like kwit (but you can specificate the range [PRE] and [POST] the match - e.g. [PRE] = 3)</value>
+  </data>
+  <data name="DescCooccurrenceCorresponding" xml:space="preserve">
+    <value>cooccurrence-corresponding [LAYER1] [LAYER2] [ANY] [WORDS] - significant cooccurrences for all [LAYER1] values with correspondig [LAYER2] [WORDS] - ([ANY] = any matches [bool]).</value>
+  </data>
+  <data name="DescCooccurrenceCrossFull" xml:space="preserve">
+    <value>cooccurrence-cross-full [LAYER] [WORDS] - significant cooccurrence cross for [WORDS] on [LAYER] (includes all cooccurrences).</value>
+  </data>
+  <data name="DescCrossFrequencyCorresponding" xml:space="preserve">
+    <value>cross-frequency-corresponding [LAYER1] [LAYER2] [ANY] [WORDS] - calculates the cross-frequency based on [LAYER] and apply corresponding [LAYER2] [WORDS] filter.</value>
+  </data>
+  <data name="DescDispersion" xml:space="preserve">
+    <value>dispersion [LAYER] [META] - calculates dispersions values of all [LAYER] values based on [META]</value>
+  </data>
+  <data name="DescDispersionCorresponding" xml:space="preserve">
+    <value>dispersion-corresponding [LAYER1] [META] [LAYER2] [ANY] [WORDS] - calculates dispersions values of all [LAYER1] values based on [META] and annply correspondign filter.</value>
+  </data>
+  <data name="DescKeywordCorresponding" xml:space="preserve">
+    <value>keyword-corresponding [LAYER1] [TSV_RefFile] [COL_Token] [COL_RelFreq] [LAYER2] [WORDS2] - calculates keyword (see [ACTION = keyword]) and applies the corresponding filter.</value>
+  </data>
+  <data name="DescNGramCorresponding" xml:space="preserve">
+    <value>ngram-corresponding [N] [LAYER1] [minFREQ] [LAYER2] [ANY?] [WORDS2] - [N] sized N-gram based on [LAYER1] - apply [LAYER2] corresponding [WORD2] filter.</value>
+  </data>
+  <data name="DescPositionFrequencyCorresponding" xml:space="preserve">
+    <value>position-frequency-corresponding [LAYER1] [WORD1] [LAYER2] [WORDS2] - left/right position of words around [WORD1] in [LAYER1] + corresponding [LAYER2] [WORDS2] filter.</value>
+  </data>
+  <data name="Query" xml:space="preserve">
+    <value>Query</value>
+  </data>
+  <data name="DescQueryCountAllTokenMatches" xml:space="preserve">
+    <value>query-count-tokens [QUERY/FILE] - counts how many token-spans match the [QUERY]</value>
+  </data>
+  <data name="DescQueryCountDocuments" xml:space="preserve">
+    <value>query-count-documents [QUERY/FILE] - counts how many documents match the [QUERY]</value>
+  </data>
+  <data name="DescQueryCountSentences" xml:space="preserve">
+    <value>query-count-sentences [QUERY/FILE] - counts how many sentences match the [QUERY]</value>
+  </data>
+  <data name="Cooccurrence" xml:space="preserve">
+    <value>Co-occurrence</value>
+  </data>
+  <data name="NGram" xml:space="preserve">
+    <value>N-Gram</value>
+  </data>
+  <data name="Token" xml:space="preserve">
+    <value>Token</value>
+  </data>
+  <data name="Rank" xml:space="preserve">
+    <value>Rank</value>
+  </data>
+  <data name="DescCooccurrenceSelectedCorresponding" xml:space="preserve">
+    <value>cooccurrence-select-corresponding [LAYER1] [WORD1] [LAYER2] [WORDS2] - significant cooccurrences for [WORD1] in [LAYER] values - with [LAYER2] [WORDS2] correspondig values.</value>
+  </data>
+  <data name="DescLayerRemove" xml:space="preserve">
+    <value>remove-layer [LAYER] [OUTPUT] - remove a layer. see help section [OUTPUT] for more information.</value>
+  </data>
+  <data name="DescMetaRemove" xml:space="preserve">
+    <value>remove-meta [META] [OUTPUT] - remove a specific metadata value for every document. see help section [OUTPUT] for more information.</value>
+  </data>
+  <data name="DescMetaImport" xml:space="preserve">
+    <value>meta-import [FILE] [OUTPUT] - export document metadata for external cleaning/usage</value>
+  </data>
+  <data name="DescMetaExport" xml:space="preserve">
+    <value>meta-export [FILE] - export document metadata for external cleaning/usage</value>
+  </data>
+  <data name="DescKwicExport" xml:space="preserve">
+    <value>kwic-export [LAYER] FILE:[WORDS+SPAN] [OUTPUT] - exports a KWIC of any occurrence - [WORDS] = space separated tokens + SPAN</value>
+  </data>
+  <data name="DescNgramSig" xml:space="preserve">
+    <value>ngram-sig [N] [LAYER] - [N] sized N-gram based on [LAYER] rated with co-occurence-levels</value>
+  </data>
+  <data name="DescNgramSigSelect" xml:space="preserve">
+    <value>ngram-select-sig [N] [LAYER] [WORDS/FILE] - all [N]-grams on [LAYER] containing [WORDS] or FILE:[FILE] rated by [WORD/FILE] co-occurrences.</value>
+  </data>
+  <data name="DescSize" xml:space="preserve">
+    <value>size - returns the size (sentences/tokens) of all documents</value>
+  </data>
+  <data name="DescValidate" xml:space="preserve">
+    <value>validate - checks the loaded data against several rules.</value>
+  </data>
+  <data name="DescKwicMda" xml:space="preserve">
+    <value>kwic-mda [MDA-FILE] {-SPAN} {+SPAN} - KWIC based on MDA-FILE</value>
+  </data>
+  <data name="DescKwicPhraseCount" xml:space="preserve">
+    <value>phrase-count [LAYER] [WORDS+SPAN] - [WORDS] = space separated tokens - all token in one sentence + given order</value>
+  </data>
+  <data name="DescMetaDocumentSelect" xml:space="preserve">
+    <value>meta-by-document-select [META...N] - list selected document meta-data </value>
+  </data>
+  <data name="DescLayerRename" xml:space="preserve">
+    <value>layer-rename [Original Layer-Name] [New Layer-Name] [OUTPUT] - rename layer.</value>
+  </data>
+  <data name="DescLayerNew" xml:space="preserve">
+    <value>layer-new [New Layer-Name] [OUTPUT] - creates a new empty layer.</value>
+  </data>
+  <data name="DescLayerClone" xml:space="preserve">
+    <value>layer-clone [Original Layer-Name] [New Layer-Name] [OUTPUT] - clone original layer.</value>
+  </data>
+  <data name="DescFrequ1RawSelect" xml:space="preserve">
+    <value>frequency1-raw-select [LAYER] [WORDS/FILE/SDM] - count token frequency on 1 [LAYER] - [WORDS] = space separated tokens [FILE] = one line one token [SDM] = SDM-File (no rel. frequency)</value>
+  </data>
+  <data name="MetaUnique" xml:space="preserve">
+    <value>meta-unique - count unique values for all categories</value>
+  </data>
+  <data name="MetaUniqueSelect" xml:space="preserve">
+    <value>meta-unique-select [META] - count unique values for all listed [META]-categories</value>
+  </data>
+  <data name="DescMetaUnique" xml:space="preserve">
+    <value>meta-unique - count unique values for all categories</value>
+  </data>
+  <data name="DescMetaUniqueSelect" xml:space="preserve">
+    <value>meta-unique-select [META] - count unique values for all listed [META]-categories</value>
+  </data>
+  <data name="DescMetaUniqueSelectValues" xml:space="preserve">
+    <value>meta-unique-select-values [META] - count unique values for all listed [META]-categories and print categories and values</value>
+  </data>
+  <data name="DescMetaUniqueValues" xml:space="preserve">
+    <value>meta-unique-values - count unique values for all categories and print categories and values</value>
+  </data>
+</root>
