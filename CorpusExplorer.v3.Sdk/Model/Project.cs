@@ -1137,7 +1137,7 @@ namespace CorpusExplorer.Sdk.Model
     /// <returns>
     ///   The <see cref="Project" />.
     /// </returns>
-    public static Project Load(string path, out string[] errors, string forceCorpusRoot = null)
+    public static Project Load(string path, out string[] errors)
     {
       var lines = FileIO.ReadLines(path, Configuration.Encoding,
                                    stringSplitOptions: StringSplitOptions.RemoveEmptyEntries);
@@ -1216,23 +1216,9 @@ namespace CorpusExplorer.Sdk.Model
 
         try
         {
-          if (forceCorpusRoot == null)
-            try
-            {
-              corpus =
-              type.GetMethods().First(x => x.IsStatic && x.IsPublic && x.Name == "Create" && x.GetParameters().Length == 1)
-                  .Invoke(null, new object[] { entry[2] }) as AbstractCorpusAdapter;
-            }
-            catch
-            {
-              forceCorpusRoot = Configuration.MyCorpora;
-            }
-
-          // Fallback
-          if (!string.IsNullOrEmpty(forceCorpusRoot))
-            corpus =
-              type.GetMethods().First(x => x.IsStatic && x.IsPublic && x.Name == "Create" && x.GetParameters().Length == 1)
-                  .Invoke(null, new object[] { Path.Combine(forceCorpusRoot, Path.GetFileName(entry[2])) }) as AbstractCorpusAdapter;
+          corpus = CorpusAdapterWriteDirect.Create(entry[2]);
+          if (corpus == null)
+            throw new Exception();
         }
         catch
         {

@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35312.102
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CorpusExplorer.v3.Sdk", "CorpusExplorer.v3.Sdk\CorpusExplorer.v3.Sdk.csproj", "{0FFED5D2-BD63-41E6-928F-F4EA4FF4DED6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CorpusExplorer.v3.Sdk", "CorpusExplorer.v3.Sdk\CorpusExplorer.v3.Sdk.csproj", "{0FFED5D2-BD63-41E6-928F-F4EA4FF4DED6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CorpusExplorer.v3.Sdk.Binary", "CorpusExplorer.v3.Sdk.Binary\CorpusExplorer.v3.Sdk.Binary.csproj", "{E8CBB499-6727-432A-8C0D-FFBDB2DE6717}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{0FFED5D2-BD63-41E6-928F-F4EA4FF4DED6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0FFED5D2-BD63-41E6-928F-F4EA4FF4DED6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0FFED5D2-BD63-41E6-928F-F4EA4FF4DED6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8CBB499-6727-432A-8C0D-FFBDB2DE6717}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8CBB499-6727-432A-8C0D-FFBDB2DE6717}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8CBB499-6727-432A-8C0D-FFBDB2DE6717}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8CBB499-6727-432A-8C0D-FFBDB2DE6717}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

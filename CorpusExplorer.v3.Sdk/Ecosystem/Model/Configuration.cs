@@ -19,6 +19,72 @@ using CorpusExplorer.Sdk.Blocks.ReadingEase;
 using CorpusExplorer.Sdk.Blocks.Similarity;
 using CorpusExplorer.Sdk.Blocks.VocabularyComplaxity;
 using CorpusExplorer.Sdk.Diagnostic;
+using CorpusExplorer.Sdk.Extern.Json.OpenLegalData;
+using CorpusExplorer.Sdk.Extern.Json.Simple;
+using CorpusExplorer.Sdk.Extern.Json.SimpleStandoff;
+using CorpusExplorer.Sdk.Extern.Json.Speedy;
+using CorpusExplorer.Sdk.Extern.Json.TwitterStatus;
+using CorpusExplorer.Sdk.Extern.Json.TwitterStream;
+using CorpusExplorer.Sdk.Extern.Json.Wordpress;
+using CorpusExplorer.Sdk.Extern.Json.YourTwapperKeeper;
+using CorpusExplorer.Sdk.Extern.Plaintext.ClanChildes;
+using CorpusExplorer.Sdk.Extern.Plaintext.ClarinContentSearch;
+using CorpusExplorer.Sdk.Extern.Plaintext.EasyHashtagSeparation;
+using CorpusExplorer.Sdk.Extern.Plaintext.Europarl;
+using CorpusExplorer.Sdk.Extern.Plaintext.KleineAnfrageDe;
+using CorpusExplorer.Sdk.Extern.Plaintext.LeipzigerWortschatz;
+using CorpusExplorer.Sdk.Extern.Plaintext.Redewiedergabe;
+using CorpusExplorer.Sdk.Extern.Plaintext.RelAnnis;
+using CorpusExplorer.Sdk.Extern.Plaintext.Tsv;
+using CorpusExplorer.Sdk.Extern.Xml.AltoXml._1._2;
+using CorpusExplorer.Sdk.Extern.Xml.AnnotationPro;
+using CorpusExplorer.Sdk.Extern.Xml.Bawe;
+using CorpusExplorer.Sdk.Extern.Xml.Bnc;
+using CorpusExplorer.Sdk.Extern.Xml.BundestagOpenAccess.Drucksachen;
+using CorpusExplorer.Sdk.Extern.Xml.BundestagOpenAccess.Plenarprotokolle.v1;
+using CorpusExplorer.Sdk.Extern.Xml.BundestagOpenAccess.Plenarprotokolle.v2;
+using CorpusExplorer.Sdk.Extern.Xml.Catma._5._0;
+using CorpusExplorer.Sdk.Extern.Xml.Catma._6._0;
+using CorpusExplorer.Sdk.Extern.Xml.CoraXml._0._8;
+using CorpusExplorer.Sdk.Extern.Xml.CoraXml._1._0;
+using CorpusExplorer.Sdk.Extern.Xml.Dewac;
+using CorpusExplorer.Sdk.Extern.Xml.DigitalPlato;
+using CorpusExplorer.Sdk.Extern.Xml.DortmunderChatKorpus;
+using CorpusExplorer.Sdk.Extern.Xml.Dta.Basisformat;
+using CorpusExplorer.Sdk.Extern.Xml.Dta.Tcf;
+using CorpusExplorer.Sdk.Extern.Xml.Dta.Tcf.Model;
+using CorpusExplorer.Sdk.Extern.Xml.Dta.Tcf2017;
+using CorpusExplorer.Sdk.Extern.Xml.EuroparlUds;
+using CorpusExplorer.Sdk.Extern.Xml.Exmaralda.Simple;
+using CorpusExplorer.Sdk.Extern.Xml.FnhdC;
+using CorpusExplorer.Sdk.Extern.Xml.FoLiA;
+using CorpusExplorer.Sdk.Extern.Xml.Folker.Flk;
+using CorpusExplorer.Sdk.Extern.Xml.Folker.Fln;
+using CorpusExplorer.Sdk.Extern.Xml.GermaParlTei;
+using CorpusExplorer.Sdk.Extern.Xml.Gutenberg;
+using CorpusExplorer.Sdk.Extern.Xml.Ids.I5Xml;
+using CorpusExplorer.Sdk.Extern.Xml.Ids.KorAP;
+using CorpusExplorer.Sdk.Extern.Xml.Ids.KorAP.LoadStrategy;
+using CorpusExplorer.Sdk.Extern.Xml.JeanPaulLetter;
+using CorpusExplorer.Sdk.Extern.Xml.LexisNexis;
+using CorpusExplorer.Sdk.Extern.Xml.Opus;
+using CorpusExplorer.Sdk.Extern.Xml.Perseus;
+using CorpusExplorer.Sdk.Extern.Xml.Pmg;
+using CorpusExplorer.Sdk.Extern.Xml.PostgreSqlDump;
+using CorpusExplorer.Sdk.Extern.Xml.PureXml;
+using CorpusExplorer.Sdk.Extern.Xml.PurlOrg;
+using CorpusExplorer.Sdk.Extern.Xml.SaltXml;
+using CorpusExplorer.Sdk.Extern.Xml.Shakespeare;
+using CorpusExplorer.Sdk.Extern.Xml.SixCms;
+using CorpusExplorer.Sdk.Extern.Xml.SlashA;
+using CorpusExplorer.Sdk.Extern.Xml.Talkbank;
+using CorpusExplorer.Sdk.Extern.Xml.Tei.Dwds;
+using CorpusExplorer.Sdk.Extern.Xml.Tei.P5Cal2;
+using CorpusExplorer.Sdk.Extern.Xml.TextGrid;
+using CorpusExplorer.Sdk.Extern.Xml.Tiger.Importer;
+using CorpusExplorer.Sdk.Extern.Xml.Tiger.Scraper;
+using CorpusExplorer.Sdk.Extern.Xml.Txm;
+using CorpusExplorer.Sdk.Extern.Xml.Weblicht;
 using CorpusExplorer.Sdk.Helper;
 using CorpusExplorer.Sdk.Model.Cache;
 using CorpusExplorer.Sdk.Model.Cache.Abstract;
@@ -41,6 +107,7 @@ using CorpusExplorer.Sdk.Utils.DocumentProcessing.Scraper.Txt;
 using CorpusExplorer.Sdk.Utils.DocumentProcessing.Tagger.Abstract;
 using CorpusExplorer.Sdk.Utils.DocumentProcessing.Tagger.AdditionalTaggerWrapper;
 using CorpusExplorer.Sdk.Utils.DocumentProcessing.Tagger.RawText;
+using CorpusExplorer.v3.Sdk.Plus.Model.Abstract;
 
 #endregion
 
@@ -51,68 +118,36 @@ namespace CorpusExplorer.Sdk.Ecosystem.Model
   /// </summary>
   public static class Configuration
   {
-    private static Encoding _encoding = Encoding.UTF8;
-    private static bool? _rightToLeftSupport;
-    private static ISignificance _significance = new PoissonSignificance();
-
+    #region Addons
     /// <summary>
     ///   Zusätzliche Tagger
     /// </summary>
     public static IEnumerable<AbstractAdditionalTagger> AddonAdditionalTaggers => _addonAdditionalTaggers;
 
-    public static void AddonAdditionalTaggersAdd(IEnumerable<AbstractAdditionalTagger> list)
-    {
-      if (list != null)
-        _addonAdditionalTaggers.AddRange(list);
-    }
+    public static void AddAdditionalTaggers(AbstractAdditionalTagger additionalTagger) => _addonAdditionalTaggers.Add(additionalTagger);
 
     /// <summary>
     ///   Verfügbare Backends
     /// </summary>
     /// <value>The addon backends.</value>
-    public static IEnumerable<KeyValuePair<string, AbstractCorpusBuilder>> AddonBackends
-    {
-      get
-      {
-        var list = _addonBackends.OrderBy(x => x.Key).ToList();
-        var cec6 =
-          (from x in list where x.Value.GetType() == typeof(CorpusBuilderWriteDirect) select x).FirstOrDefault();
-        list.Remove(cec6);
-        list.Insert(0, cec6);
-        return list;
-      }
-    }
+    public static IEnumerable<KeyValuePair<string, AbstractCorpusBuilder>> AddonBackends => _addonBackends;
 
-    public static void AddonBackendsAdd(IEnumerable<KeyValuePair<string, AbstractCorpusBuilder>> list)
-    {
-      if (list == null)
-        return;
-
-      foreach (var x in list.Where(x => !_addonImporters.ContainsKey(x.Key)))
-        _addonBackends.Add(x.Key, x.Value);
-    }
+    public static void AddBackend(string name, AbstractCorpusBuilder backend) => _addonBackends.Add(name, backend);
 
     public static IEnumerable<T> GetSideloadFeature<T>()
     {
       return _addonSideLoadFeatures.OfType<T>();
     }
 
-    public static void AddSideloadFeature(object feature)
-    {
-      _addonSideLoadFeatures.Add(feature);
-    }
+    public static void AddSideloadFeature(object feature) => _addonSideLoadFeatures.Add(feature);
 
     public static IEnumerable<IAction> AddonConsoleActions => _addonConsoleActions;
+
+    public static void AddConsoleAction(IAction action) => _addonConsoleActions.Add(action);
 
     public static IAction GetConsoleAction(string actionName)
     {
       return (from x in AddonConsoleActions where x.Action == actionName select x).FirstOrDefault();
-    }
-
-    public static void AddonConsoleActionsAdd(IEnumerable<IAction> list)
-    {
-      if (list != null)
-        _addonConsoleActions.AddRange(list);
     }
 
     /// <summary>
@@ -120,78 +155,37 @@ namespace CorpusExplorer.Sdk.Ecosystem.Model
     /// </summary>
     public static IEnumerable<AbstractCrawler> AddonCrawlers => _addonCrawlers;
 
-    public static void AddonCrawlersAdd(IEnumerable<AbstractCrawler> list)
-    {
-      if (list != null)
-        _addonCrawlers.AddRange(list);
-    }
+    public static void AddCrawler(AbstractCrawler crawler) => _addonCrawlers.Add(crawler);
 
-    public static IEnumerable<KeyValuePair<string, AbstractExporter>> AddonExporters
-    {
-      get
-      {
-        var list = _addonExporters.OrderBy(x => x.Key).ToList();
-        var cec6 = (from x in list where x.Value.GetType() == typeof(ExporterCec6) select x).FirstOrDefault();
-        list.Remove(cec6);
-        list.Insert(0, cec6);
-        return list;
-      }
-    }
+    public static IEnumerable<KeyValuePair<string, AbstractExporter>> AddonExporters => _addonExporters;
+
+    public static void AddExporter(string name, AbstractExporter exporter) => _addonExporters.Add(name, exporter);
 
     public static AbstractExporter GetExporter(string exporter)
       => (from x in _addonExporters where x.Value.GetType().Name.EndsWith(exporter) select x.Value).FirstOrDefault();
-
-    public static void AddonExportersAdd(IEnumerable<KeyValuePair<string, AbstractExporter>> list)
-    {
-      if (list != null)
-        foreach (var x in list.Where(x => !_addonImporters.ContainsKey(x.Key)))
-          _addonExporters.Add(x.Key, x.Value);
-    }
 
     /// <summary>
     ///   Liste mit Scrapern die lokale Dateien bestehender Korpora importieren (z. B. XML, EXMERaLDA).
     ///   Für Dateien MIT Annotation.
     /// </summary>
-    public static IEnumerable<KeyValuePair<string, AbstractImporter>> AddonImporters
-    {
-      get
-      {
-        var list = _addonImporters.OrderBy(x => x.Key).ToList();
-        var cec6 = (from x in list where x.Value.GetType() == typeof(ImporterCec6) select x).FirstOrDefault();
-        list.Remove(cec6);
-        list.Insert(0, cec6);
-        return list;
-      }
-    }
+    public static IEnumerable<KeyValuePair<string, AbstractImporter>> AddonImporters => _addonImporters;
 
-    public static void AddonImportersAdd(IEnumerable<KeyValuePair<string, AbstractImporter>> list)
-    {
-      if (list == null)
-        return;
-
-      foreach (var x in list.Where(x => !_addonImporters.ContainsKey(x.Key)))
-        _addonImporters.Add(x.Key, x.Value);
-    }
+    public static void AddImporter(string name, AbstractImporter importer) => _addonImporters.Add(name, importer);
 
     /// <summary>
     ///   Liste mit Scrapern die lokale Dateien (z. B. TXT, RTF, DOCX, PDF) in Korpusdokumente konvertieren.
     ///   Für Dateien OHNE Annotation.
     /// </summary>
-    public static IEnumerable<KeyValuePair<string, AbstractScraper>> AddonScrapers =>
-      _addonScrapers.OrderBy(x => x.Key);
+    public static IEnumerable<KeyValuePair<string, AbstractScraper>> AddonScrapers => _addonScrapers;
 
-    public static void AddonScrapersAdd(IEnumerable<KeyValuePair<string, AbstractScraper>> list)
-    {
-      if (list != null)
-        foreach (var x in list.Where(x => !_addonImporters.ContainsKey(x.Key)))
-          _addonScrapers.Add(x.Key, x.Value);
-    }
+    public static void AddScraper(string name, AbstractScraper scraper) => _addonScrapers.Add(name, scraper);
 
     /// <summary>
     /// Export für Analysedaten im Tabellenformat
     /// </summary>
-    public static IEnumerable<KeyValuePair<string, AbstractTableWriter>> AddonTableWriter =>
-      _addonTableWriters.OrderBy(x => x.Key);
+    public static IEnumerable<KeyValuePair<string, AbstractTableWriter>> AddonTableWriter => _addonTableWriters;
+
+    public static void AddTableWriter(string name, AbstractTableWriter tableWriter) => _addonTableWriters.Add(name, tableWriter);
 
     public static AbstractTableWriter GetTableWriter(string tableWriterTag)
     {
@@ -234,13 +228,6 @@ namespace CorpusExplorer.Sdk.Ecosystem.Model
       return null;
     }
 
-    public static void AddonTableWriterAdd(IEnumerable<KeyValuePair<string, AbstractTableWriter>> list)
-    {
-      if (list != null)
-        foreach (var x in list.Where(x => !_addonImporters.ContainsKey(x.Key)))
-          _addonTableWriters.Add(x.Key, x.Value);
-    }
-
     public static void GetTableWriterAdditionalPath(string tableWriterTag, out string tag, out string path)
     {
       if (tableWriterTag.Contains("#"))
@@ -261,12 +248,10 @@ namespace CorpusExplorer.Sdk.Ecosystem.Model
     /// </summary>
     public static IEnumerable<AbstractTagger> AddonTaggers => _addonTaggers;
 
-    public static void AddonTaggersAdd(IEnumerable<AbstractTagger> list)
-    {
-      if (list != null)
-        _addonTaggers.AddRange(list);
-    }
+    public static void AddTagger(AbstractTagger tagger) => _addonTaggers.Add(tagger);
+    #endregion
 
+    #region ModelLocalization
     /// <summary>
     /// Gets the layer display name localization.
     /// </summary>
@@ -302,11 +287,12 @@ namespace CorpusExplorer.Sdk.Ecosystem.Model
         // ignore
       }
     }
+    #endregion
 
-    /// <summary>
-    ///   Gets the app config path.
-    /// </summary>
-    public static string AppConfigPath { get; private set; }
+    #region General Configuration
+    private static Encoding _encoding = Encoding.UTF8;
+    private static bool? _rightToLeftSupport;
+    private static ISignificance _significance = new PoissonSignificance();
 
     /// <summary>
     ///   Gets the app path.
@@ -353,11 +339,6 @@ namespace CorpusExplorer.Sdk.Ecosystem.Model
       }
     }
 
-    /// <summary>
-    ///   Gets the extern app path.
-    /// </summary>
-    public static string ExternAppPath { get; private set; }
-
     public static bool IsInitialized { get; private set; }
 
     /// <summary>
@@ -374,23 +355,6 @@ namespace CorpusExplorer.Sdk.Ecosystem.Model
     ///   Gets or sets the minimum significance.
     /// </summary>
     public static double MinimumSignificance { get; set; } = 0.9;
-
-    /// <summary>
-    ///   Gibt das Verzeichnis zurück in dem der Benutzer Crawler/Addons ablegen kann ohne diese Installieren zu müssen.
-    /// </summary>
-    public static string MyAddons { get; private set; }
-
-    /// <summary>
-    ///   Pfad zu den Korpora
-    /// </summary>
-    public static string MyCorpora { get; private set; }
-
-    public static string MyDataSources { get; private set; }
-
-    /// <summary>
-    ///   Pfad zum Projektordner
-    /// </summary>
-    public static string MyProjects { get; private set; }
 
     public static ParallelOptions ParallelOptions { get; set; } =
       new ParallelOptions { MaxDegreeOfParallelism = Environment.ProcessorCount };
@@ -679,28 +643,6 @@ namespace CorpusExplorer.Sdk.Ecosystem.Model
 
       SetSignificance(new PoissonSignificance());
 
-      try // notwendig z. B. unter AZURE
-      {
-        AppConfigPath = GetRelativAppDirectory("myConfig");
-        ExternAppPath = GetRelativAppDirectory("extern");
-      }
-      catch
-      {
-        // ignore
-      }
-
-      try // notwendig z. B. unter AZURE
-      {
-        MyCorpora = GetRelativPath(Resources.MyCorpora);
-        MyAddons = GetRelativPath(Resources.MyExtension);
-        MyDataSources = GetRelativPath(Resources.MyDataSources);
-        MyProjects = GetRelativPath(Resources.MyProjects);
-      }
-      catch
-      {
-        // ignore
-      }
-
       // Anwendungskonfiguration
       try // notwendig z. B. unter AZURE
       {
@@ -742,16 +684,17 @@ namespace CorpusExplorer.Sdk.Ecosystem.Model
 
       IsInitialized = true;
     }
+    #endregion
 
+    #region Static Addon Configuration
     private static List<AbstractAdditionalTagger> _addonAdditionalTaggers =
     [
       new AdditionalTsvValueTagger(),
-      new AdditionalTsvValueTagger()
     ];
     private static Dictionary<string, AbstractCorpusBuilder> _addonBackends = new()
-      {
-        { "CorpusExplorer v6", new CorpusBuilderWriteDirect() }
-      };
+    {
+      { "CorpusExplorer v6", new CorpusBuilderWriteDirect() }
+    };
     private static List<object> _addonSideLoadFeatures =
       [
         new FelschKincaidGradeIndex(),
@@ -920,63 +863,163 @@ namespace CorpusExplorer.Sdk.Ecosystem.Model
     private static List<AbstractCrawler> _addonCrawlers = [];
     private static Dictionary<string, AbstractExporter> _addonExporters = new()
     {
-      { "JSON-Export (*.json)|*.json", new ExporterJson() },
-      { "JSON-Export + ZIP (*.zip)|*.zip", new ExporterJsonZip() },
-      { "TLV-XML-Export (*.xml)|*.xml", new ExporterTlv() },
-      { "CorpusExplorer v6 (*.cec6)|*.cec6", new ExporterCec6() },
-      { "CorpusExplorer v6 + LZ4 (*.cec6.lz4)|*.cec6.lz4", new ExporterCec6 { UseCompression = true } },
-      { "CorpusExplorer v6 + GZip (*.cec6.gz)|*.cec6.gz", new ExporterCec6 { UseCompression = true } },
-      { "Plaintext-Export (*.txt)|*.txt", new ExporterPlaintext() },
-      { "Plaintext-Export [Nur Wort-Layer] (*.txt)|*.txt", new ExporterPlaintextPure() },
-      { "Plaintext-Export [Nur Wort-Layer - Eine Datei] (*.txt)|*.txt", new ExporterPlaintextPureInOneFile() },
-      { "Einfacher HTML-Export [Nur Wort-Layer] (*.txt)|*.txt", new ExporterHtmlPure() },
-      { "CSV-Export [Nur Metadatan] (*.csv)|*.csv", new ExporterCsvMetadataOnly() },
-      { "CSV-Export [Metadaten + Wort-Layer] (*.csv)|*.csv", new ExporterCsv() },
-      { "Abfragen-Export [Nur für Schnappschüsse] (*.ceusd)|*.ceusd", new ExporterQuery() },
-      { "CoNLL (*.conll)|*.conll", new ExporterConll() },
-      { "CoNLL + ZIP (*.zip)|*.zip", new ExporterConllZip() },
-      { "TreeTagger (*.treetagger)|*.treetagger", new ExporterTreeTagger() },
-      { "TreeTagger + Satzgrenze (*.treetagger)|*.treetagger", new ExporterTreeTagger { UseSentenceTag = true } },
-      { "TreeTagger + ZIP (*.zip)|*.zip", new ExporterTreeTaggerZip { UseSentenceTag = true } },
-      { "CorpusWorkBench bis 2021(*.vrt)|*.vrt", new ExporterCorpusWorkBench { UseSentenceTag = false } },
-      { "CorpusWorkBench bis 2021 inkl. Satzgrene (*.vrt, *.vrt.xml)|*.vrt;*.vrt.xml", new ExporterCorpusWorkBench { UseSentenceTag = true } },
-      { "CorpusWorkBench ab 2022 (*.vrt, *.vrt.xml)|*.vrt;*.vrt.xml", new ExporterCorpusWorkBench2022 { UseSentenceTag = true } },
-      { "Sketch Engine VERT (*.vert)|*.vert", new ExporterSketchEngine() },
+      {"CorpusExplorer v6 (*.cec6)|*.cec6", new ExporterCec6() },
+      {"CorpusExplorer v6 + GZip (*.cec6.gz)|*.cec6.gz", new ExporterCec6 { UseCompression = true } },
+      {"CorpusExplorer v6 + LZ4 (*.cec6.lz4)|*.cec6.lz4", new ExporterCec6 { UseCompression = true } },
+      {"Abfragen-Export [Nur für Schnappschüsse] (*.ceusd)|*.ceusd", new ExporterQuery() },
+      {"AnnotationPro (*.ant)|*.ant", new ExporterAnnoationPro()},
+      {"CATMA 6 (*.xml/*.txt)|*", new ExporterCatma() },
+      {"CoNLL (*.conll)|*.conll", new ExporterConll() },
+      {"CoNLL + ZIP (*.zip)|*.zip", new ExporterConllZip() },
+      {"CorpusWorkBench ab 2022 (*.vrt, *.vrt.xml)|*.vrt;*.vrt.xml", new ExporterCorpusWorkBench2022 { UseSentenceTag = true } },
+      {"CorpusWorkBench bis 2021 inkl. Satzgrene (*.vrt, *.vrt.xml)|*.vrt;*.vrt.xml", new ExporterCorpusWorkBench { UseSentenceTag = true } },
+      {"CorpusWorkBench bis 2021(*.vrt)|*.vrt", new ExporterCorpusWorkBench { UseSentenceTag = false } },
+      {"CSV-Export [Metadaten + Wort-Layer] (*.csv)|*.csv", new ExporterCsv() },
+      {"CSV-Export [Nur Metadatan] (*.csv)|*.csv", new ExporterCsvMetadataOnly() },
+      {"DTA-TCF (*.tcf.xml)|*.tcf.xml", new ExporterDta()},
+      {"DTA-TCF + ZIP (*.zip)|*.zip", new ExporterDtaZip()},
+      {"DTA-TCF bis 2017 (*.tcf.xml)|*.tcf.xml", new ExporterDta2017()},
+      {"DWDS TEI (*.xml)|*.xml", new ExporterDwdsTei() },
+      {"Einfacher HTML-Export [Nur Wort-Layer] (*.txt)|*.txt", new ExporterHtmlPure() },
+      {"FoLiA-XML (*.xml)|*.xml", new ExporterFolia() },
+      {"IDS I5 (*.xml)|*.xml", new ExporterI5() },
+      {"IDS KorAP (*.zip)|*.zip", new ExporterKorap() },
+      {"JSON-Export (*.json)|*.json", new ExporterJson() },
+      {"JSON-Export + ZIP (*.zip)|*.zip", new ExporterJsonZip() },
+      {"Plaintext-Export (*.txt)|*.txt", new ExporterPlaintext() },
+      {"Plaintext-Export [Nur Wort-Layer - Eine Datei] (*.txt)|*.txt", new ExporterPlaintextPureInOneFile() },
+      {"Plaintext-Export [Nur Wort-Layer] (*.txt)|*.txt", new ExporterPlaintextPure() },
+      {"SaltXML (*.xml, *.salt)|*.salt;*.xml", new ExporterSaltXml() },
+      {"Sketch Engine VERT (*.vert)|*.vert", new ExporterSketchEngine() },
+      {"Slash/A-XML (*.xml)|*.xml", new ExporterSlashA()},
+      {"SPEEDy/CODEX (*.json)|*.json", new ExporterSpeedy() },
+      {"TLV-XML-Export (*.xml)|*.xml", new ExporterTlv() },
+      {"TreeTagger (*.treetagger)|*.treetagger", new ExporterTreeTagger() },
+      {"TreeTagger + Satzgrenze (*.treetagger)|*.treetagger", new ExporterTreeTagger { UseSentenceTag = true } },
+      {"TreeTagger + ZIP (*.zip)|*.zip", new ExporterTreeTaggerZip { UseSentenceTag = true } },
+      {"TXM TEI-XML (*.xml)|*.xml", new ExporterTxm() },
+      {"TXM TEI-XML + ZIP (*.zip)|*.zip", new ExporterTxmZip() },
+      {"WebLicht (*.xml)|*.xml", new ExporterWeblicht()},
+      {"XCES-XML (https://opus.nlpl.eu/) (*.xml)|*.xml", new ExporterOpusXces() },
+
     };
     private static Dictionary<string, AbstractImporter> _addonImporters = new()
-      {
-        {"CorpusExplorer v6 (*.cec6, *.cec6.lz4, *.cec6.gz)|*.cec6;*.cec6.gz;*.cec6.lz4", new ImporterCec6()},
-        {"CorpusExplorer v6 [mit DRM geschützt] (*.cec6.drm)|*.cec6.drm", new ImporterCec6Drm()},
-        {"CorpusExplorer v6 [STREAM] (*.cec6)|*.cec6", new ImporterCec6Stream()},
-        {"TLV-XML (*.xml)|*.xml", new ImporterTlv()},
-        {"CoNLL (*.conll)|*.conll", new ImporterConll()},
-        {"TreeTagger (*.txt)|*.txt", new ImporterTreeTagger()},
-        {"CorpusWorkBench VRT (*.vrt)|*.vrt", new ImporterCorpusWorkBench()},
-        {"Sketch Engine VERT (*.vert)|*.vert", new ImporterSketchEngine()},
-      };
+    {
+      {"CorpusExplorer v6 (*.cec6, *.cec6.lz4, *.cec6.gz)|*.cec6;*.cec6.gz;*.cec6.lz4", new ImporterCec6()},
+      {"CorpusExplorer v6 [STREAM] (*.cec6)|*.cec6", new ImporterCec6Stream()},
+      {"CorpusExplorer v6 [mit DRM geschützt] (*.cec6.drm)|*.cec6.drm", new ImporterCec6Drm()},
+      {"ANNIS v3.3 (corpus.annis) - Layer-Alternative|corpus.annis", new ImporterRelAnnisAlternative()},
+      {"ANNIS v3.3 (corpus.annis)|corpus.annis", new ImporterRelAnnis()},
+      {"BNC TEI (*.xml)|*.xml", new ImporterBnc() },
+      {"CATMA 5.0 (*.xml)|*.xml", new ImporterCatma()},
+      {"CLAN/Childes (*.cex)|*.cex", new ImporterClanChildes()},
+      {"CoNLL (*.conll)|*.conll", new ImporterConll()},
+      {"CoraXML 0.8 (*.xml)|*.xml", new ImporterCoraXml08()},
+      {"CoraXML 1.0 (*.xml)|*.xml", new ImporterCoraXml10()},
+      {"CorpusWorkBench VRT (*.vrt)|*.vrt", new ImporterCorpusWorkBench()},
+      {"DEWAC (DEWAC-*.xml)|DEWAC-*.xml", new ImporterDewac()},
+      {"DTA-TCF (*.tcf.xml)|*.tcf.xml", new ImporterDta()},
+      {"DTA-TCF 2017 (*.tcf.xml)|*.tcf.xml", new ImporterDta2017()},
+      {"FnhdC (*.xml)|*.xml", new ImporterFnhdC()},
+      {"FoLiA-XML (*.xml)|*.xml", new ImporterFolia() },
+      {"FOLKER / OrthoNormal (*.fln)|*.fln", new ImporterFolkerFln() },
+      {"IDS KorAP (*.zip)|*.zip", new ImporterKorap { LoadStrategy = KorapLoadStrategyZipFile.AddonInitialize() } },
+      {"IDS KorAP ab 2021 (*.zip)|*.zip", new ImporterKorap2021{ LoadStrategy = KorapLoadStrategyZipFile.AddonInitialize() } },
+      {"JSON Stand-Off Universal (*.json)|*.json", new ImporterSimpleJsonStandoff() },
+      {"Projekt: http://www.redewiedergabe.de/ (metadata.tsv)|metadata.tsv", new ImporterRedewiedergabe()},
+      {"SaltXML (*.xml, *.salt)|*.salt;*.xml", new ImporterSaltXml() },
+      {"Sketch Engine VERT (*.vert)|*.vert", new ImporterSketchEngine()},
+      {"SPEEDy/CODEX (*.json)|*.json", new ImporterSpeedy() },
+      {"TiGER-XML (*.xml)|*.xml", new ImporterTiger() },
+      {"TLV-XML (*.xml)|*.xml", new ImporterTlv()},
+      {"TreeTagger (*.txt)|*.txt", new ImporterTreeTagger()},
+      {"TXM TEI-XML (*.xml)|*.xml", new ImporterTxm() },
+      {"Universelles TSV-Korpus (*.tsv)|*.tsv", new ImporterTsv()},
+      {"WebLicht (*.xml)|*.xml", new ImporterWeblicht()},
+      {"Wortschatz Leipzig (*-sentences.txt)|*-sentences.txt", new ImporterLeipzigerWortschatz()},
+      {"XCES-XML (https://opus.nlpl.eu/) (*.xml)|*.xml", new ImporterOpusXces()},
+    };
     private static Dictionary<string, AbstractScraper> _addonScrapers = new()
     {
-      {"Plain-TXT (*.txt)|*.txt", new TxtScraper()},
-      {"COSMAS-TXT (*.rtf)|*.rtf", new CosmasScraper()},
+      {"ALTO-XML 1.2 (*.xml)|*.xml", new Alto12Scraper()},
+      {"AnnotationPro (*.ant)|*.ant", new AnnotationProScraper()},
+      {"BAWE TEI-P4 (*.xml)|*.xml", new BaweScraper()},
+      {"Bundestag OpenAccess Drucksachen (*.xml)|*.xml", new BundestagDrucksachenScraper()},
+      {"Bundestag OpenAccess Plenarprotokolle (1-18 Legislaturperiode) (*.xml)|*.xml", new BundestagPlenarprotokolleScraper()},
+      {"Bundestag OpenAccess Plenarprotokolle (ab 19. Legislaturperiode - gesamtes Protokoll) (*.xml)|*.xml", new BundestagDtdPlenarprotokolleSimpleScraper()},
+      {"Bundestag OpenAccess Plenarprotokolle (ab 19. Legislaturperiode - separate Redebeiträge) (*.xml)|*.xml", new BundestagDtdPlenarprotokolleTurnScraper()},
+      {"CATMA 5.0 (*.xml)|*.xml", new CatmaScraper()},
+      {"CLARIN ContentSearch CSV-Export (*.csv)|*.csv", new ClarinContentSearchScraper() },
+      {"COSMAS-TXT (*.txt)|*.txt;*.rtf", new CosmasScraper()},
+      {"CSV-Datei mit Überschriften - Linux (*.csv)|*.csv", new TsvAndCsvScraper { NewLine = "\n" } },
+      {"CSV-Datei mit Überschriften - Windows (*.csv)|*.csv", new TsvAndCsvScraper { NewLine = "\r\n" } },
+      {"D-Spin Slash/A (*.xml)|*.xml", new SlashAScraper()},
+      {"Digital-Plato.org (*.xml)|*.xml", new DigitalPlatoScraper()},
+      {"Dortmunder Chat Korpus (*.xml)|*.xml", new DortmunderChatKorpusScraper()},
+      {"DTA-Basisformat (*.xml)|*.xml", new DtaBasisformatScraper()},
+      {"DTA-TCF (*.tcf.xml)|*.tcf.xml", new DtaScraper()},
+      {"DTA-TCF 2017 (*.tcf.xml)|*.tcf.xml", new Dta2017Scraper()},
+      {"DWDS TEI (*.xml)|*.xml", new DwdsTeiScraper()},
+      {"EasyHashtag Plaintext (*.ehp, *.txt)|*.ehp;*.txt", new EasyHashtagSeparationScraper() },
+      {"EuroParl (*.txt)|*.txt", new EuroparlScraper() },
+      {"Europarl-UDS (*.xml)|*.xml", new EuroParlUdsScraper()},
+      {"EXMERaLDA-Basic (*.exb)|*.exb", new ExmaraldaExbScraper()},
+      {"FOLKER / OrthoNormal (*.fln)|*.fln", new FolkerFlnScraper()},
+      {"FOLKER-Transkript (*.flk)|*.flk", new FolkerScraper()},
+      {"GermaParlTEI (*.xml)|*.xml", new GermaParlTeiScraper()},
+      {"Gutenberg 13 DVD (*.xml)|*.xml", new GutenbergScraper()},
+      {"IDS I5-Korpora (*.i5.xml)|*.i5.xml", new IdsScraper()},
+      {"IDS KorAP (*.zip)|*.zip", new KorapScraper()},
+      {"Jean Paul Edition (*.xml)|*.xml", new JeanPaulLetterScraper()},
+      {"JSON Stand-Off Universal (*.json)|*.json", new SimpleJsonStandoffScraper()},
+      {"JSON-Dokument (*.json)|*.json", new SimpleJsonScraper()},
+      {"kleineAnfrage.de SQL (*.sql)|*.sql", new KleineanfrageDeScraper() },
+      {"Nexis/Uni / Lexis-Nexis (bis 2019) - (*.html)|*.html", new NexisComScraper()},
       {"Nur Text - Re-Annotation (*.cec5, *.cec6, *.cec6.gz)|*.cec5;*.cec6;*.cec6.gz", new Cec6Scraper()},
+      {"Nur Text (*.xml)|*.xml", new PureXmlTextScraper()},
+      {"Nur Text (*.txt)|*.txt", new TxtScraper()},
+      {"OpenLegalData (*.jsonl)|*.jsonl", new OpenLegalDataScraper()},
+      {"Perseus CTS-Service (*.xml)|*.xml", new PerseusScraper()},
+      {"Plain-TXT (*.txt)|*.txt", new TxtScraper()},
+      {"PMG-XML (*.pmg; *.xml)|*.xml;*.pmg", new PmgScraper()},
+      {"PostgreSQL-XML-Dump (*.xml)|*.xml", new PostgreSqlDumpScraper()},
+      {"Purl.org XML-Rohdaten (*.xml)|*.xml", new PurlOrgScraper()},
+      {"Shakespeare Drama-XML (*.xml)|*.xml", new ShakespeareScraper()},
+      {"SixCMS Artikel-Export (*.xml)|*.xml", new SixCmsScraper()},
+      {"SPEEDy/CODEX (*.json)|*.json", new SpeedyScraper()},
+      {"Talkbank XML (*.xml)|*.xml", new TalkbankScraper()},
+      {"TEI P5 (*.xml)|*.xml", new P5Cal2Scraper()},
+      {"TextGrid (*.xml)|*.xml", new TextGridScraper()},
+      {"TiGER-XML (*.xml)|*.xml", new TigerScraper()},
+      {"TSV-Datei mit Überschriften - Linux (*.csv; *.tsv; *.tab)|*.csv;*.tsv;*.tab", new TsvAndCsvScraper { NewLine = "\n" } },
+      {"TSV-Datei mit Überschriften - Windows (*.csv; *.tsv; *.tab)|*.csv;*.tsv;*.tab", new TsvAndCsvScraper { NewLine = "\r\n" } },
+      {"Twitter via yourTwappaKeeper (*.php)|*.php", new TwapperScraper()},
+      {"Twitter-JSON via StreamAPI (*.json)|*.json", new TwitterScraper()},
+      {"Twitter-Status-JSON via SearchAPI (*.json)|*.json", new TwitterStatusScraper()},
+      {"TXM TEI-XML (*.xml)|*.xml", new TxmScraper()},
+      {"WebLicht-XML (*.xml)|*.xml", new WeblichtScraper()},
+      {"WordPress JSON (*.json)|*.json", new WordpressScraper()},
+      {"Wortschatz Leipzig (*-sentences.txt)|*-sentences.txt", new LeipzigerWortschatzScraper() },
     };
     private static Dictionary<string, AbstractTableWriter> _addonTableWriters = new()
-        {
-          {"CSV-Tabelle (*.csv)|*.csv", new CsvTableWriter() },
-          {"HTML-Dokument (*.html)|*.html", new HtmlTableWriter() },
-          {"HTML-Tabelle (*.html)|*.html", new HtmlTableSnippetTableWriter() },
-          {"JSON-Dokument (*.json)|*.json", new JsonTableWriter() },
-          {"JSON-Dokument (gerundet) (*.json)|*.json", new JsonRoundedTableWriter() },
-          {"SQL-Query nur Daten (*.sql)|*.sql", new SqlDataOnlyTableWriter() },
-          {"SQL-Query nur Schema (*.sql)|*.sql", new SqlSchemaOnlyTableWriter() },
-          {"SQL-Query Schema und Daten (*.sql)|*.sql", new SqlTableWriter() },
-          {"TSV-Tabelle (*.tsv)|*.tsv", new TsvTableWriter() },
-          {"TSV-Tabelle (gerundet) (*.tsv)|*.tsv", new TsvRoundedTableWriter() },
-          {"XML-Dokument (*.xml)|*.xml", new XmlTableWriter() }
-        };
+    {
+      {"CSV-Tabelle (*.csv)|*.csv", new CsvTableWriter() },
+      {"HTML-Dokument (*.html)|*.html", new HtmlTableWriter() },
+      {"HTML-Tabelle (*.html)|*.html", new HtmlTableSnippetTableWriter() },
+      {"JSON-Dokument (*.json)|*.json", new JsonTableWriter() },
+      {"JSON-Dokument (gerundet) (*.json)|*.json", new JsonRoundedTableWriter() },
+      {"SQL-Query nur Daten (*.sql)|*.sql", new SqlDataOnlyTableWriter() },
+      {"SQL-Query nur Schema (*.sql)|*.sql", new SqlSchemaOnlyTableWriter() },
+      {"SQL-Query Schema und Daten (*.sql)|*.sql", new SqlTableWriter() },
+      {"TSV-Tabelle (*.tsv)|*.tsv", new TsvTableWriter() },
+      {"TSV-Tabelle (gerundet) (*.tsv)|*.tsv", new TsvRoundedTableWriter() },
+      {"XML-Dokument (*.xml)|*.xml", new XmlTableWriter() }
+    };
     private static List<AbstractTagger> _addonTaggers =
       [
         new RawTextTagger(),
       ];
+    private static List<AbstractFeature> _addonFeatures = [];
+    #endregion
   }
 }
