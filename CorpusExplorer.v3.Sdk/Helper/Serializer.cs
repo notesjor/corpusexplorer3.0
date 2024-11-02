@@ -98,5 +98,26 @@ namespace CorpusExplorer.Sdk.Helper
         InMemoryErrorConsole.Log(ex);
       }
     }
+
+    public static string SerializeXmlInMemory<T>(T obj)
+    {
+      try
+      {
+        using (var ms = new MemoryStream())
+        {
+          using (var writer = new XmlTextWriter(ms, Configuration.Encoding))
+          {
+            var xml = new XmlSerializer(typeof(T));
+            xml.Serialize(writer, obj);
+          }
+          return Configuration.Encoding.GetString(ms.ToArray());
+        }
+      }
+      catch (Exception ex)
+      {
+        InMemoryErrorConsole.Log(ex);
+        return "";
+      }
+    }
   }
 }

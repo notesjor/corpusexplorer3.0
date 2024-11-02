@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Model\External\DeutscherBundestag\Plenarprotokolle\v2\" />
     <Folder Include="Properties\" />
   </ItemGroup>
 
