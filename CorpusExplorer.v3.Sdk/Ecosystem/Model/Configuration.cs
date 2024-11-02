@@ -9,10 +9,15 @@ using System.Reflection;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
+using CorpusExplorer.Sdk._3rdParty.Commercial.Metaphone3.Action;
+using CorpusExplorer.Sdk.Action;
 using CorpusExplorer.Sdk.Addon;
 using CorpusExplorer.Sdk.Blocks.Cooccurrence;
 using CorpusExplorer.Sdk.Blocks.Measure;
 using CorpusExplorer.Sdk.Blocks.Measure.Abstract;
+using CorpusExplorer.Sdk.Blocks.ReadingEase;
+using CorpusExplorer.Sdk.Blocks.Similarity;
+using CorpusExplorer.Sdk.Blocks.VocabularyComplaxity;
 using CorpusExplorer.Sdk.Diagnostic;
 using CorpusExplorer.Sdk.Helper;
 using CorpusExplorer.Sdk.Model.Cache;
@@ -27,10 +32,15 @@ using CorpusExplorer.Sdk.Utils.DocumentProcessing.Crawler;
 using CorpusExplorer.Sdk.Utils.DocumentProcessing.Crawler.Abstract;
 using CorpusExplorer.Sdk.Utils.DocumentProcessing.Exporter;
 using CorpusExplorer.Sdk.Utils.DocumentProcessing.Exporter.Abstract;
+using CorpusExplorer.Sdk.Utils.DocumentProcessing.Importer;
 using CorpusExplorer.Sdk.Utils.DocumentProcessing.Importer.Abstract;
 using CorpusExplorer.Sdk.Utils.DocumentProcessing.Importer.CorpusExplorerV6;
+using CorpusExplorer.Sdk.Utils.DocumentProcessing.Scraper;
 using CorpusExplorer.Sdk.Utils.DocumentProcessing.Scraper.Abstract;
+using CorpusExplorer.Sdk.Utils.DocumentProcessing.Scraper.Txt;
 using CorpusExplorer.Sdk.Utils.DocumentProcessing.Tagger.Abstract;
+using CorpusExplorer.Sdk.Utils.DocumentProcessing.Tagger.AdditionalTaggerWrapper;
+using CorpusExplorer.Sdk.Utils.DocumentProcessing.Tagger.RawText;
 
 #endregion
 
@@ -41,16 +51,6 @@ namespace CorpusExplorer.Sdk.Ecosystem.Model
   /// </summary>
   public static class Configuration
   {
-    private static List<AbstractAdditionalTagger> _addonAdditionalTaggers = [];
-    private static Dictionary<string, AbstractCorpusBuilder> _addonBackends = new();
-    private static List<object> _addonSideLoadFeatures = [];
-    private static List<IAction> _addonConsoleActions = [];
-    private static List<AbstractCrawler> _addonCrawlers = [];
-    private static Dictionary<string, AbstractExporter> _addonExporters = new();
-    private static Dictionary<string, AbstractImporter> _addonImporters = new();
-    private static Dictionary<string, AbstractScraper> _addonScrapers = new();
-    private static Dictionary<string, AbstractTableWriter> _addonTableWriters = new();
-    private static List<AbstractTagger> _addonTaggers = [];
     private static Encoding _encoding = Encoding.UTF8;
     private static bool? _rightToLeftSupport;
     private static ISignificance _significance = new PoissonSignificance();
@@ -85,7 +85,7 @@ namespace CorpusExplorer.Sdk.Ecosystem.Model
 
     public static void AddonBackendsAdd(IEnumerable<KeyValuePair<string, AbstractCorpusBuilder>> list)
     {
-      if (list == null) 
+      if (list == null)
         return;
 
       foreach (var x in list.Where(x => !_addonImporters.ContainsKey(x.Key)))
@@ -166,7 +166,7 @@ namespace CorpusExplorer.Sdk.Ecosystem.Model
 
     public static void AddonImportersAdd(IEnumerable<KeyValuePair<string, AbstractImporter>> list)
     {
-      if (list == null) 
+      if (list == null)
         return;
 
       foreach (var x in list.Where(x => !_addonImporters.ContainsKey(x.Key)))
@@ -240,7 +240,7 @@ namespace CorpusExplorer.Sdk.Ecosystem.Model
         foreach (var x in list.Where(x => !_addonImporters.ContainsKey(x.Key)))
           _addonTableWriters.Add(x.Key, x.Value);
     }
-    
+
     public static void GetTableWriterAdditionalPath(string tableWriterTag, out string tag, out string path)
     {
       if (tableWriterTag.Contains("#"))
@@ -740,18 +740,243 @@ namespace CorpusExplorer.Sdk.Ecosystem.Model
       ProtectMemoryOverflow = ProtectMemoryOverflow;
       DefaultFontSize = DefaultFontSize;
 
-      _addonSideLoadFeatures = new List<object>();
-      _addonBackends = new Dictionary<string, AbstractCorpusBuilder>();
-      _addonConsoleActions = new List<IAction>();
-      _addonCrawlers = new List<AbstractCrawler>();
-      _addonExporters = new Dictionary<string, AbstractExporter>();
-      _addonImporters = new Dictionary<string, AbstractImporter>();
-      _addonTaggers = new List<AbstractTagger>();
-      _addonAdditionalTaggers = new List<AbstractAdditionalTagger>();
-      _addonScrapers = new Dictionary<string, AbstractScraper>();
-      _addonTableWriters = new Dictionary<string, AbstractTableWriter>();
-
       IsInitialized = true;
     }
+
+    private static List<AbstractAdditionalTagger> _addonAdditionalTaggers =
+    [
+      new AdditionalTsvValueTagger(),
+      new AdditionalTsvValueTagger()
+    ];
+    private static Dictionary<string, AbstractCorpusBuilder> _addonBackends = new()
+      {
+        { "CorpusExplorer v6", new CorpusBuilderWriteDirect() }
+      };
+    private static List<object> _addonSideLoadFeatures =
+      [
+        new FelschKincaidGradeIndex(),
+        new FelschReadingEaseIndex(),
+        new GunningFogIndexIndex(),
+        new SmogIndexIndex(),
+        new WienerSachtextV1Index(),
+        new WienerSachtextV2Index(),
+        new WienerSachtextV3Index(),
+        new WienerSachtextV4Index(),
+
+        new VocabularyComplexityByBrunet1978(),
+        new VocabularyComplexityByHonore1979(),
+        new VocabularyComplexityBySichel1975(),
+        new VocabularyComplexityByYule1938(),
+        new VocabularyComplexityCarrollsCorrectedTTR(),
+        new VocabularyComplexityGuiraud1954(),
+        new VocabularyComplexityHerdan1960(),
+        new VocabularyComplexitySummersIndex(),
+        new VocabularyComplexityTypeTokenRatio(),
+
+        new CosineMeasure(),
+        new DistanceEuclidean(),
+
+        new ChiSquaredSignificance(),
+        new LogLikelihoodSignificance(),
+        new PoissonSignificance(),
+
+        new BraunMeasure(),
+        new DiceCoefficient(),
+        new HamannMeasure(),
+        new JaccardMeasure(),
+        new KappaMeasure(),
+        new KulczynskiMeasure(),
+        new MCoefficientMeasure(),
+        new MutalInformation(),
+        new OchiaiMeasure(),
+        new PhiMeasure(),
+        new RusselRaoMeasure(),
+        new SimpsonMeasure(),
+        new SneathMeasure(),
+        new TanimotoMeasure(),
+        new YuleMeasure()
+      ];
+    private static List<IAction> _addonConsoleActions =
+      [
+        new AddTaggerAction(),
+
+        new BasicInformationAction(),
+
+        new CentralSnipAction(),
+        new CentralSnipTreeAction(),
+        new ClusterAction(),
+        new ClusterListAction(),
+        new ConvertAction(),
+        new CooccurrenceAction(),
+        new CooccurrenceCorrespondingAction(),
+        new CooccurrenceCrossAction(),
+        new CooccurrenceCrossFullAction(),
+        new CooccurrencePolarisationAction(),
+        new CooccurrenceProfileAction(),
+        new CooccurrenceSelectedAction(),
+        new CooccurrenceSelectedCorrespondingAction(),
+        new CorrespondingMetaphoneValuesAction(),
+        new CorrespondingValuesAction(),
+        new CrossFrequencyAction(),
+        new CrossFrequencyCorrespondingAction(),
+        new CutOffPhraseAction(),
+
+        new DisambiguationeAction(),
+        new DispersionAction(),
+        new DispersionCorrespondingAction(),
+        new DocumentCountAction(),
+        new DocumentHashAction(),
+        new DocumentSimilarityAction(),
+        new DocumentTermFrequencyAction(),
+
+        new EditDistanceAction(),
+
+        new Frequency1Action(),
+        new Frequency1RawAction(),
+        new Frequency1RawSelectAction(),
+        new Frequency1SelectAction(),
+        new Frequency2Action(),
+        new Frequency2RawAction(),
+        new Phrase2LayerCountAction(),
+        new Frequency3Action(),
+        new Frequency3RawAction(),
+
+        new GetDocumentAction(),
+        new GetDocumentDisplaynamesAction(),
+        new GetDocumentMetadataAction(),
+
+        new InverseDocumentFrequencyAction(),
+
+        new KeywordAction(),
+        new KeywordCorrespondingAction(),
+        new KwicAllInDocumentFilterAction(),
+        new KwicAllInSentenceFilterAction(),
+        new KwicAnyFilterAction(),
+        new KwicExactPhraseFilterAction(),
+        new KwicExportAction(),
+        new KwicFirstAnyFilterAction(),
+        new KwicMdaFilterAction(),
+        new KwicNamedEntityAction(),
+        new KwicSignificantFilterAction(),
+        new KwitAction(),
+        new KwitSelectAction(),
+
+        new LayerCloneAction(),
+        new LayerNamesAction(),
+        new LayerNewAction(),
+        new LayerRemoveAction(),
+        new LayerRenameAction(),
+        new LayerValuesAction(),
+
+        new MetaAction(),
+        new MetaCategoriesAction(),
+        new MetaDocumentAction(),
+        new MetaDocumentSelectAction(),
+        new MetaExportAction(),
+        new MetaImportAction(),
+        new MetaphoneValuesAction(),
+        new MetaSelectedAction(),
+        new MetaSelectedDomainAction(),
+        new MetaUniqueAction(),
+        new MetaUniqueSelectAction(),
+        new MetaUniqueSelectValuesAction(),
+        new MetaUniqueValuesAction(),
+
+        new NamedEntityAction(),
+        new NGramAction(),
+        new NGramCooccurrenceAction(),
+        new NGramCorrespondingAction(),
+        new NGramSelectedAction(),
+        new NGramSelectedCooccurrenceAction(),
+
+        new PhraseCountAction(),
+        new PositionFrequencyAction(),
+        new PositionFrequencyCorrespondingAction(),
+
+        new QueryAction(),
+        new QueryCountAllTokenMatchesAction(),
+        new QueryCountDocumentsAction(),
+        new QueryCountSentencesAction(),
+        new QueryListAction(),
+
+        new RemoveLayerAction(),
+        new RemoveMetaAction(),
+
+        new SentenceCountAction(),
+        new SizeAction(),
+        new StopwordListAction(),
+        new StyleBurrowsDeltaAction(),
+        new StyleNgramAction(),
+
+        new TermFrequencyInverseDocumentFrequencyAction(),
+        new TokenCountAction(),
+        new TokenListAction(),
+        new TokenListSelectAction(),
+        new TypeCountAction(),
+
+        new ValidateAction(),
+        new VocabularyComplexityAction(),
+      ];
+    private static List<AbstractCrawler> _addonCrawlers = [];
+    private static Dictionary<string, AbstractExporter> _addonExporters = new()
+    {
+      { "JSON-Export (*.json)|*.json", new ExporterJson() },
+      { "JSON-Export + ZIP (*.zip)|*.zip", new ExporterJsonZip() },
+      { "TLV-XML-Export (*.xml)|*.xml", new ExporterTlv() },
+      { "CorpusExplorer v6 (*.cec6)|*.cec6", new ExporterCec6() },
+      { "CorpusExplorer v6 + LZ4 (*.cec6.lz4)|*.cec6.lz4", new ExporterCec6 { UseCompression = true } },
+      { "CorpusExplorer v6 + GZip (*.cec6.gz)|*.cec6.gz", new ExporterCec6 { UseCompression = true } },
+      { "Plaintext-Export (*.txt)|*.txt", new ExporterPlaintext() },
+      { "Plaintext-Export [Nur Wort-Layer] (*.txt)|*.txt", new ExporterPlaintextPure() },
+      { "Plaintext-Export [Nur Wort-Layer - Eine Datei] (*.txt)|*.txt", new ExporterPlaintextPureInOneFile() },
+      { "Einfacher HTML-Export [Nur Wort-Layer] (*.txt)|*.txt", new ExporterHtmlPure() },
+      { "CSV-Export [Nur Metadatan] (*.csv)|*.csv", new ExporterCsvMetadataOnly() },
+      { "CSV-Export [Metadaten + Wort-Layer] (*.csv)|*.csv", new ExporterCsv() },
+      { "Abfragen-Export [Nur für Schnappschüsse] (*.ceusd)|*.ceusd", new ExporterQuery() },
+      { "CoNLL (*.conll)|*.conll", new ExporterConll() },
+      { "CoNLL + ZIP (*.zip)|*.zip", new ExporterConllZip() },
+      { "TreeTagger (*.treetagger)|*.treetagger", new ExporterTreeTagger() },
+      { "TreeTagger + Satzgrenze (*.treetagger)|*.treetagger", new ExporterTreeTagger { UseSentenceTag = true } },
+      { "TreeTagger + ZIP (*.zip)|*.zip", new ExporterTreeTaggerZip { UseSentenceTag = true } },
+      { "CorpusWorkBench bis 2021(*.vrt)|*.vrt", new ExporterCorpusWorkBench { UseSentenceTag = false } },
+      { "CorpusWorkBench bis 2021 inkl. Satzgrene (*.vrt, *.vrt.xml)|*.vrt;*.vrt.xml", new ExporterCorpusWorkBench { UseSentenceTag = true } },
+      { "CorpusWorkBench ab 2022 (*.vrt, *.vrt.xml)|*.vrt;*.vrt.xml", new ExporterCorpusWorkBench2022 { UseSentenceTag = true } },
+      { "Sketch Engine VERT (*.vert)|*.vert", new ExporterSketchEngine() },
+    };
+    private static Dictionary<string, AbstractImporter> _addonImporters = new()
+      {
+        {"CorpusExplorer v6 (*.cec6, *.cec6.lz4, *.cec6.gz)|*.cec6;*.cec6.gz;*.cec6.lz4", new ImporterCec6()},
+        {"CorpusExplorer v6 [mit DRM geschützt] (*.cec6.drm)|*.cec6.drm", new ImporterCec6Drm()},
+        {"CorpusExplorer v6 [STREAM] (*.cec6)|*.cec6", new ImporterCec6Stream()},
+        {"TLV-XML (*.xml)|*.xml", new ImporterTlv()},
+        {"CoNLL (*.conll)|*.conll", new ImporterConll()},
+        {"TreeTagger (*.txt)|*.txt", new ImporterTreeTagger()},
+        {"CorpusWorkBench VRT (*.vrt)|*.vrt", new ImporterCorpusWorkBench()},
+        {"Sketch Engine VERT (*.vert)|*.vert", new ImporterSketchEngine()},
+      };
+    private static Dictionary<string, AbstractScraper> _addonScrapers = new()
+    {
+      {"Plain-TXT (*.txt)|*.txt", new TxtScraper()},
+      {"COSMAS-TXT (*.rtf)|*.rtf", new CosmasScraper()},
+      {"Nur Text - Re-Annotation (*.cec5, *.cec6, *.cec6.gz)|*.cec5;*.cec6;*.cec6.gz", new Cec6Scraper()},
+    };
+    private static Dictionary<string, AbstractTableWriter> _addonTableWriters = new()
+        {
+          {"CSV-Tabelle (*.csv)|*.csv", new CsvTableWriter() },
+          {"HTML-Dokument (*.html)|*.html", new HtmlTableWriter() },
+          {"HTML-Tabelle (*.html)|*.html", new HtmlTableSnippetTableWriter() },
+          {"JSON-Dokument (*.json)|*.json", new JsonTableWriter() },
+          {"JSON-Dokument (gerundet) (*.json)|*.json", new JsonRoundedTableWriter() },
+          {"SQL-Query nur Daten (*.sql)|*.sql", new SqlDataOnlyTableWriter() },
+          {"SQL-Query nur Schema (*.sql)|*.sql", new SqlSchemaOnlyTableWriter() },
+          {"SQL-Query Schema und Daten (*.sql)|*.sql", new SqlTableWriter() },
+          {"TSV-Tabelle (*.tsv)|*.tsv", new TsvTableWriter() },
+          {"TSV-Tabelle (gerundet) (*.tsv)|*.tsv", new TsvRoundedTableWriter() },
+          {"XML-Dokument (*.xml)|*.xml", new XmlTableWriter() }
+        };
+    private static List<AbstractTagger> _addonTaggers =
+      [
+        new RawTextTagger(),
+      ];
   }
 }
