@@ -15,7 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Elastic.Clients.Elasticsearch" Version="8.15.10" />
     <PackageReference Include="ExcelDataReader" Version="3.7.0" />
     <PackageReference Include="ExcelDataReader.DataSet" Version="3.7.0" />
     <PackageReference Include="HtmlAgilityPack" Version="1.11.70" />
@@ -40,30 +39,6 @@
     </Reference>
     <Reference Include="Telerik.Windows.Documents.Flow">
       <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WinForms 2024 Q3\Bin80\Telerik.Windows.Documents.Flow.dll</HintPath>
-    </Reference>
-    <Reference Include="Telerik.Windows.Documents.Flow.FormatProviders.Doc">
-      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WinForms 2024 Q3\Bin80\Telerik.Windows.Documents.Flow.FormatProviders.Doc.dll</HintPath>
-    </Reference>
-    <Reference Include="Telerik.Windows.Documents.Flow.FormatProviders.Pdf">
-      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WinForms 2024 Q3\Bin80\Telerik.Windows.Documents.Flow.FormatProviders.Pdf.dll</HintPath>
-    </Reference>
-    <Reference Include="Telerik.Windows.Documents.Spreadsheet">
-      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WinForms 2024 Q3\Bin80\Telerik.Windows.Documents.Spreadsheet.dll</HintPath>
-    </Reference>
-    <Reference Include="Telerik.Windows.Documents.Spreadsheet.FormatProviders.OpenXml">
-      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WinForms 2024 Q3\Bin80\Telerik.Windows.Documents.Spreadsheet.FormatProviders.OpenXml.dll</HintPath>
-    </Reference>
-    <Reference Include="Telerik.Windows.Documents.Spreadsheet.FormatProviders.Pdf">
-      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WinForms 2024 Q3\Bin80\Telerik.Windows.Documents.Spreadsheet.FormatProviders.Pdf.dll</HintPath>
-    </Reference>
-    <Reference Include="Telerik.Windows.Documents.Spreadsheet.FormatProviders.Xls">
-      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WinForms 2024 Q3\Bin80\Telerik.Windows.Documents.Spreadsheet.FormatProviders.Xls.dll</HintPath>
-    </Reference>
-    <Reference Include="TelerikCommon">
-      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WinForms 2024 Q3\Bin80\TelerikCommon.dll</HintPath>
-    </Reference>
-    <Reference Include="TelerikData">
-      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WinForms 2024 Q3\Bin80\TelerikData.dll</HintPath>
     </Reference>
   </ItemGroup>
 
