@@ -352,7 +352,7 @@ namespace CorpusExplorer.Sdk.Ecosystem.Model
 
         try
         {
-          _encoding = Encoding.GetEncoding((int)GetSetting("Encoding (CodePage)", Encoding.UTF8.CodePage));
+          _encoding = Encoding.GetEncoding(Convert.ToInt32(GetSetting("Encoding (CodePage)", Encoding.UTF8.CodePage)));
         }
         catch
         {
@@ -457,7 +457,8 @@ namespace CorpusExplorer.Sdk.Ecosystem.Model
 
     public static int IOBufferSize
     {
-      get => (int)GetSetting("Puffergröße", 1024 * 1024 * 100);
+      // ReSharper disable once RedundantCast
+      get => Convert.ToInt32(GetSetting("Puffergröße", 104857600));
       set => SetSetting("Puffergröße", value);
     }
 
