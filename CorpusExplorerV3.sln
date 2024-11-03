@@ -13,6 +13,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3rdParty", "3rdParty", "{89
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Compat.Private.Serialization", "..\..\Projekte-Kooperation\NetDataContractSerializer\Compat.Private.Serialization\Compat.Private.Serialization.csproj", "{36F10F02-87D6-4BD1-8B9E-AB1D232C2670}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetKorAPClient", "..\IDS\CSharpKorAPClient\CSharpKorAPClient\DotNetKorAPClient\DotNetKorAPClient.csproj", "{57EDA681-9CA8-4360-945C-FE4F8A1ECCFD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,12 +37,17 @@ Global
 		{36F10F02-87D6-4BD1-8B9E-AB1D232C2670}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{36F10F02-87D6-4BD1-8B9E-AB1D232C2670}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{36F10F02-87D6-4BD1-8B9E-AB1D232C2670}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57EDA681-9CA8-4360-945C-FE4F8A1ECCFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57EDA681-9CA8-4360-945C-FE4F8A1ECCFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57EDA681-9CA8-4360-945C-FE4F8A1ECCFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57EDA681-9CA8-4360-945C-FE4F8A1ECCFD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{36F10F02-87D6-4BD1-8B9E-AB1D232C2670} = {89CA2AC6-BE6B-45B2-BFF6-1DF2324BB511}
+		{57EDA681-9CA8-4360-945C-FE4F8A1ECCFD} = {89CA2AC6-BE6B-45B2-BFF6-1DF2324BB511}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {16E64D64-2912-454F-A29F-8DA698C1B95B}
