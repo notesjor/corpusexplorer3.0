@@ -19,6 +19,7 @@ using CorpusExplorer.Sdk.Blocks.ReadingEase;
 using CorpusExplorer.Sdk.Blocks.Similarity;
 using CorpusExplorer.Sdk.Blocks.VocabularyComplaxity;
 using CorpusExplorer.Sdk.Diagnostic;
+using CorpusExplorer.Sdk.Extern.FuzzyCloneDetection.Action;
 using CorpusExplorer.Sdk.Extern.Json.OpenLegalData;
 using CorpusExplorer.Sdk.Extern.Json.Simple;
 using CorpusExplorer.Sdk.Extern.Json.SimpleStandoff;
@@ -108,6 +109,7 @@ using CorpusExplorer.Sdk.Utils.DocumentProcessing.Tagger.Abstract;
 using CorpusExplorer.Sdk.Utils.DocumentProcessing.Tagger.AdditionalTaggerWrapper;
 using CorpusExplorer.Sdk.Utils.DocumentProcessing.Tagger.RawText;
 using CorpusExplorer.v3.Sdk.Plus.Model.Abstract;
+using Hyldahl.Hashing.SpamSum;
 
 #endregion
 
@@ -122,7 +124,7 @@ namespace CorpusExplorer.Sdk.Ecosystem.Model
     /// <summary>
     ///   Zusätzliche Tagger
     /// </summary>
-    public static IEnumerable<AbstractAdditionalTagger> AddonAdditionalTaggers => _addonAdditionalTaggers;
+    public static IEnumerable<AbstractAdditionalTagger> AddonAdditionalTaggers => _addonAdditionalTaggers.OrderBy(x => x.DisplayName);
 
     public static void AddAdditionalTaggers(AbstractAdditionalTagger additionalTagger) => _addonAdditionalTaggers.Add(additionalTagger);
 
@@ -130,7 +132,18 @@ namespace CorpusExplorer.Sdk.Ecosystem.Model
     ///   Verfügbare Backends
     /// </summary>
     /// <value>The addon backends.</value>
-    public static IEnumerable<KeyValuePair<string, AbstractCorpusBuilder>> AddonBackends => _addonBackends;
+    public static IEnumerable<KeyValuePair<string, AbstractCorpusBuilder>> AddonBackends
+    {
+      get
+      {
+        if (_addonBackends.Count == 1)
+          return _addonBackends;
+
+        var preserve = _addonBackends.Take(1);
+        var rest = _addonBackends.Skip(1).OrderBy(x => x.Key);
+        return preserve.Concat(rest);
+      }
+    }
 
     public static void AddBackend(string name, AbstractCorpusBuilder backend) => _addonBackends.Add(name, backend);
 
@@ -141,7 +154,7 @@ namespace CorpusExplorer.Sdk.Ecosystem.Model
 
     public static void AddSideloadFeature(object feature) => _addonSideLoadFeatures.Add(feature);
 
-    public static IEnumerable<IAction> AddonConsoleActions => _addonConsoleActions;
+    public static IEnumerable<IAction> AddonConsoleActions => _addonConsoleActions.OrderBy(x => x.Action);
 
     public static void AddConsoleAction(IAction action) => _addonConsoleActions.Add(action);
 
@@ -153,11 +166,19 @@ namespace CorpusExplorer.Sdk.Ecosystem.Model
     /// <summary>
     ///   Zusätzliche Crawler
     /// </summary>
-    public static IEnumerable<AbstractCrawler> AddonCrawlers => _addonCrawlers;
+    public static IEnumerable<AbstractCrawler> AddonCrawlers => _addonCrawlers.OrderBy(x => x.DisplayName);
 
     public static void AddCrawler(AbstractCrawler crawler) => _addonCrawlers.Add(crawler);
 
-    public static IEnumerable<KeyValuePair<string, AbstractExporter>> AddonExporters => _addonExporters;
+    public static IEnumerable<KeyValuePair<string, AbstractExporter>> AddonExporters
+    {
+      get
+      {
+        var preserve = _addonExporters.Take(3);
+        var rest = _addonExporters.Skip(3).OrderBy(x => x.Key);
+        return preserve.Concat(rest);
+      }
+    }
 
     public static void AddExporter(string name, AbstractExporter exporter) => _addonExporters.Add(name, exporter);
 
@@ -168,7 +189,15 @@ namespace CorpusExplorer.Sdk.Ecosystem.Model
     ///   Liste mit Scrapern die lokale Dateien bestehender Korpora importieren (z. B. XML, EXMERaLDA).
     ///   Für Dateien MIT Annotation.
     /// </summary>
-    public static IEnumerable<KeyValuePair<string, AbstractImporter>> AddonImporters => _addonImporters;
+    public static IEnumerable<KeyValuePair<string, AbstractImporter>> AddonImporters
+    {
+      get
+      {
+        var preserve = _addonImporters.Take(3);
+        var rest = _addonImporters.Skip(3).OrderBy(x => x.Key);
+        return preserve.Concat(rest);
+      }
+    }
 
     public static void AddImporter(string name, AbstractImporter importer) => _addonImporters.Add(name, importer);
 
@@ -176,14 +205,14 @@ namespace CorpusExplorer.Sdk.Ecosystem.Model
     ///   Liste mit Scrapern die lokale Dateien (z. B. TXT, RTF, DOCX, PDF) in Korpusdokumente konvertieren.
     ///   Für Dateien OHNE Annotation.
     /// </summary>
-    public static IEnumerable<KeyValuePair<string, AbstractScraper>> AddonScrapers => _addonScrapers;
+    public static IEnumerable<KeyValuePair<string, AbstractScraper>> AddonScrapers => _addonScrapers.OrderBy(x => x.Key);
 
     public static void AddScraper(string name, AbstractScraper scraper) => _addonScrapers.Add(name, scraper);
 
     /// <summary>
     /// Export für Analysedaten im Tabellenformat
     /// </summary>
-    public static IEnumerable<KeyValuePair<string, AbstractTableWriter>> AddonTableWriter => _addonTableWriters;
+    public static IEnumerable<KeyValuePair<string, AbstractTableWriter>> AddonTableWriter => _addonTableWriters.OrderBy(x => x.Key);
 
     public static void AddTableWriter(string name, AbstractTableWriter tableWriter) => _addonTableWriters.Add(name, tableWriter);
 
@@ -246,7 +275,7 @@ namespace CorpusExplorer.Sdk.Ecosystem.Model
     /// <summary>
     ///   Tagger
     /// </summary>
-    public static IEnumerable<AbstractTagger> AddonTaggers => _addonTaggers;
+    public static IEnumerable<AbstractTagger> AddonTaggers => _addonTaggers.OrderBy(x => x.DisplayName);
 
     public static void AddTagger(AbstractTagger tagger) => _addonTaggers.Add(tagger);
     #endregion
@@ -769,6 +798,7 @@ namespace CorpusExplorer.Sdk.Ecosystem.Model
         new DispersionCorrespondingAction(),
         new DocumentCountAction(),
         new DocumentHashAction(),
+        new DocumentRollingHashAction(),
         new DocumentSimilarityAction(),
         new DocumentTermFrequencyAction(),
 
@@ -780,7 +810,6 @@ namespace CorpusExplorer.Sdk.Ecosystem.Model
         new Frequency1SelectAction(),
         new Frequency2Action(),
         new Frequency2RawAction(),
-        new Phrase2LayerCountAction(),
         new Frequency3Action(),
         new Frequency3RawAction(),
 
@@ -833,6 +862,7 @@ namespace CorpusExplorer.Sdk.Ecosystem.Model
         new NGramSelectedCooccurrenceAction(),
 
         new PhraseCountAction(),
+        new Phrase2LayerCountAction(),
         new PositionFrequencyAction(),
         new PositionFrequencyCorrespondingAction(),
 
@@ -1019,7 +1049,6 @@ namespace CorpusExplorer.Sdk.Ecosystem.Model
       [
         new RawTextTagger(),
       ];
-    private static List<AbstractFeature> _addonFeatures = [];
     #endregion
   }
 }

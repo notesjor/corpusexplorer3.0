@@ -18,7 +18,51 @@
 
   <ItemGroup>
     <Folder Include="Model\External\DeutscherBundestag\Plenarprotokolle\v2\" />
-    <Folder Include="Properties\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\CorpusExplorer.Sdk.Extern.Xml\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\CorpusExplorer.Sdk\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\CorpusExplorer.Terminal.Console.Action\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\CorpusExplorer.Sdk.Extern.Xml\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>CorpusExplorer.Sdk.Extern.Xml.Properties</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\CorpusExplorer.Sdk\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>CorpusExplorer.Sdk.Properties</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\CorpusExplorer.Terminal.Console.Action\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>CorpusExplorer.Sdk.Action.Properties</CustomToolNamespace>
+    </EmbeddedResource>
   </ItemGroup>
 
 </Project>
