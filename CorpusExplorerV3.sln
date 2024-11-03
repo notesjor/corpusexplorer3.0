@@ -7,7 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CorpusExplorer.v3.Sdk", "Co
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CorpusExplorer.v3.Sdk.Full", "CorpusExplorer.v3.Sdk.Full\CorpusExplorer.v3.Sdk.Full.csproj", "{93B71676-476B-4AC0-9AAA-1E5B20DAA207}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApp", "TestApp\TestApp.csproj", "{035618A8-77D2-443B-98EC-50348DB7DFF9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestApp", "TestApp\TestApp.csproj", "{035618A8-77D2-443B-98EC-50348DB7DFF9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3rdParty", "3rdParty", "{89CA2AC6-BE6B-45B2-BFF6-1DF2324BB511}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Compat.Private.Serialization", "..\..\Projekte-Kooperation\NetDataContractSerializer\Compat.Private.Serialization\Compat.Private.Serialization.csproj", "{36F10F02-87D6-4BD1-8B9E-AB1D232C2670}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,9 +31,16 @@ Global
 		{035618A8-77D2-443B-98EC-50348DB7DFF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{035618A8-77D2-443B-98EC-50348DB7DFF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{035618A8-77D2-443B-98EC-50348DB7DFF9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36F10F02-87D6-4BD1-8B9E-AB1D232C2670}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36F10F02-87D6-4BD1-8B9E-AB1D232C2670}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36F10F02-87D6-4BD1-8B9E-AB1D232C2670}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36F10F02-87D6-4BD1-8B9E-AB1D232C2670}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{36F10F02-87D6-4BD1-8B9E-AB1D232C2670} = {89CA2AC6-BE6B-45B2-BFF6-1DF2324BB511}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {16E64D64-2912-454F-A29F-8DA698C1B95B}

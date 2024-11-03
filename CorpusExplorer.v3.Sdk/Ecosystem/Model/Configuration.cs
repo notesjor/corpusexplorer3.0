@@ -37,6 +37,7 @@ using CorpusExplorer.Sdk.Extern.Plaintext.LeipzigerWortschatz;
 using CorpusExplorer.Sdk.Extern.Plaintext.Redewiedergabe;
 using CorpusExplorer.Sdk.Extern.Plaintext.RelAnnis;
 using CorpusExplorer.Sdk.Extern.Plaintext.Tsv;
+using CorpusExplorer.Sdk.Extern.SocialMedia.Youtube;
 using CorpusExplorer.Sdk.Extern.Xml.AltoXml._1._2;
 using CorpusExplorer.Sdk.Extern.Xml.AnnotationPro;
 using CorpusExplorer.Sdk.Extern.Xml.Bawe;
@@ -1031,6 +1032,7 @@ namespace CorpusExplorer.Sdk.Ecosystem.Model
       {"WebLicht-XML (*.xml)|*.xml", new WeblichtScraper()},
       {"WordPress JSON (*.json)|*.json", new WordpressScraper()},
       {"Wortschatz Leipzig (*-sentences.txt)|*-sentences.txt", new LeipzigerWortschatzScraper() },
+      {"YouTube-JSON (*.json)|*.json", new YouTubeScraper()}
     };
     private static Dictionary<string, AbstractTableWriter> _addonTableWriters = new()
     {

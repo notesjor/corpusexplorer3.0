@@ -16,11 +16,6 @@ namespace CorpusExplorer.Sdk.Model.CorpusExplorer
   public abstract class CeObject
   {
     /// <summary>
-    ///   The _transcript.
-    /// </summary>
-    private readonly List<CeTranscriptEntry> _transcript;
-
-    /// <summary>
     ///   The _guid.
     /// </summary>
     protected Guid _guid;
@@ -39,9 +34,7 @@ namespace CorpusExplorer.Sdk.Model.CorpusExplorer
     public CeObject()
     {
       _guid = Guid.NewGuid();
-      _transcript = new List<CeTranscriptEntry>();
       _metadata = new Dictionary<string, object>();
-      SyncTimestamp = DateTime.MinValue;
     }
 
     /// <summary>
@@ -62,17 +55,6 @@ namespace CorpusExplorer.Sdk.Model.CorpusExplorer
       get => _metadata;
       set => _metadata = value;
     }
-
-    /// <summary>
-    ///   Gets or sets the sync timestamp.
-    /// </summary>
-    public DateTime SyncTimestamp { get; set; }
-
-    /// <summary>
-    ///   Gets the transcript.
-    /// </summary>
-    // ReSharper disable once ConvertToAutoPropertyWithPrivateSetter
-    public List<CeTranscriptEntry> Transcript => _transcript;
 
     /// <summary>
     ///   The equals.

@@ -14,8 +14,16 @@ using CorpusExplorer.Sdk.Extern.Binary.Excel.Universal;
 using CorpusExplorer.Sdk.Extern.Binary.NexisNew;
 using CorpusExplorer.Sdk.Extern.Epub;
 using CorpusExplorer.Sdk.Extern.Plaintext.RawMailMsg;
+using CorpusExplorer.Sdk.Extern.Plaintext.WET;
+using CorpusExplorer.Sdk.Extern.SocialMedia.Blogger.Data;
+using CorpusExplorer.Sdk.Extern.SocialMedia.Rss.Format;
+using CorpusExplorer.Sdk.Extern.SocialMedia.Tumblr.Data;
+using CorpusExplorer.Sdk.Extern.SocialMedia.Youtube;
 using CorpusExplorer.Sdk.Extern.TextSharp.APAEK;
 using CorpusExplorer.Sdk.Extern.TextSharp.PDF;
+using CorpusExplorer.Sdk.Extern.Wiki.Wikipedia;
+using CorpusExplorer.Sdk.Extern.Wiki.WikipediaMetaTalk;
+using CorpusExplorer.Sdk.Utils.DocumentProcessing.Exporter;
 using CorpusExplorer.v3.Sdk.Ecosystem.Model;
 using iText.Kernel.Pdf.Canvas.Parser.Listener;
 
@@ -42,6 +50,15 @@ namespace CorpusExplorer.v3.Sdk.Full
       Configuration.AddScraper("Nur Text (*.pdf - via iTextSharp (filter))|*.pdf", new TextSharpPdfScraper { Strategy = new FilteredTextEventListener(new LocationTextExtractionStrategy()) });
       Configuration.AddScraper("APAEK-Unterrichtstranskript (*.pdf)|*.pdf", new ApaekScraper());
       Configuration.AddScraper("E-Mail MIME-Format (*.msg; *.eml)|*.msg;*.eml", new RawMsgMsgScraper());
+      Configuration.AddScraper("WET-Format http://commoncrawl.org (*.warc.wet)|*.warc.wet", new WetScraper());
+      Configuration.AddScraper("Blogger-XML (*.xml)|*.xml", new BloggerScraper());
+      Configuration.AddScraper("Tumblr-XML (*.xml)|*.xml", new TumblrScraper());
+      Configuration.AddScraper("YouTube-JSON (*.json)|*.json", new YouTubeScraper());
+      Configuration.AddScraper("RSS-Feed (*.xml)|*.xml", new RssFeedItemScraper());
+      Configuration.AddExporter("XML-Export (*.xml)|*.xml", new ExporterXml());
+      Configuration.AddScraper("Mediawiki/Wikipedia-DUMP (*.xml)|*.xml", new WikipediaScraper());
+      Configuration.AddScraper("Mediawiki/Wikipedia-TALK-DUMP (*.xml)|*.xml", new WikipediaMetaTalkScraper());
+
     }
   }
 }
