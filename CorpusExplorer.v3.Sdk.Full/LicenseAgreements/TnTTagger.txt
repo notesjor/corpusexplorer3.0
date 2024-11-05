@@ -1,0 +1,13 @@
+Copyright 1993- 1999 Thorsten Brants. All Rights Reserved.
+Permission to use, copy and modify this software and its documentation is granted to noncommercial
+entities without fee, provided that this license information and copyright notice appear
+in all copies of the software and the documentation, and provided that all publications of results
+produced with the help of TnT make a reference to this software.
+A "non-commercial entity" is defined within the scope of this license as an educational institution
+(excluding a commercial training organisation), non-commercial research organisation,
+registered charity, registered non-profit organisation, or full-time student.
+Use of this software by any other person or organisation for any purpose, or the commercial
+redistribution of this software (by itself or as part of another application) is allowed only under
+express written permission of the copyright holder.
+TnT and its documentation is provided on an "as is" basis, with no guarantee of its veracity or accuracy.
+NO liability is accepted for any damage caused by its use.
