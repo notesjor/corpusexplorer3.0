@@ -36,13 +36,13 @@
 
   <ItemGroup>
     <Reference Include="Telerik.Windows.Documents.Core">
-      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WinForms 2024 Q3\Bin80\Telerik.Windows.Documents.Core.dll</HintPath>
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WinForms 2024 Q4\Bin80\Telerik.Windows.Documents.Core.dll</HintPath>
     </Reference>
     <Reference Include="Telerik.Windows.Documents.Fixed">
-      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WinForms 2024 Q3\Bin80\Telerik.Windows.Documents.Fixed.dll</HintPath>
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WinForms 2024 Q4\Bin80\Telerik.Windows.Documents.Fixed.dll</HintPath>
     </Reference>
     <Reference Include="Telerik.Windows.Documents.Flow">
-      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WinForms 2024 Q3\Bin80\Telerik.Windows.Documents.Flow.dll</HintPath>
+      <HintPath>C:\Program Files (x86)\Progress\Telerik UI for WinForms 2024 Q4\Bin80\Telerik.Windows.Documents.Flow.dll</HintPath>
     </Reference>
   </ItemGroup>
 

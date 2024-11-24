@@ -52,6 +52,7 @@ using CorpusExplorer.Sdk.Extern.Xml.CoraXml._1._0;
 using CorpusExplorer.Sdk.Extern.Xml.Dewac;
 using CorpusExplorer.Sdk.Extern.Xml.DigitalPlato;
 using CorpusExplorer.Sdk.Extern.Xml.DortmunderChatKorpus;
+using CorpusExplorer.Sdk.Extern.Xml.DraCor;
 using CorpusExplorer.Sdk.Extern.Xml.Dta.Basisformat;
 using CorpusExplorer.Sdk.Extern.Xml.Dta.Tcf;
 using CorpusExplorer.Sdk.Extern.Xml.Dta.Tcf.Model;
@@ -988,6 +989,8 @@ namespace CorpusExplorer.Sdk.Ecosystem.Model
       {"D-Spin Slash/A (*.xml)|*.xml", new SlashAScraper()},
       {"Digital-Plato.org (*.xml)|*.xml", new DigitalPlatoScraper()},
       {"Dortmunder Chat Korpus (*.xml)|*.xml", new DortmunderChatKorpusScraper()},
+      {"DraCor.org - Darama - Ganzer Text (*.xml)|*.xml", new DraCorFullScraper() },
+      {"DraCor.org - Darama - Einzelne Redebeiträge (*.xml)|*.xml", new DraCorTurnScraper() },
       {"DTA-Basisformat (*.xml)|*.xml", new DtaBasisformatScraper()},
       {"DTA-TCF (*.tcf.xml)|*.tcf.xml", new DtaScraper()},
       {"DTA-TCF 2017 (*.tcf.xml)|*.tcf.xml", new Dta2017Scraper()},
