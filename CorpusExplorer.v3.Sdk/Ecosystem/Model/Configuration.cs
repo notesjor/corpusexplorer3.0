@@ -794,6 +794,7 @@ namespace CorpusExplorer.Sdk.Ecosystem.Model
         new CorrespondingValuesAction(),
         new CrossFrequencyAction(),
         new CrossFrequencyCorrespondingAction(),
+        new CrossFrequencySelectAction(),
         new CutOffPhraseAction(),
 
         new DisambiguationeAction(),
@@ -808,6 +809,8 @@ namespace CorpusExplorer.Sdk.Ecosystem.Model
         new EditDistanceAction(),
 
         new Frequency1Action(),
+        new Frequency1PerDocumentAction(),
+        new Frequency1PerSentenceAction(),
         new Frequency1RawAction(),
         new Frequency1RawSelectAction(),
         new Frequency1SelectAction(),
