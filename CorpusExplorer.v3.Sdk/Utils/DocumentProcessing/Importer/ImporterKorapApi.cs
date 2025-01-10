@@ -10,7 +10,7 @@ using Newtonsoft.Json;
 
 namespace CorpusExplorer.Terminal.WinForm.Forms.KorAP
 {
-  public class KorapApiImporter : AbstractImporterBase
+  public class ImporterKorapApi : AbstractImporterBase
   {
     protected override void ExecuteCall(string path)
     {
