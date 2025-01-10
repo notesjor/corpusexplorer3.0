@@ -10,7 +10,7 @@ using CorpusExplorer.Sdk.Utils.DocumentProcessing.Cleanup.Abstract;
 using CorpusExplorer.Sdk.Utils.DocumentProcessing.Tagger.Abstract;
 using CorpusExplorer.Sdk.Utils.DocumentProcessing.Tagger.RawText;
 
-namespace CorpusExplorer.Sdk.Utils.DocumentProcessing.Tagger.Special
+namespace CorpusExplorer.v3.Sdk.Helper
 {
   public static class DocumentInMemoryAnalytics
   {
@@ -54,7 +54,7 @@ namespace CorpusExplorer.Sdk.Utils.DocumentProcessing.Tagger.Special
       AbstractTagger tagger = null)
     {
       return Parse(
-                   new[] {new Dictionary<string, object> {{"Text", text}}},
+                   new[] { new Dictionary<string, object> { { "Text", text } } },
                    corpusBuilder,
                    cleaner,
                    tagger);
@@ -76,7 +76,7 @@ namespace CorpusExplorer.Sdk.Utils.DocumentProcessing.Tagger.Special
       AbstractTagger tagger = null)
     {
       return Parse(
-                   new[] {scrapDocument},
+                   new[] { scrapDocument },
                    corpusBuilder,
                    cleaner,
                    tagger);
