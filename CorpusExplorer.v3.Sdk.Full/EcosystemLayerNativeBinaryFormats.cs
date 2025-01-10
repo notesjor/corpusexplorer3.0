@@ -54,7 +54,6 @@ namespace CorpusExplorer.v3.Sdk.Full
       Configuration.AddScraper("WET-Format http://commoncrawl.org (*.warc.wet)|*.warc.wet", new WetScraper());
       Configuration.AddScraper("Blogger-XML (*.xml)|*.xml", new BloggerScraper());
       Configuration.AddScraper("Tumblr-XML (*.xml)|*.xml", new TumblrScraper());
-      Configuration.AddScraper("YouTube-JSON (*.json)|*.json", new YouTubeScraper());
       Configuration.AddScraper("RSS-Feed (*.xml)|*.xml", new RssFeedItemScraper());
       Configuration.AddExporter("XML-Export (*.xml)|*.xml", new ExporterXml());
       Configuration.AddScraper("Mediawiki/Wikipedia-DUMP (*.xml)|*.xml", new WikipediaScraper());

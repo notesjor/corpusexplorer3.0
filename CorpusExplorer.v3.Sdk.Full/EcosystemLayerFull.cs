@@ -1,4 +1,6 @@
-﻿using CorpusExplorer.v3.Sdk.Ecosystem.Model;
+﻿using CorpusExplorer.Sdk.Ecosystem.Model;
+using CorpusExplorer.v3.Sdk.Ecosystem.Model;
+using iText.Kernel.Geom;
 
 namespace CorpusExplorer.v3.Sdk.Full
 {
@@ -6,7 +8,7 @@ namespace CorpusExplorer.v3.Sdk.Full
   {
     public override void Initialize()
     {
-      (new EcosystemLayerNativeFunctions()).Initialize();
+      // Beispiel für chained initialization eines EcosystemLayers
       (new EcosystemLayerNativeBinaryFormats()).Initialize();      
     }
   }

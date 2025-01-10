@@ -6,6 +6,7 @@ using CorpusExplorer.Sdk.Model;
 using CorpusExplorer.Sdk.Model.Cache;
 using CorpusExplorer.Sdk.Model.Cache.Abstract;
 using CorpusExplorer.Sdk.Terminal;
+using CorpusExplorer.v3.Sdk;
 using CorpusExplorer.v3.Sdk.Ecosystem.Model;
 
 #endregion
@@ -14,7 +15,7 @@ namespace CorpusExplorer.Sdk.Ecosystem
 {
   public static class CorpusExplorerEcosystem
   {
-    public static TerminalController CurrentTerminalController { get;private set; }
+    public static TerminalController CurrentTerminalController { get; private set; }
     public static Project CurrentProject => CurrentTerminalController?.Project;
     public static bool RunSslFix { get; set; } = true;
 
@@ -33,9 +34,11 @@ namespace CorpusExplorer.Sdk.Ecosystem
 
       Configuration.Initialize();
       Configuration.Cache = cacheStrategy ?? new CacheStrategyCurrentSelection();
-      if(ecosystemLayers != null)
-        foreach (var layer in ecosystemLayers)
-          layer.Initialize();
+      if (ecosystemLayers == null)
+        ecosystemLayers = new AbstractEcosystemLayer[] { new EcosystemLayerPureDefault() };
+
+      foreach (var layer in ecosystemLayers)
+        layer.Initialize();
 
       CurrentTerminalController = new TerminalController();
       CurrentTerminalController.ProjectNew();
@@ -50,7 +53,7 @@ namespace CorpusExplorer.Sdk.Ecosystem
       try
       {
         ServicePointManager.Expect100Continue = true;
-        ServicePointManager.SecurityProtocol = (SecurityProtocolType) 3072;
+        ServicePointManager.SecurityProtocol = (SecurityProtocolType)3072;
       }
       catch
       {

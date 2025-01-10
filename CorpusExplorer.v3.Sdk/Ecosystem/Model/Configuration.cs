@@ -110,6 +110,7 @@ using CorpusExplorer.Sdk.Utils.DocumentProcessing.Scraper.Txt;
 using CorpusExplorer.Sdk.Utils.DocumentProcessing.Tagger.Abstract;
 using CorpusExplorer.Sdk.Utils.DocumentProcessing.Tagger.AdditionalTaggerWrapper;
 using CorpusExplorer.Sdk.Utils.DocumentProcessing.Tagger.RawText;
+using CorpusExplorer.Terminal.WinForm.Forms.KorAP;
 using CorpusExplorer.v3.Sdk.Plus.Model.Abstract;
 using Hyldahl.Hashing.SpamSum;
 
@@ -122,6 +123,11 @@ namespace CorpusExplorer.Sdk.Ecosystem.Model
   /// </summary>
   public static class Configuration
   {
+    public static string GetDependencyPath(string path)
+    {
+      return Path.Combine(AppPath, "XDependencies", path); // TODO
+    }
+
     #region Addons
     /// <summary>
     ///   Zusätzliche Tagger
@@ -776,6 +782,7 @@ namespace CorpusExplorer.Sdk.Ecosystem.Model
         new AddTaggerAction(),
 
         new BasicInformationAction(),
+        new BurrowsDeltaAction(),
 
         new CentralSnipAction(),
         new CentralSnipTreeAction(),
@@ -783,18 +790,22 @@ namespace CorpusExplorer.Sdk.Ecosystem.Model
         new ClusterListAction(),
         new ConvertAction(),
         new CooccurrenceAction(),
+        new CooccurrenceClassicAction(),
         new CooccurrenceCorrespondingAction(),
         new CooccurrenceCrossAction(),
         new CooccurrenceCrossFullAction(),
+        new CooccurrenceDiversityAction(),
         new CooccurrencePolarisationAction(),
         new CooccurrenceProfileAction(),
         new CooccurrenceSelectedAction(),
         new CooccurrenceSelectedCorrespondingAction(),
+        new CorpusFiniteStateMachineAction(),
         new CorrespondingMetaphoneValuesAction(),
         new CorrespondingValuesAction(),
         new CrossFrequencyAction(),
         new CrossFrequencyCorrespondingAction(),
         new CrossFrequencySelectAction(),
+        new CrossFrequencySelectRangeAction(),
         new CutOffPhraseAction(),
 
         new DisambiguationeAction(),
@@ -862,13 +873,14 @@ namespace CorpusExplorer.Sdk.Ecosystem.Model
 
         new NamedEntityAction(),
         new NGramAction(),
+        new NGramCharAction(),
         new NGramCooccurrenceAction(),
         new NGramCorrespondingAction(),
         new NGramSelectedAction(),
         new NGramSelectedCooccurrenceAction(),
 
-        new PhraseCountAction(),
         new Phrase2LayerCountAction(),
+        new PhraseCountAction(),
         new PositionFrequencyAction(),
         new PositionFrequencyCorrespondingAction(),
 
@@ -883,10 +895,12 @@ namespace CorpusExplorer.Sdk.Ecosystem.Model
 
         new SentenceCountAction(),
         new SizeAction(),
+        new SkipgramAction(),
         new StopwordListAction(),
         new StyleBurrowsDeltaAction(),
         new StyleNgramAction(),
 
+        new TermDocumentMatrixAction(),
         new TermFrequencyInverseDocumentFrequencyAction(),
         new TokenCountAction(),
         new TokenListAction(),
@@ -896,7 +910,7 @@ namespace CorpusExplorer.Sdk.Ecosystem.Model
         new ValidateAction(),
         new VocabularyComplexityAction(),
       ];
-    private static List<AbstractCrawler> _addonCrawlers = [];
+    private static List<AbstractCrawler> _addonCrawlers = new List<AbstractCrawler> { new SimpleWebCrawler() };
     private static Dictionary<string, AbstractExporter> _addonExporters = new()
     {
       {"CorpusExplorer v6 (*.cec6)|*.cec6", new ExporterCec6() },
@@ -961,6 +975,7 @@ namespace CorpusExplorer.Sdk.Ecosystem.Model
       {"FOLKER / OrthoNormal (*.fln)|*.fln", new ImporterFolkerFln() },
       {"IDS KorAP (*.zip)|*.zip", new ImporterKorap { LoadStrategy = KorapLoadStrategyZipFile.AddonInitialize() } },
       {"IDS KorAP ab 2021 (*.zip)|*.zip", new ImporterKorap2021{ LoadStrategy = KorapLoadStrategyZipFile.AddonInitialize() } },
+      {"IDS KorAP-API JSON (*.json)|*.json", new ImporterKorapApi() },
       {"JSON Stand-Off Universal (*.json)|*.json", new ImporterSimpleJsonStandoff() },
       {"Projekt: http://www.redewiedergabe.de/ (metadata.tsv)|metadata.tsv", new ImporterRedewiedergabe()},
       {"SaltXML (*.xml, *.salt)|*.salt;*.xml", new ImporterSaltXml() },
