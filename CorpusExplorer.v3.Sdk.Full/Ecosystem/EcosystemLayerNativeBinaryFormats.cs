@@ -28,7 +28,7 @@ using CorpusExplorer.Sdk.Utils.DocumentProcessing.Exporter;
 using CorpusExplorer.v3.Sdk.Ecosystem.Model;
 using iText.Kernel.Pdf.Canvas.Parser.Listener;
 
-namespace CorpusExplorer.v3.Sdk.Full
+namespace CorpusExplorer.v3.Sdk.Full.Ecosystem
 {
   public class EcosystemLayerNativeBinaryFormats : AbstractEcosystemLayer
   {

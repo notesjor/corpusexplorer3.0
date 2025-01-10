@@ -34,11 +34,9 @@ namespace CorpusExplorer.Sdk.Ecosystem
 
       Configuration.Initialize();
       Configuration.Cache = cacheStrategy ?? new CacheStrategyCurrentSelection();
-      if (ecosystemLayers == null)
-        ecosystemLayers = new AbstractEcosystemLayer[] { new EcosystemLayerPureDefault() };
-
-      foreach (var layer in ecosystemLayers)
-        layer.Initialize();
+      if (ecosystemLayers != null)
+        foreach (var layer in ecosystemLayers)
+          layer.Initialize();
 
       CurrentTerminalController = new TerminalController();
       CurrentTerminalController.ProjectNew();

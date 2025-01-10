@@ -1,15 +1,15 @@
-﻿using CorpusExplorer.Sdk.Ecosystem.Model;
+﻿using CorpusExplorer.v3.Sdk.Ecosystem;
 using CorpusExplorer.v3.Sdk.Ecosystem.Model;
-using iText.Kernel.Geom;
 
-namespace CorpusExplorer.v3.Sdk.Full
+namespace CorpusExplorer.v3.Sdk.Full.Ecosystem
 {
   public class EcosystemLayerFull : AbstractEcosystemLayer
   {
     public override void Initialize()
     {
       // Beispiel für chained initialization eines EcosystemLayers
-      (new EcosystemLayerNativeBinaryFormats()).Initialize();      
+      new EcosystemLayerDefault().Initialize();
+      new EcosystemLayerNativeBinaryFormats().Initialize();
     }
   }
 }

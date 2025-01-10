@@ -10,8 +10,9 @@ namespace TestApp
       // Print current memory consumption of the app in KB
       System.Console.WriteLine(System.Diagnostics.Process.GetCurrentProcess().PrivateMemorySize64 / 1024);
 
-      Thread.Sleep(1000);
-      //CorpusExplorerEcosystem.Initialize([new CorpusExplorer.v3.Sdk.EcosystemLayerPureDefault()]);
+      //CorpusExplorerEcosystem.Initialize([new CorpusExplorer.v3.Sdk.Ecosystem.EcosystemLayerPure()]);
+      //CorpusExplorerEcosystem.Initialize([new CorpusExplorer.v3.Sdk.Ecosystem.EcosystemLayerDefault()]);
+      //CorpusExplorerEcosystem.Initialize([new CorpusExplorer.v3.Sdk.Full.Ecosystem.EcosystemLayerFull()]);
       
       System.Console.WriteLine(System.Diagnostics.Process.GetCurrentProcess().PrivateMemorySize64 / 1024);
 
