@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CorpusExplorer.Sdk.Utils.DocumentProcessing.Cleanup.Abstract;
-using NReadability;
 
 namespace CorpusExplorer.Sdk.Extern.NReadabilityHtmlCleanup
 {
@@ -18,7 +16,7 @@ namespace CorpusExplorer.Sdk.Extern.NReadabilityHtmlCleanup
     }
 
     public override string DisplayName => "NReadability";
-
-    protected override string Execute(string key, string input) => _transcoder.Transcode(new TranscodingInput(input)).ExtractedContent;
+    
+    protected override string Execute(string key, string input) => _transcoder.Transcode(input, out bool _);
   }
 }
