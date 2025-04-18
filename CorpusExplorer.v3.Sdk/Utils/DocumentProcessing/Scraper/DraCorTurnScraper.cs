@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using CorpusExplorer.Sdk.Extern.Xml.Helper;
 using CorpusExplorer.Sdk.Utils.DocumentProcessing.Scraper.Abstract;
@@ -14,6 +15,7 @@ namespace CorpusExplorer.Sdk.Extern.Xml.DraCor
       try
       {
         var html = new HtmlAgilityPackHelper(file);
+        html.RemoveNodes(new[] { "//speaker", "//stage" });
         var castList = GetCastList(html);
 
         var doc = new Dictionary<string, object>
@@ -21,7 +23,8 @@ namespace CorpusExplorer.Sdk.Extern.Xml.DraCor
           {"Titel", GetTitle(html)?.Trim()},
           {"Autor", GetAuthor(html)?.Trim()},
           {"Datum (Druck)", GetDatePrint(html)?.Trim()},
-          {"Datum (Premiere)", GetDatePremiere(html)?.Trim()}
+          {"Datum (Premiere)", GetDatePremiere(html)?.Trim()},
+          {"Datei", Path.GetFileName(file)}
         };
 
         return GetTurns(html, castList, doc);
@@ -35,27 +38,34 @@ namespace CorpusExplorer.Sdk.Extern.Xml.DraCor
     }
 
     private IEnumerable<Dictionary<string, object>> GetTurns(HtmlAgilityPackHelper html,
-      Dictionary<string, string> castList, Dictionary<string, object> doc)
+      Dictionary<string, KeyValuePair<string, string>> castList, Dictionary<string, object> doc)
     {
       var turns = html.GetNodes("//sp");
       var res = new List<Dictionary<string, object>>();
 
+      if (turns == null) 
+        return res;
+        
       foreach (var turn in turns)
       {
-        var speaker = turn.GetAttributeValue("who", "");
-        if(castList.ContainsKey(speaker))
-          speaker = castList[speaker];
+        var speaker = turn.GetAttributeValue("who", "").Replace("#", "");
+        var sex = "UNKNOWN";
+        if (castList.ContainsKey(speaker))
+        {
+          sex = castList[speaker].Value;
+          speaker = castList[speaker].Key;
+        }
 
         var div = turn.ParentNode;
         var Szene = "";
         if (div != null && div.Name == "div" && div.GetAttributeValue("type", "") == "scene")
           Szene = div.GetAttributeValue("n", "?");
 
-        var lines = turn.ChildNodes.Where(x => x.Name == "l")?.Select(x=>x.InnerText);
-        var text = string.Join("\r\n", lines);
+        var text = turn.InnerText;
 
         var temp = doc.ToDictionary(x => x.Key, x => x.Value);
         temp.Add("Sprecher", speaker?.Trim());
+        temp.Add("Sprecher (Geschlecht)", sex?.Trim());
         temp.Add("Text", text?.Trim().Replace("\t", " ").Replace("  ", " ").Replace("  ", " "));
         temp.Add("Szene", Szene.Trim());
         res.Add(temp);
@@ -64,22 +74,48 @@ namespace CorpusExplorer.Sdk.Extern.Xml.DraCor
       return res;
     }
 
-    private Dictionary<string, string> GetCastList(HtmlAgilityPackHelper html)
+    private Dictionary<string, KeyValuePair<string, string>> GetCastList(HtmlAgilityPackHelper html)
     {
-      var roles = html.GetNodes("//role");
-      var castList = new Dictionary<string, string>();
-      foreach (var role in roles)
-      {
-        var key = role.GetAttributeValue("corresp", "");
-        var value = role.InnerText;
-        try
+      var roles = html.GetNodes("//person");
+      var castList = new Dictionary<string, KeyValuePair<string, string>>();
+
+      if (roles != null && roles.Count > 0)
+        foreach (var role in roles)
         {
-          if (!string.IsNullOrEmpty(key) && !string.IsNullOrEmpty(value))
-            castList.Add(key, value);
+          var key = role.GetAttributeValue("xml:id", "").Replace("#", "");
+          var value = role.InnerText;
+          var sex = role.GetAttributeValue("sex", "UNKNOWN");
+
+          try
+          {
+            if (!string.IsNullOrEmpty(key) && !string.IsNullOrEmpty(value))
+              castList.Add(key, new KeyValuePair<string, string>(value, sex));
+          }
+          catch
+          {
+            // ignore
+          }
         }
-        catch
+      else // Fallback for some other xml structure
+      {
+        roles = html.GetNodes("//role");
+
+        if(roles == null)
+          return castList;
+
+        foreach (var role in roles)
         {
-          // ignore
+          var key = role.GetAttributeValue("corresp", "");
+          var value = role.InnerText;
+          try
+          {
+            if (!string.IsNullOrEmpty(key) && !string.IsNullOrEmpty(value))
+              castList.Add(key, new KeyValuePair<string, string>(value, "UNKNOWN"));
+          }
+          catch
+          {
+            // ignore
+          }
         }
       }
       return castList;
@@ -106,7 +142,7 @@ namespace CorpusExplorer.Sdk.Extern.Xml.DraCor
     private string GetTitle(HtmlAgilityPackHelper html)
     {
       var tmp = html.GetNodes("//title");
-      return tmp == null ? "" : string.Join(" - ", tmp.Select(x=>string.Join(" ", x.InnerText)));
+      return tmp == null ? "" : string.Join(" - ", tmp.Select(x => string.Join(" ", x.InnerText)));
     }
   }
 }

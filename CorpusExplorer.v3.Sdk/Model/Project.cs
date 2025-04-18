@@ -815,6 +815,53 @@ namespace CorpusExplorer.Sdk.Model
     {
       return ProxyRequestCorpus(c => c?.ContainsDocument(documentGuid))
       ?.GetReadableMultilayerDocument(documentGuid, start, stop);
+    }      
+
+    /// <summary>
+    ///   The get multilayer document by guid.
+    /// </summary>
+    /// <param name="documentGuid">
+    ///   The document guid.
+    /// </param>
+    /// <returns>
+    ///   The <see cref="Dictionary{TKey,TValue}" />.
+    /// </returns>
+    public Dictionary<string, int[][]> GetMultilayerDocument(Guid documentGuid)
+    {
+      return ProxyRequestCorpus(c => c?.ContainsDocument(documentGuid))
+        ?.GetMultilayerDocument(documentGuid);
+    }
+
+    /// <summary>
+    ///   The get multilayer document by guid.
+    /// </summary>
+    /// <param name="documentGuid">
+    ///   The document guid.
+    /// </param>
+    /// <param name="layerGuids">Only add Documents from specified layers</param>
+    /// <returns>
+    ///   The <see cref="Dictionary{TKey,TValue}" />.
+    /// </returns>
+    public Dictionary<Guid, int[][]> GetMultilayerDocument(Guid documentGuid, IEnumerable<Guid> layerGuids)
+    {
+      return ProxyRequestCorpus(c => c?.ContainsDocument(documentGuid))
+        ?.GetMultilayerDocument(documentGuid, layerGuids);
+    }
+
+    /// <summary>
+    ///   The get multilayer document by guid.
+    /// </summary>
+    /// <param name="documentGuid">
+    ///   The document guid.
+    /// </param>
+    /// <param name="layerDisplaynames">Only add Documents from specified layers</param>
+    /// <returns>
+    ///   The <see cref="Dictionary{TKey,TValue}" />.
+    /// </returns>
+    public Dictionary<string, int[][]> GetMultilayerDocument(Guid documentGuid, IEnumerable<string> layerDisplaynames)
+    {
+      return ProxyRequestCorpus(c => c?.ContainsDocument(documentGuid))
+        ?.GetMultilayerDocument(documentGuid, layerDisplaynames);
     }
 
     /// <summary>
@@ -1137,7 +1184,7 @@ namespace CorpusExplorer.Sdk.Model
     /// <returns>
     ///   The <see cref="Project" />.
     /// </returns>
-    public static Project Load(string path, out string[] errors)
+    public static Project Load(string path, out string[] errors, string forceCorpusRoot = null)
     {
       var lines = FileIO.ReadLines(path, Configuration.Encoding,
                                    stringSplitOptions: StringSplitOptions.RemoveEmptyEntries);
@@ -1216,9 +1263,23 @@ namespace CorpusExplorer.Sdk.Model
 
         try
         {
-          corpus = CorpusAdapterWriteDirect.Create(entry[2]);
-          if (corpus == null)
-            throw new Exception();
+          if (forceCorpusRoot == null)
+            try
+            {
+              corpus =
+              type.GetMethods().First(x => x.IsStatic && x.IsPublic && x.Name == "Create" && x.GetParameters().Length == 1)
+                  .Invoke(null, new object[] { entry[2] }) as AbstractCorpusAdapter;
+            }
+            catch
+            {
+              forceCorpusRoot = Configuration.MyCorpora;
+            }
+
+          // Fallback
+          if (!string.IsNullOrEmpty(forceCorpusRoot))
+            corpus =
+              type.GetMethods().First(x => x.IsStatic && x.IsPublic && x.Name == "Create" && x.GetParameters().Length == 1)
+                  .Invoke(null, new object[] { Path.Combine(forceCorpusRoot, Path.GetFileName(entry[2])) }) as AbstractCorpusAdapter;
         }
         catch
         {

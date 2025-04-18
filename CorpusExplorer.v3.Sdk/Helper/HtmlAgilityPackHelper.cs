@@ -37,7 +37,7 @@ namespace CorpusExplorer.Sdk.Extern.Xml.Helper
     }
 
     public HtmlNodeCollection GetNodes(string xpath)
-      => _doc.DocumentNode.SelectNodes(xpath);
+    => _doc.DocumentNode.SelectNodes(xpath);
 
     public string GetBodyText(string bodyXpath = "//text")
     {
