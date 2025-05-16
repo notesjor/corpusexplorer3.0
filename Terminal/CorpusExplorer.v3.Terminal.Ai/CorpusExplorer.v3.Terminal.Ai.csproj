@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Telerik.Licensing.Runtime">
+      <HintPath>..\..\..\..\Program Files (x86)\Progress\Telerik UI for WPF 2025 Q1\Binaries.NoXaml\WPF80\Telerik.Licensing.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.WinControls">
+      <HintPath>..\..\..\..\Program Files (x86)\Progress\Telerik UI for WinForms 2025 Q1\Bin80\Telerik.WinControls.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.WinControls.Themes.TelerikMetro">
+      <HintPath>..\..\..\..\Program Files (x86)\Progress\Telerik UI for WinForms 2025 Q1\Bin80\Telerik.WinControls.Themes.TelerikMetro.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.WinControls.UI">
+      <HintPath>..\..\..\..\Program Files (x86)\Progress\Telerik UI for WinForms 2025 Q1\Bin80\Telerik.WinControls.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="TelerikCommon">
+      <HintPath>..\..\..\..\Program Files (x86)\Progress\Telerik UI for WinForms 2025 Q1\Bin80\TelerikCommon.dll</HintPath>
+    </Reference>
+    <Reference Include="TelerikData">
+      <HintPath>..\..\..\..\Program Files (x86)\Progress\Telerik UI for WinForms 2025 Q1\Bin80\TelerikData.dll</HintPath>
+    </Reference>
+    <Reference Include="TelerikExport">
+      <HintPath>..\..\..\..\Program Files (x86)\Progress\Telerik UI for WinForms 2025 Q1\Bin80\TelerikExport.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>
