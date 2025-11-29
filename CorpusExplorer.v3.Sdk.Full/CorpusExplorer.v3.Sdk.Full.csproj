@@ -20,37 +20,25 @@
 
   <ItemGroup>
     <PackageReference Include="CodeHollow.FeedReader" Version="1.2.6" />
-    <PackageReference Include="ExcelDataReader" Version="3.7.0" />
-    <PackageReference Include="ExcelDataReader.DataSet" Version="3.7.0" />
-    <PackageReference Include="Google.Apis.Blogger.v3" Version="1.68.0.2925" />
-    <PackageReference Include="HtmlAgilityPack" Version="1.12.1" />
-    <PackageReference Include="itext" Version="9.1.0" />
-    <PackageReference Include="MsgReader" Version="5.7.2" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-    <PackageReference Include="NewTumblrSharp" Version="1.2.0.156" />
+    <PackageReference Include="ExcelDataReader" Version="3.8.0" />
+    <PackageReference Include="ExcelDataReader.DataSet" Version="3.8.0" />
+    <PackageReference Include="Google.Apis.Blogger.v3" Version="1.69.0.3796" />
+    <PackageReference Include="HtmlAgilityPack" Version="1.12.4" />
+    <PackageReference Include="itext" Version="9.4.0" />
+    <PackageReference Include="MsgReader" Version="6.0.6" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+    <PackageReference Include="NewTumblrSharp" Version="1.2.1.160" />
     <PackageReference Include="NHunspell" Version="1.2.5554.16953" />
     <PackageReference Include="NReadabilityCore" Version="1.0.0" />
     <PackageReference Include="NTextCat" Version="0.3.65" />
     <PackageReference Include="SharpSerializer" Version="4.0.2" />
-    <PackageReference Include="System.ServiceModel.Syndication" Version="9.0.4" />
-    <PackageReference Include="VersOne.Epub" Version="3.3.3" />
+    <PackageReference Include="System.ServiceModel.Syndication" Version="10.0.0" />
+    <PackageReference Include="VersOne.Epub" Version="3.3.4" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\Projekte-Kooperation\NetDataContractSerializer\Compat.Private.Serialization\Compat.Private.Serialization.csproj" />
     <ProjectReference Include="..\CorpusExplorer.v3.Sdk\CorpusExplorer.v3.Sdk.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="Telerik.Windows.Documents.Core">
-      <HintPath>..\..\..\Program Files (x86)\Progress\Telerik UI for WinForms 2025 Q1\Bin80\Telerik.Windows.Documents.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Telerik.Windows.Documents.Fixed">
-      <HintPath>..\..\..\Program Files (x86)\Progress\Telerik UI for WinForms 2025 Q1\Bin80\Telerik.Windows.Documents.Fixed.dll</HintPath>
-    </Reference>
-    <Reference Include="Telerik.Windows.Documents.Flow">
-      <HintPath>..\..\..\Program Files (x86)\Progress\Telerik UI for WinForms 2025 Q1\Bin80\Telerik.Windows.Documents.Flow.dll</HintPath>
-    </Reference>
   </ItemGroup>
 
   <ItemGroup>

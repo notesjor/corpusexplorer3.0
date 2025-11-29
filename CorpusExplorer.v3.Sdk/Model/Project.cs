@@ -1,5 +1,6 @@
 ﻿using System.Globalization;
 using System.IO;
+using System.Reflection;
 using System.Text;
 using Bcs.IO;
 using CorpusExplorer.Sdk.Blocks.Cooccurrence;
@@ -1272,7 +1273,7 @@ namespace CorpusExplorer.Sdk.Model
             }
             catch
             {
-              forceCorpusRoot = Configuration.MyCorpora;
+              forceCorpusRoot = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             }
 
           // Fallback
