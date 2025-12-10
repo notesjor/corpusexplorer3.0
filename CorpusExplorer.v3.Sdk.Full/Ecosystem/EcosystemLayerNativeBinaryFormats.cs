@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CorpusExplorer.Core.Utils.DocumentProcessing.Scraper.Cosmas;
+﻿using CorpusExplorer.Core.Utils.DocumentProcessing.Scraper.Cosmas;
 using CorpusExplorer.Core.Utils.DocumentProcessing.Scraper.Docx;
 using CorpusExplorer.Core.Utils.DocumentProcessing.Scraper.Html;
 using CorpusExplorer.Core.Utils.DocumentProcessing.Scraper.Pdf;
@@ -25,8 +20,14 @@ using CorpusExplorer.Sdk.Extern.TextSharp.PDF;
 using CorpusExplorer.Sdk.Extern.Wiki.Wikipedia;
 using CorpusExplorer.Sdk.Extern.Wiki.WikipediaMetaTalk;
 using CorpusExplorer.Sdk.Utils.DocumentProcessing.Exporter;
+using CorpusExplorer.Terminal.WinForm.Forms.KorAP;
 using CorpusExplorer.v3.Sdk.Ecosystem.Model;
 using iText.Kernel.Pdf.Canvas.Parser.Listener;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace CorpusExplorer.v3.Sdk.Full.Ecosystem
 {
@@ -44,6 +45,7 @@ namespace CorpusExplorer.v3.Sdk.Full.Ecosystem
       Configuration.AddScraper("Nexis/Uni / Lexis-Nexis (ab 2019) - [Vollständig + MS Word (docx) + separate Dateien] (*.zip)|*.zip", new NexisNewScraper());
       Configuration.AddScraper("KiDKo/E-Scraper (*.xlsx)|*.xlsx", new KidkoScraper());
       Configuration.AddImporter("Universeller Excel™-Importer (*.xlsx)|*.xlsx", new ImporterUniversalExcel());
+      Configuration.AddImporter("IDS KorAP-API JSON (*.json)|*.json", new ImporterKorapApi());
       Configuration.AddScraper("EPUB-eBook (*.epub)|*.epub", new EpubScraper());
       Configuration.AddScraper("Nur Text (*.pdf - via iTextSharp (simple))|*.pdf", new TextSharpPdfScraper());
       Configuration.AddScraper("Nur Text (*.pdf - via iTextSharp (location))|*.pdf", new TextSharpPdfScraper { Strategy = new LocationTextExtractionStrategy() });

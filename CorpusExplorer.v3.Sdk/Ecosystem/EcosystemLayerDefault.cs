@@ -76,7 +76,6 @@ using CorpusExplorer.Sdk.Utils.DocumentProcessing.Importer.CorpusExplorerV6;
 using CorpusExplorer.Sdk.Utils.DocumentProcessing.Scraper.Txt;
 using CorpusExplorer.Sdk.Utils.DocumentProcessing.Scraper;
 using CorpusExplorer.Sdk.Utils.DocumentProcessing.Tagger.RawText;
-using CorpusExplorer.Terminal.WinForm.Forms.KorAP;
 using CorpusExplorer.v3.Sdk.Ecosystem.Model;
 using CorpusExplorer.Sdk.Blocks.ReadingEase;
 using CorpusExplorer.Sdk.Blocks.Cooccurrence;
@@ -280,7 +279,6 @@ namespace CorpusExplorer.v3.Sdk.Ecosystem
       Configuration.AddImporter("FOLKER / OrthoNormal (*.fln)|*.fln", new ImporterFolkerFln());
       Configuration.AddImporter("IDS KorAP (*.zip)|*.zip", new ImporterKorap());
       Configuration.AddImporter("IDS KorAP ab 2021 (*.zip)|*.zip", new ImporterKorap2021());
-      Configuration.AddImporter("IDS KorAP-API JSON (*.json)|*.json", new ImporterKorapApi());
       Configuration.AddImporter("Wortschatz Leipzig (*-sentences.txt)|*-sentences.txt", new ImporterLeipzigerWortschatz());
       Configuration.AddImporter("XCES-XML (https://opus.nlpl.eu/) (*.xml)|*.xml", new ImporterOpusXces());
       Configuration.AddImporter("Projekt: http://www.redewiedergabe.de/ (metadata.tsv)|metadata.tsv", new ImporterRedewiedergabe());

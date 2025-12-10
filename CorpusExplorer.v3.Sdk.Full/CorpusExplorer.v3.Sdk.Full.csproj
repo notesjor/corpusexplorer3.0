@@ -38,6 +38,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\Projekte-Kooperation\NetDataContractSerializer\Compat.Private.Serialization\Compat.Private.Serialization.csproj" />
+    <ProjectReference Include="..\..\IDS\CSharpKorAPClient\CSharpKorAPClient\DotNetKorAPClient\DotNetKorAPClient.csproj" />
     <ProjectReference Include="..\CorpusExplorer.v3.Sdk\CorpusExplorer.v3.Sdk.csproj" />
   </ItemGroup>
 

@@ -1,6 +1,5 @@
 ﻿using CorpusExplorer.Sdk.Model.Adapter.Corpus.Abstract;
 using CorpusExplorer.Sdk.Utils.DocumentProcessing.Importer.Abstract;
-using DotNetKorAPClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
