@@ -113,6 +113,8 @@ namespace CorpusExplorer.v3.Sdk.Ecosystem
       Configuration.AddConsoleAction(new CooccurrenceCrossAction());
       Configuration.AddConsoleAction(new CooccurrenceCrossFullAction());
       Configuration.AddConsoleAction(new CooccurrenceDiversityAction());
+      Configuration.AddConsoleAction(new CooccurrenceNetworkAction());
+      Configuration.AddConsoleAction(new CooccurrenceNetworkSelectAction());
       Configuration.AddConsoleAction(new CooccurrencePolarisationAction());
       Configuration.AddConsoleAction(new CooccurrenceProfileAction());
       Configuration.AddConsoleAction(new CooccurrenceSelectedAction());
@@ -144,6 +146,10 @@ namespace CorpusExplorer.v3.Sdk.Ecosystem
       Configuration.AddConsoleAction(new Frequency2RawAction());
       Configuration.AddConsoleAction(new Frequency3Action());
       Configuration.AddConsoleAction(new Frequency3RawAction());
+      Configuration.AddConsoleAction(new GuidOfCorpusAction());
+      Configuration.AddConsoleAction(new GuidOfLayerAction());
+      Configuration.AddConsoleAction(new GuidOfDocumentAction());
+      Configuration.AddConsoleAction(new GuidOfSelectionAction());
       Configuration.AddConsoleAction(new GetDocumentAction());
       Configuration.AddConsoleAction(new GetDocumentDisplaynamesAction());
       Configuration.AddConsoleAction(new GetDocumentMetadataAction());
@@ -160,6 +166,7 @@ namespace CorpusExplorer.v3.Sdk.Ecosystem
       Configuration.AddConsoleAction(new KwicNamedEntityAction());
       Configuration.AddConsoleAction(new KwicSignificantFilterAction());
       Configuration.AddConsoleAction(new KwitAction());
+      Configuration.AddConsoleAction(new KwitFrequencyAction());
       Configuration.AddConsoleAction(new KwitSelectAction());
       Configuration.AddConsoleAction(new LayerCloneAction());
       Configuration.AddConsoleAction(new LayerNamesAction());
