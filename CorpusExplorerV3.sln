@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 18
-VisualStudioVersion = 18.0.11222.15 d18.0
+VisualStudioVersion = 18.0.11222.15
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CorpusExplorer.v3.Sdk", "CorpusExplorer.v3.Sdk\CorpusExplorer.v3.Sdk.csproj", "{0FFED5D2-BD63-41E6-928F-F4EA4FF4DED6}"
 EndProject
@@ -10,8 +10,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestApp", "TestApp\TestApp.csproj", "{035618A8-77D2-443B-98EC-50348DB7DFF9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3rdParty", "3rdParty", "{89CA2AC6-BE6B-45B2-BFF6-1DF2324BB511}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Compat.Private.Serialization", "..\..\Projekte-Kooperation\NetDataContractSerializer\Compat.Private.Serialization\Compat.Private.Serialization.csproj", "{36F10F02-87D6-4BD1-8B9E-AB1D232C2670}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetKorAPClient", "..\IDS\CSharpKorAPClient\CSharpKorAPClient\DotNetKorAPClient\DotNetKorAPClient.csproj", "{57EDA681-9CA8-4360-945C-FE4F8A1ECCFD}"
 EndProject
@@ -45,10 +43,6 @@ Global
 		{035618A8-77D2-443B-98EC-50348DB7DFF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{035618A8-77D2-443B-98EC-50348DB7DFF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{035618A8-77D2-443B-98EC-50348DB7DFF9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{36F10F02-87D6-4BD1-8B9E-AB1D232C2670}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{36F10F02-87D6-4BD1-8B9E-AB1D232C2670}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{36F10F02-87D6-4BD1-8B9E-AB1D232C2670}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{36F10F02-87D6-4BD1-8B9E-AB1D232C2670}.Release|Any CPU.Build.0 = Release|Any CPU
 		{57EDA681-9CA8-4360-945C-FE4F8A1ECCFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{57EDA681-9CA8-4360-945C-FE4F8A1ECCFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{57EDA681-9CA8-4360-945C-FE4F8A1ECCFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -66,7 +60,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{36F10F02-87D6-4BD1-8B9E-AB1D232C2670} = {89CA2AC6-BE6B-45B2-BFF6-1DF2324BB511}
 		{57EDA681-9CA8-4360-945C-FE4F8A1ECCFD} = {89CA2AC6-BE6B-45B2-BFF6-1DF2324BB511}
 		{988A37BE-778F-45A4-9E10-7F71BA9011A4} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{F1652F2A-B2DA-41CF-B93F-EF2FFD70E50B} = {2E2D9B55-F1C4-4ABB-AE6F-EA99015240DB}
