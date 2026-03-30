@@ -1,7 +1,7 @@
 ﻿#region
 
 using System.Text.RegularExpressions;
-using Compat.Runtime.Serialization;
+using System.Runtime.Serialization;
 using CorpusExplorer.Sdk.Utils.DocumentProcessing.Scraper.Abstract;
 using Google.Apis.Blogger.v3.Data;
 
@@ -17,9 +17,9 @@ namespace CorpusExplorer.Sdk.Extern.SocialMedia.Blogger.Data
     protected override IEnumerable<Dictionary<string, object>> Execute(string file)
     {
       Post post;
-      var serializer = new NetDataContractSerializer();
+      var serializer = new DataContractSerializer(typeof(Post));
       using (var fs = new FileStream(file, FileMode.Open, FileAccess.Read))
-        post = serializer.Deserialize(fs) as Post;
+        post = serializer.ReadObject(fs) as Post;
 
       if (post == null)
         return null;

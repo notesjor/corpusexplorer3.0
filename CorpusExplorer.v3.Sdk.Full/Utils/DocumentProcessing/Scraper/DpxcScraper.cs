@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization;
-using Compat.Runtime.Serialization;
 using CorpusExplorer.Sdk.Extern.Xml.Dpxc.Model;
 using CorpusExplorer.Sdk.Utils.DocumentProcessing.Scraper.Abstract;
 
@@ -16,8 +15,8 @@ namespace CorpusExplorer.Sdk.Extern.Xml.Dpxc
       using (var fs = new FileStream(file, FileMode.Open, FileAccess.Read))
       using (var bs = new BufferedStream(fs))
       {
-        var bf = new NetDataContractSerializer();
-        var corpus = bf.Deserialize(bs) as DocPlusCorpus;
+        var bf = new DataContractSerializer(typeof(DocPlusCorpus));
+        var corpus = bf.ReadObject(bs) as DocPlusCorpus;
         return corpus?.Documents;
       }
     }

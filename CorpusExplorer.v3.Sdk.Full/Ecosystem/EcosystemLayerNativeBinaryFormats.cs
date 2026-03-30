@@ -47,10 +47,7 @@ namespace CorpusExplorer.v3.Sdk.Full.Ecosystem
       Configuration.AddImporter("Universeller Excel™-Importer (*.xlsx)|*.xlsx", new ImporterUniversalExcel());
       Configuration.AddImporter("IDS KorAP-API JSON (*.json)|*.json", new ImporterKorapApi());
       Configuration.AddScraper("EPUB-eBook (*.epub)|*.epub", new EpubScraper());
-      Configuration.AddScraper("Nur Text (*.pdf - via iTextSharp (simple))|*.pdf", new TextSharpPdfScraper());
-      Configuration.AddScraper("Nur Text (*.pdf - via iTextSharp (location))|*.pdf", new TextSharpPdfScraper { Strategy = new LocationTextExtractionStrategy() });
-      Configuration.AddScraper("Nur Text (*.pdf - via iTextSharp (glyph))|*.pdf", new TextSharpPdfScraper { Strategy = new GlyphTextEventListener(new LocationTextExtractionStrategy()) });
-      Configuration.AddScraper("Nur Text (*.pdf - via iTextSharp (filter))|*.pdf", new TextSharpPdfScraper { Strategy = new FilteredTextEventListener(new LocationTextExtractionStrategy()) });
+      Configuration.AddScraper("Nur Text (*.pdf - via iTextSharp (simple))|*.pdf", new TextSharpPdfScraper());      
       Configuration.AddScraper("APAEK-Unterrichtstranskript (*.pdf)|*.pdf", new ApaekScraper());
       Configuration.AddScraper("E-Mail MIME-Format (*.msg; *.eml)|*.msg;*.eml", new RawMsgMsgScraper());
       Configuration.AddScraper("WET-Format http://commoncrawl.org (*.warc.wet)|*.warc.wet", new WetScraper());
@@ -82,6 +79,19 @@ namespace CorpusExplorer.v3.Sdk.Full.Ecosystem
       Configuration.AddScraper("PANDOC [t2t] (*.t2t; *.*)|*.*", new PandocScraper { Format = PandocScraper.InputFormat.t2t });
       Configuration.AddScraper("PANDOC [textile] (*.txt; *.*)|*.*", new PandocScraper { Format = PandocScraper.InputFormat.textile });
       Configuration.AddScraper("PANDOC [twiki] (*.txt; *.*)|*.*", new PandocScraper { Format = PandocScraper.InputFormat.twiki });
+
+      Configuration.AddScraper("Nur Text (*.pdf - via iTextSharp (location))|*.pdf",
+        CreateTextSharpPdfScraper(new LocationTextExtractionStrategy()));
+
+      Configuration.AddScraper("Nur Text (*.pdf - via iTextSharp (glyph))|*.pdf",
+        CreateTextSharpPdfScraper(new GlyphTextEventListener(new LocationTextExtractionStrategy())));
+
+      Configuration.AddScraper("Nur Text (*.pdf - via iTextSharp (filter))|*.pdf",
+        CreateTextSharpPdfScraper(new FilteredTextEventListener(new LocationTextExtractionStrategy())));
+    }
+    private TextSharpPdfScraper CreateTextSharpPdfScraper(ITextExtractionStrategy strategy)
+    {
+        return new TextSharpPdfScraper { Strategy = strategy };
     }
   }
 }

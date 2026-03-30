@@ -1,4 +1,5 @@
 ﻿using CorpusExplorer.Sdk.Aspect;
+using Metalama.Framework.Aspects;
 using Metalama.Framework.Fabrics;
 
 namespace CorpusExplorer.v3.Sdk

@@ -2,7 +2,6 @@
 using System.IO;
 using System.Linq;
 using System.Text;
-using CorpusExplorer.Sdk.Extern.Xml.Exmaralda.Simple.Model;
 using CorpusExplorer.Sdk.Utils.DocumentProcessing.Scraper.Abstract;
 using iText.Kernel.Pdf;
 using iText.Kernel.Pdf.Canvas.Parser;
@@ -12,22 +11,28 @@ namespace CorpusExplorer.Sdk.Extern.TextSharp.PDF
 {
   public class TextSharpPdfScraper : AbstractScraper
   {
-    public override string DisplayName => "iTextSharp";
+    public enum TextSharpPdfScraperStrategy
+    {
+      Location,
+      Simple
+    }
 
-    public ITextExtractionStrategy Strategy { get; set; } = new SimpleTextExtractionStrategy();
+    public override string DisplayName => "iText";
+
+    public ITextExtractionStrategy Strategy { get; set; }
 
     protected override IEnumerable<Dictionary<string, object>> Execute(string file)
     {
-      using (var fs = new FileStream(file, FileMode.Open, FileAccess.Read))
-      using (var bs = new BufferedStream(fs))
+      using (var pdfReader = new PdfReader(file))
+      using (var pdfDocument = new PdfDocument(pdfReader))
       {
-        var pdfDocument = new PdfDocument(new PdfReader(bs));
-
         var output = new StringBuilder();
+
         for (var i = 1; i <= pdfDocument.GetNumberOfPages(); i++)
         {
           var page = pdfDocument.GetPage(i);
-          var text = PdfTextExtractor.GetTextFromPage(page, Strategy);
+          var strategy = Strategy ?? new SimpleTextExtractionStrategy();
+          var text = PdfTextExtractor.GetTextFromPage(page, strategy);
           output.AppendLine(text);
         }
 
@@ -35,6 +40,9 @@ namespace CorpusExplorer.Sdk.Extern.TextSharp.PDF
         var info = pdfDocument.GetDocumentInfo();
         res.Add("Autor", info.GetAuthor());
         res.Add("Titel", info.GetTitle());
+        res.Add("Ersteller", info.GetCreator());
+        res.Add("Schlagworte", info.GetKeywords());
+        res.Add("Betreff", info.GetSubject());
 
         return new[] { res };
       }

@@ -1,5 +1,9 @@
-﻿using System.Collections.Concurrent;
+﻿using System;
+using System.Collections.Concurrent;
+using System.Collections.Generic;
+using System.IO;
 using System.Text;
+using System.Threading.Tasks;
 using CorpusExplorer.Sdk.Ecosystem.Model;
 using CorpusExplorer.Sdk.Extern.NTextCat;
 using CorpusExplorer.Sdk.Helper;
@@ -17,30 +21,22 @@ namespace CorpusExplorer.Sdk.Extern.Plaintext.WET
     private const string HeaderRefersTo = "WARC-Refers-To:";
 
     private const string HeaderTargetUri = "WARC-Target-URI:";
-
-    private DomainFilter FilterDomain
-    {
-      get => _filterDomain;
-      set
-      {
-        _filterDomain = value;
-        _filterSet = true;
-      }
-    }
+    private DomainFilter _filterDomain = null;
 
     private readonly object _filterLock = new object();
     private bool _filterSet;
-    private DomainFilter _filterDomain = null;
     private string _filterLanguage = null;
 
-    private string FilterLanguage
+    public string FilterLanguage
     {
       get => _filterLanguage;
-      set
-      {
-        _filterLanguage = value;
-        _filterSet = true;
-      }
+      set => _filterLanguage = value;
+    }
+
+    public DomainFilter FilterDomain
+    {
+      get => _filterDomain;
+      set => _filterDomain = value;
     }
 
     public override string DisplayName => "http://commoncrawl.org - WET";
@@ -49,8 +45,8 @@ namespace CorpusExplorer.Sdk.Extern.Plaintext.WET
     {
       lock (_filterLock)
       {
-        FilterLanguage = filterLanguage;
-        FilterDomain = filterDomain;
+        _filterLanguage = filterLanguage;
+        _filterDomain = filterDomain;
         _filterSet = true;
       }
     }
@@ -61,8 +57,8 @@ namespace CorpusExplorer.Sdk.Extern.Plaintext.WET
       {
         if (!_filterSet)
         {
-          FilterLanguage = filterLanguage;
-          FilterDomain = filterDomains;
+          _filterLanguage = filterLanguage;
+          _filterDomain = filterDomains;
 
           _filterSet = true;
         }
@@ -70,7 +66,7 @@ namespace CorpusExplorer.Sdk.Extern.Plaintext.WET
 
       var res = ExecuteExtraction(stream);
 
-      if (FilterLanguage == null)
+      if (_filterLanguage == null)
         return res;
 
       var cleaner = new NTextCatLanguageCleanup { Input = res };
@@ -81,6 +77,14 @@ namespace CorpusExplorer.Sdk.Extern.Plaintext.WET
 
     protected override IEnumerable<Dictionary<string, object>> Execute(string file)
     {
+      lock (_filterLock)
+      {
+        if (!_filterSet)
+        {
+          _filterSet = _filterLanguage != null || _filterDomain != null;
+        }
+      }
+
       ConcurrentQueue<Dictionary<string, object>> res;
       using (var fs = new FileStream(file, FileMode.Open, FileAccess.Read))
       using (var bs = new BufferedStream(fs))
@@ -88,7 +92,7 @@ namespace CorpusExplorer.Sdk.Extern.Plaintext.WET
         res = ExecuteExtraction(bs);
       }
 
-      if (FilterLanguage == null)
+      if (_filterLanguage == null)
         return res;
 
       var cleaner = new NTextCatLanguageCleanup { Input = res };
@@ -150,12 +154,12 @@ namespace CorpusExplorer.Sdk.Extern.Plaintext.WET
           // End of Document
           if (line == DocumentSeparator)
           {
-            if (FilterDomain == null)
+            if (_filterDomain == null)
             {
               current.Add("Text", stb.ToString());
               res.Enqueue(current);
             }
-            else if (FilterDomain.Match(current["Url"] as string))
+            else if (_filterDomain.Match(current["Url"] as string))
             {
               current.Add("Text", stb.ToString());
               res.Enqueue(current);

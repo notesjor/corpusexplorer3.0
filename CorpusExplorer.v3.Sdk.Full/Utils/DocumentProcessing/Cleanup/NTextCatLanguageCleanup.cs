@@ -17,8 +17,8 @@ namespace CorpusExplorer.Sdk.Extern.NTextCat
     public NTextCatLanguageCleanup()
     {
       _factory = new RankedLanguageIdentifierFactory();
-      //_identifier = _factory.Load(Configuration.GetDependencyPath("NTextCat/Wiki280.profile.xml"));
-      //AvailableLanguages = FileIO.ReadLines(Configuration.GetDependencyPath("NTextCat/ntextcat.list"));
+      _identifier = _factory.Load(Configuration.GetDependencyPath("NTextCat/Wiki280.profile.xml"));
+      AvailableLanguages = FileIO.ReadLines(Configuration.GetDependencyPath("NTextCat/ntextcat.list"));
     }
 
     public bool Match(string text)

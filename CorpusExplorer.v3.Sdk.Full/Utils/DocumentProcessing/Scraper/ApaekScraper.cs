@@ -19,7 +19,7 @@ namespace CorpusExplorer.Sdk.Extern.TextSharp.APAEK
     protected override IEnumerable<Dictionary<string, object>> Execute(string file)
     {
       var regexNum = new Regex(@"[0-9]$", RegexOptions.Compiled);
-      var scraper = new TextSharpPdfScraper { Strategy = new SimpleTextExtractionStrategy() };
+      var scraper = new TextSharpPdfScraper { Strategy = new LocationTextExtractionStrategy() };
       scraper.Input.Enqueue(file);
       scraper.Execute();
       var pdf = scraper.Output.FirstOrDefault();

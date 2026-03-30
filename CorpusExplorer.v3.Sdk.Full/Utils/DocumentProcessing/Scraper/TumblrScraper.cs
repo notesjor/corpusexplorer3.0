@@ -5,7 +5,6 @@ using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Text.RegularExpressions;
-using Compat.Runtime.Serialization;
 using CorpusExplorer.Sdk.Utils.DocumentProcessing.Scraper.Abstract;
 using DontPanic.TumblrSharp;
 using DontPanic.TumblrSharp.Client;
@@ -22,9 +21,9 @@ namespace CorpusExplorer.Sdk.Extern.SocialMedia.Tumblr.Data
     protected override IEnumerable<Dictionary<string, object>> Execute(string file)
     {
       BasePost post;
-      var serializer = new NetDataContractSerializer();
+      var serializer = new DataContractSerializer(typeof(BasePost));
       using (var fs = new FileStream(file, FileMode.Open, FileAccess.Read))
-        post = serializer.Deserialize(fs) as BasePost;
+        post = serializer.ReadObject(fs) as BasePost;
 
       if (post == null)
         return null;
