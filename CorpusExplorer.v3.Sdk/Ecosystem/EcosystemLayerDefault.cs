@@ -246,12 +246,14 @@ namespace CorpusExplorer.v3.Sdk.Ecosystem
       Configuration.AddExporter("Einfacher HTML-Export [Nur Wort-Layer] (*.txt)|*.txt", new ExporterHtmlPure());
       Configuration.AddExporter("IDS I5 (*.xml)|*.xml", new ExporterI5());
       Configuration.AddExporter("JSON-Export (*.json)|*.json", new ExporterJson());
+      Configuration.AddExporter("JSON-Export [Nur Wort-Layer] (*.json)|*.json", new ExporterJsonPure());
       Configuration.AddExporter("JSON-Export + ZIP (*.zip)|*.zip", new ExporterJsonZip());
       Configuration.AddExporter("IDS KorAP (*.zip)|*.zip", new ExporterKorap());
       Configuration.AddExporter("XCES-XML (https://opus.nlpl.eu/) (*.xml)|*.xml", new ExporterOpusXces());
       Configuration.AddExporter("Plaintext-Export (*.txt)|*.txt", new ExporterPlaintext());
       Configuration.AddExporter("Plaintext-Export [Nur Wort-Layer] (*.txt)|*.txt", new ExporterPlaintextPure());
       Configuration.AddExporter("Plaintext-Export [Nur Wort-Layer - Eine Datei] (*.txt)|*.txt", new ExporterPlaintextPureInOneFile());
+      Configuration.AddExporter("R-Freundlicher Korpus-Export (*.tsv)|*.tsv", new ExporterRFriendly());
       Configuration.AddExporter("Abfragen-Export [Nur für Schnappschüsse] (*.ceusd)|*.ceusd", new ExporterQuery());
       Configuration.AddExporter("SaltXML (*.xml, *.salt)|*.salt;*.xml", new ExporterSaltXml());
       Configuration.AddExporter("Sketch Engine VERT (*.vert)|*.vert", new ExporterSketchEngine());
@@ -263,7 +265,7 @@ namespace CorpusExplorer.v3.Sdk.Ecosystem
       Configuration.AddExporter("TreeTagger + ZIP (*.zip)|*.zip", new ExporterTreeTaggerZip());
       Configuration.AddExporter("TXM TEI-XML (*.xml)|*.xml", new ExporterTxm());
       Configuration.AddExporter("TXM TEI-XML + ZIP (*.zip)|*.zip", new ExporterTxmZip());
-      Configuration.AddExporter("WebLicht (*.xml)|*.xml", new ExporterWeblicht());
+      Configuration.AddExporter("WebLicht (*.xml)|*.xml", new ExporterWeblicht());            
       #endregion
 
       #region Importer
