@@ -23,6 +23,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Reflection;
 
 #endregion
 
@@ -1272,7 +1273,7 @@ namespace CorpusExplorer.Sdk.Model
             }
             catch
             {
-              forceCorpusRoot = Configuration.MyCorpora;
+              forceCorpusRoot = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             }
 
           // Fallback

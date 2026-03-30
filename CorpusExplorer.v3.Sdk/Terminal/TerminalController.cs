@@ -96,7 +96,7 @@ namespace CorpusExplorer.Sdk.Terminal
       if (string.IsNullOrEmpty(path))
         path = ProjectPath;
       if (string.IsNullOrEmpty(path))
-        path = Path.Combine(Configuration.MyProjects, Project.Displayname + ".proj5");
+        path = Path.Combine(Project.Displayname + ".proj5");
 
       lock (_projectLock)
         _project.Save(path, saveFullCorpusPath);

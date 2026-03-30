@@ -78,7 +78,7 @@ namespace CorpusExplorer.Sdk.Blocks.NamedEntityRecognition
 
     public void Save(string path)
     {
-      Serializer.Serialize(this, path, false);
+      Serializer.Serialize(this, path);
     }
   }
 }
