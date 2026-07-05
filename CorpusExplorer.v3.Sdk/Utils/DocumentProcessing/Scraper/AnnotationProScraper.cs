@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using System.IO.Compression;
 using System.Linq;
 using CorpusExplorer.Sdk.Extern.Xml.Abstract;
 using CorpusExplorer.Sdk.Extern.Xml.AnnotationPro.Model;
 using CorpusExplorer.Sdk.Extern.Xml.Helper;
+using Telerik.Windows.Zip;
 
 namespace CorpusExplorer.Sdk.Extern.Xml.AnnotationPro
 {
@@ -16,7 +16,7 @@ namespace CorpusExplorer.Sdk.Extern.Xml.AnnotationPro
     {
       AnnotationSystemDataSet model = null;
       using(var fs = new FileStream(file, FileMode.Open, FileAccess.Read))
-      using (var zip = new ZipArchive(fs))
+      using (var zip = ZipArchive.Read(fs))
         model = XmlSerializerHelper.Deserialize<AnnotationSystemDataSet>(zip.GetEntry("annotation.xml").Open());
       
       var guid = model?.Layer.Where(layer => layer.Name == "Text").Select(layer => layer.Id).FirstOrDefault();

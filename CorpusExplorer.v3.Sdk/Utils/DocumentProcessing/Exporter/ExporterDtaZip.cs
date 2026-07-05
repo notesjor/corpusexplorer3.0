@@ -3,13 +3,13 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.IO.Compression;
 using System.Linq;
 using System.Text;
 using CorpusExplorer.Sdk.Extern.Xml.Dta.Tcf.Model;
 using CorpusExplorer.Sdk.Extern.Xml.Helper;
 using CorpusExplorer.Sdk.Model.Interface;
 using CorpusExplorer.Sdk.Utils.DocumentProcessing.Exporter.Abstract;
+using Telerik.Windows.Zip;
 
 #endregion
 
@@ -29,9 +29,9 @@ namespace CorpusExplorer.Sdk.Extern.Xml.Dta.Tcf
     public string UnknownPropertyValue { get; set; } = "Unbekannt";
 
     public override void Export(IHydra hydra, string zipPath)
-    {
+    { 
       using (var fs = new FileStream(zipPath, FileMode.Create, FileAccess.Write))
-      using (var zip = new ZipArchive(fs, ZipArchiveMode.Create, true, null))
+      using (var zip = ZipArchive.Create(fs))
       {
         foreach (var guid in hydra.DocumentGuids)
         {

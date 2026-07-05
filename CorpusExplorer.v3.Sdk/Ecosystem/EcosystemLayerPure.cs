@@ -204,6 +204,7 @@ namespace CorpusExplorer.v3.Sdk.Ecosystem
       Configuration.AddTableWriter("HTML-Tabelle (*.html)|*.html", new HtmlTableSnippetTableWriter());
       Configuration.AddTableWriter("JSON-Dokument (*.json)|*.json", new JsonTableWriter());
       Configuration.AddTableWriter("JSON-Dokument (gerundet) (*.json)|*.json", new JsonRoundedTableWriter());
+      Configuration.AddTableWriter("JSON-Dokument (spaltenorientiert) (*.json)|*.json", new JsonColumnarTableWriter());
       Configuration.AddTableWriter("SQL-Query nur Daten (*.sql)|*.sql", new SqlDataOnlyTableWriter());
       Configuration.AddTableWriter("SQL-Query nur Schema (*.sql)|*.sql", new SqlSchemaOnlyTableWriter());
       Configuration.AddTableWriter("SQL-Query Schema und Daten (*.sql)|*.sql", new SqlTableWriter());

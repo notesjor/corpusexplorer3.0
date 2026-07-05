@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.IO.Compression;
 using System.Linq;
 using System.Text;
 using System.Xml;
 using CorpusExplorer.Sdk.Extern.Xml.Ids.KorAP.LoadStrategy.Abstract;
 using HtmlAgilityPack;
+using Telerik.Windows.Zip;
 
 namespace CorpusExplorer.Sdk.Extern.Xml.Ids.KorAP.LoadStrategy
 {
@@ -32,7 +32,7 @@ namespace CorpusExplorer.Sdk.Extern.Xml.Ids.KorAP.LoadStrategy
         throw new FileNotFoundException();
 
       _fs = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read);
-      _zip = new ZipArchive(_fs, ZipArchiveMode.Read, true, null);
+      _zip = ZipArchive.Read(_fs);
 
       if (_zip.Entries.First().FullName.StartsWith(".")) // Einige ältere Korpora starten mit einen './'-Root-Directory
         foreach (var entry in _zip.Entries)
@@ -49,7 +49,8 @@ namespace CorpusExplorer.Sdk.Extern.Xml.Ids.KorAP.LoadStrategy
     {
       var res = new HtmlDocument();
       lock (_zipLock)
-        res.Load(_entries[entry].Open(), Encoding.UTF8);
+        using (var stream = _entries[entry].Open())
+          res.Load(stream, Encoding.UTF8);
 
       return res;
     }
@@ -58,7 +59,8 @@ namespace CorpusExplorer.Sdk.Extern.Xml.Ids.KorAP.LoadStrategy
     {
       var res = new XmlDocument();
       lock (_zipLock)
-        using (var reader = new StreamReader(_entries[entry].Open(), Encoding.UTF8))
+        using (var stream = _entries[entry].Open())
+        using (var reader = new StreamReader(stream, Encoding.UTF8))
           res.Load(reader);
 
       return res;
@@ -70,7 +72,8 @@ namespace CorpusExplorer.Sdk.Extern.Xml.Ids.KorAP.LoadStrategy
       using (var ms = new MemoryStream())
       {
         lock (_zipLock)
-          _entries[entry].Open().CopyTo(ms);
+          using (var stream = _entries[entry].Open())
+            stream.CopyTo(ms);
         xml = Encoding.UTF8.GetString(ms.ToArray());
       }
 

@@ -1,5 +1,10 @@
 ﻿using CorpusExplorer.Sdk._3rdParty.Commercial.Metaphone3.Action;
 using CorpusExplorer.Sdk.Action;
+using CorpusExplorer.Sdk.Blocks.Cooccurrence;
+using CorpusExplorer.Sdk.Blocks.Measure;
+using CorpusExplorer.Sdk.Blocks.ReadingEase;
+using CorpusExplorer.Sdk.Blocks.Similarity;
+using CorpusExplorer.Sdk.Blocks.VocabularyComplaxity;
 using CorpusExplorer.Sdk.Ecosystem.Model;
 using CorpusExplorer.Sdk.Extern.FuzzyCloneDetection.Action;
 using CorpusExplorer.Sdk.Extern.Json.OpenLegalData;
@@ -56,10 +61,12 @@ using CorpusExplorer.Sdk.Extern.Xml.Pmg;
 using CorpusExplorer.Sdk.Extern.Xml.PostgreSqlDump;
 using CorpusExplorer.Sdk.Extern.Xml.PureXml;
 using CorpusExplorer.Sdk.Extern.Xml.PurlOrg;
+using CorpusExplorer.Sdk.Extern.Xml.Refi;
 using CorpusExplorer.Sdk.Extern.Xml.SaltXml;
 using CorpusExplorer.Sdk.Extern.Xml.Shakespeare;
 using CorpusExplorer.Sdk.Extern.Xml.SixCms;
 using CorpusExplorer.Sdk.Extern.Xml.SlashA;
+using CorpusExplorer.Sdk.Extern.Xml.Songkorpus;
 using CorpusExplorer.Sdk.Extern.Xml.Talkbank;
 using CorpusExplorer.Sdk.Extern.Xml.Tei.Dwds;
 using CorpusExplorer.Sdk.Extern.Xml.Tei.P5Cal2;
@@ -68,21 +75,16 @@ using CorpusExplorer.Sdk.Extern.Xml.Tiger.Importer;
 using CorpusExplorer.Sdk.Extern.Xml.Tiger.Scraper;
 using CorpusExplorer.Sdk.Extern.Xml.Txm;
 using CorpusExplorer.Sdk.Extern.Xml.Weblicht;
+using CorpusExplorer.Sdk.Utils.DataTableWriter;
 using CorpusExplorer.Sdk.Utils.DocumentProcessing.Builder;
 using CorpusExplorer.Sdk.Utils.DocumentProcessing.Crawler;
 using CorpusExplorer.Sdk.Utils.DocumentProcessing.Exporter;
 using CorpusExplorer.Sdk.Utils.DocumentProcessing.Importer;
 using CorpusExplorer.Sdk.Utils.DocumentProcessing.Importer.CorpusExplorerV6;
-using CorpusExplorer.Sdk.Utils.DocumentProcessing.Scraper.Txt;
 using CorpusExplorer.Sdk.Utils.DocumentProcessing.Scraper;
+using CorpusExplorer.Sdk.Utils.DocumentProcessing.Scraper.Txt;
 using CorpusExplorer.Sdk.Utils.DocumentProcessing.Tagger.RawText;
 using CorpusExplorer.v3.Sdk.Ecosystem.Model;
-using CorpusExplorer.Sdk.Blocks.ReadingEase;
-using CorpusExplorer.Sdk.Blocks.Cooccurrence;
-using CorpusExplorer.Sdk.Blocks.Measure;
-using CorpusExplorer.Sdk.Blocks.Similarity;
-using CorpusExplorer.Sdk.Blocks.VocabularyComplaxity;
-using CorpusExplorer.Sdk.Utils.DataTableWriter;
 
 namespace CorpusExplorer.v3.Sdk.Ecosystem
 {
@@ -291,6 +293,7 @@ namespace CorpusExplorer.v3.Sdk.Ecosystem
       Configuration.AddImporter("Wortschatz Leipzig (*-sentences.txt)|*-sentences.txt", new ImporterLeipzigerWortschatz());
       Configuration.AddImporter("XCES-XML (https://opus.nlpl.eu/) (*.xml)|*.xml", new ImporterOpusXces());
       Configuration.AddImporter("Projekt: http://www.redewiedergabe.de/ (metadata.tsv)|metadata.tsv", new ImporterRedewiedergabe());
+      Configuration.AddImporter("Rotterdam Exchange Format Initiative (*.qdpx, *.zip)|*.qdpx;*.zip", new ImporterRefi());
       Configuration.AddImporter("ANNIS v3.3 (corpus.annis)|corpus.annis", new ImporterRelAnnis());
       Configuration.AddImporter("ANNIS v3.3 (corpus.annis) - Layer-Alternative|corpus.annis", new ImporterRelAnnisAlternative());
       Configuration.AddImporter("SaltXML (*.xml, *.salt)|*.salt;*.xml", new ImporterSaltXml());
@@ -352,6 +355,7 @@ namespace CorpusExplorer.v3.Sdk.Ecosystem
       Configuration.AddScraper("JSON Stand-Off Universal (*.json)|*.json", new SimpleJsonStandoffScraper());
       Configuration.AddScraper("SixCMS Artikel-Export (*.xml)|*.xml", new SixCmsScraper());
       Configuration.AddScraper("D-Spin Slash/A (*.xml)|*.xml", new SlashAScraper());
+      Configuration.AddScraper("Songkorpus.de TEI (*.xml)|*.xml", new SongkorpusScraper());
       Configuration.AddScraper("SPEEDy/CODEX (*.json)|*.json", new SpeedyScraper());
       Configuration.AddScraper("Talkbank XML (*.xml)|*.xml", new TalkbankScraper());
       Configuration.AddScraper("TextGrid (*.xml)|*.xml", new TextGridScraper());
@@ -418,6 +422,7 @@ namespace CorpusExplorer.v3.Sdk.Ecosystem
       Configuration.AddTableWriter("HTML-Tabelle (*.html)|*.html", new HtmlTableSnippetTableWriter());
       Configuration.AddTableWriter("JSON-Dokument (*.json)|*.json", new JsonTableWriter());
       Configuration.AddTableWriter("JSON-Dokument (gerundet) (*.json)|*.json", new JsonRoundedTableWriter());
+      Configuration.AddTableWriter("JSON-Dokument (spaltenorientiert) (*.json)|*.json", new JsonColumnarTableWriter());
       Configuration.AddTableWriter("SQL-Query nur Daten (*.sql)|*.sql", new SqlDataOnlyTableWriter());
       Configuration.AddTableWriter("SQL-Query nur Schema (*.sql)|*.sql", new SqlSchemaOnlyTableWriter());
       Configuration.AddTableWriter("SQL-Query Schema und Daten (*.sql)|*.sql", new SqlTableWriter());
