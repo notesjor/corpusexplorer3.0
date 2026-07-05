@@ -57,9 +57,6 @@
     <Reference Include="Telerik.Windows.Documents.Flow.FormatProviders.Pdf">
       <HintPath>..\..\..\Program Files (x86)\Progress\Telerik UI for WinForms 2026 Q1\Bin80\Telerik.Windows.Documents.Flow.FormatProviders.Pdf.dll</HintPath>
     </Reference>
-    <Reference Include="Telerik.Windows.Zip">
-      <HintPath>..\..\..\Program Files (x86)\Progress\Telerik UI for WinForms 2026 Q1\Bin80\Telerik.Windows.Zip.dll</HintPath>
-    </Reference>
     <Reference Include="TelerikCommon">
       <HintPath>..\..\..\Program Files (x86)\Progress\Telerik UI for WinForms 2026 Q1\Bin80\TelerikCommon.dll</HintPath>
     </Reference>

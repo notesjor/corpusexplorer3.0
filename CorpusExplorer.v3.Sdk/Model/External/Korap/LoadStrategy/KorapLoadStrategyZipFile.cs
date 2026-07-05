@@ -6,7 +6,7 @@ using System.Text;
 using System.Xml;
 using CorpusExplorer.Sdk.Extern.Xml.Ids.KorAP.LoadStrategy.Abstract;
 using HtmlAgilityPack;
-using Telerik.Windows.Zip;
+using System.IO.Compression;
 
 namespace CorpusExplorer.Sdk.Extern.Xml.Ids.KorAP.LoadStrategy
 {
@@ -32,7 +32,7 @@ namespace CorpusExplorer.Sdk.Extern.Xml.Ids.KorAP.LoadStrategy
         throw new FileNotFoundException();
 
       _fs = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read);
-      _zip = ZipArchive.Read(_fs);
+      _zip = new ZipArchive(_fs, ZipArchiveMode.Read, leaveOpen: true);
 
       if (_zip.Entries.First().FullName.StartsWith(".")) // Einige ältere Korpora starten mit einen './'-Root-Directory
         foreach (var entry in _zip.Entries)

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Text;
 using CorpusExplorer.Sdk.Extern.Xml.Ids.Helper;
@@ -10,7 +11,6 @@ using CorpusExplorer.Sdk.Model.Interface;
 using CorpusExplorer.Sdk.Utils.DocumentProcessing.Exporter.Abstract;
 using CorpusExplorer.Sdk.Utils.ReMapper;
 using CorpusExplorer.Sdk.Utils.ReMapper.Model;
-using Telerik.Windows.Zip;
 
 namespace CorpusExplorer.Sdk.Extern.Xml.Ids.KorAP
 {
@@ -26,11 +26,11 @@ namespace CorpusExplorer.Sdk.Extern.Xml.Ids.KorAP
 
       var packages = ExportPackageHelper.MakePackages(csigle,hydra);
       using (var fs = new FileStream(path, FileMode.Create, FileAccess.Write))
-      using (var zip = ZipArchive.Create(fs))
+      using (var zip = new ZipArchive(fs, ZipArchiveMode.Create))
       {
         // Korpus-Metadaten
-        using (var entry = zip.CreateEntry($"{csigle}/header.xml"))
-        using (var writer = new StreamWriter(entry.Open()))
+        var entryL1 = zip.CreateEntry($"{csigle}/header.xml");
+        using (var writer = new StreamWriter(entryL1.Open()))
           writer.Write(Resources.Template_Ids_KorAP_Root.Replace("{CSIGLE}", csigle)
             .Replace("{CYEAR}", DateTime.Now.Year.ToString("D4"))
             .Replace("{DATE}", DateTime.Now.ToString("yyyy-MM-dd")));
@@ -40,8 +40,8 @@ namespace CorpusExplorer.Sdk.Extern.Xml.Ids.KorAP
           var subcsigle = $"{csigle}/{package.Key}";
 
           // Sub-Korpus-Metadaten (meist JAHR/MONAT)
-          using (var entry = zip.CreateEntry($"{csigle}/{package.Key}/header.xml"))
-          using (var writer = new StreamWriter(entry.Open()))
+          var entryL2 = zip.CreateEntry($"{csigle}/{package.Key}/header.xml");
+          using (var writer = new StreamWriter(entryL2.Open()))
             writer.Write(Resources.Template_Ids_KorAP_Year
               .Replace("{SubCSigle}", subcsigle));
 
@@ -59,8 +59,8 @@ namespace CorpusExplorer.Sdk.Extern.Xml.Ids.KorAP
             meta = ExportXenodataHelper.RemoveDataByKey(meta, "Datum");
 
             // Dokument-Metadaten
-            using (var entry = zip.CreateEntry($"{csigle}/{package.Key}/{i:D6}/header.xml"))
-            using (var writer = new StreamWriter(entry.Open()))
+            var entryL3header = zip.CreateEntry($"{csigle}/{package.Key}/{i:D6}/header.xml");
+            using (var writer = new StreamWriter(entryL3header.Open()))
               writer.Write(Resources.Template_Ids_KorAP_ZDoc.Replace("{DocSigle}", doccsigle)
                 .Replace("{TITLE}", title)
                 .Replace("{MONTH}", date.Month.ToString("D2"))
@@ -74,24 +74,24 @@ namespace CorpusExplorer.Sdk.Extern.Xml.Ids.KorAP
             var text = doc.ReduceDocumentToText(sentenceSeparator: " ");
 
             // Dokument-Rohtext
-            using (var entry = zip.CreateEntry($"{csigle}/{package.Key}/{i:D6}/data.xml"))
-            using (var writer = new StreamWriter(entry.Open()))
+            var entryL3data = zip.CreateEntry($"{csigle}/{package.Key}/{i:D6}/data.xml");
+            using (var writer = new StreamWriter(entryL3data.Open()))
               writer.Write(Resources.Template_Ids_KorAP_Data
                 .Replace("{DocId}", docid)
                 .Replace("{TEXT}", text));
 
             var align = map.ExtractAlignment(text, doc);
-            
+
             // Token-Standoff
-            using (var entry = zip.CreateEntry($"{csigle}/{package.Key}/{i:D6}/base/tokens.xml"))
-            using (var writer = new StreamWriter(entry.Open()))
+            var entryL3tokens = zip.CreateEntry($"{csigle}/{package.Key}/{i:D6}/base/tokens.xml");
+            using (var writer = new StreamWriter(entryL3tokens.Open()))
               writer.Write(Resources.Template_Ids_KorAP_Tokens
                 .Replace("{DocId}", docid)
                 .Replace("{TOKENS}", MakeTokens(align)));
 
             // Structure
-            using (var entry = zip.CreateEntry($"{csigle}/{package.Key}/{i:D6}/struct/structure.xml"))
-            using (var writer = new StreamWriter(entry.Open()))
+            var entryL3structure = zip.CreateEntry($"{csigle}/{package.Key}/{i:D6}/struct/structure.xml");
+            using (var writer = new StreamWriter(entryL3structure.Open()))
               writer.Write(Resources.Template_Ids_KorAP_Structure
                 .Replace("{DocId}", docid)
                 .Replace("{To}", align.Max(x => x.TextCharTo).ToString())
@@ -125,8 +125,8 @@ namespace CorpusExplorer.Sdk.Extern.Xml.Ids.KorAP
                                   .Replace("{TAGS}", string.Join("\r\n", tags)));
               }
 
-              using (var entry = foundry.Zip.CreateEntry($"{csigle}/{package.Key}/{i:D6}/{foundry.FoundryName}/morpho.xml"))
-              using (var writer = new StreamWriter(entry.Open()))
+              var entryL3morpho = foundry.Zip.CreateEntry($"{csigle}/{package.Key}/{i:D6}/{foundry.FoundryName}/morpho.xml");
+              using (var writer = new StreamWriter(entryL3morpho.Open()))
                 writer.Write(Resources.Template_Ids_KorAP_Morpho
                   .Replace("{DocId}", docid)
                   .Replace("{ANNO}", string.Join("\r\n", anno)));
@@ -225,7 +225,7 @@ namespace CorpusExplorer.Sdk.Extern.Xml.Ids.KorAP
         path = Path.Combine(dir, $"{name}.{FoundryName}.zip");
 
         _fs = new FileStream(path, FileMode.Create, FileAccess.Write);
-        Zip = ZipArchive.Create(_fs);
+        Zip = new ZipArchive(_fs, ZipArchiveMode.Create);
 
         CorpusGuid = corpusGuid;
         LayerDisplaynames = layerDisplaynames;

@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Xml.Serialization;
 using CorpusExplorer.Sdk.Extern.Xml.AnnotationPro.Model;
@@ -11,7 +12,6 @@ using CorpusExplorer.Sdk.Helper;
 using CorpusExplorer.Sdk.Model.Adapter.Layer.Abstract;
 using CorpusExplorer.Sdk.Model.Interface;
 using CorpusExplorer.Sdk.Utils.DocumentProcessing.Exporter.Abstract;
-using Telerik.Windows.Zip;
 
 #endregion
 
@@ -47,7 +47,7 @@ namespace CorpusExplorer.Sdk.Extern.Xml.AnnotationPro
     {
       AnnotationSystemDataSet ant = null;
       using (var fs = new FileStream(path, FileMode.Open, FileAccess.Read))
-      using (var zip = ZipArchive.Read(fs))
+      using (var zip = new ZipArchive(fs, ZipArchiveMode.Read))
         ant = XmlSerializerHelper.Deserialize<AnnotationSystemDataSet>(zip.GetEntry("annotation.xml").Open());
 
       if (ant == null)
@@ -95,7 +95,7 @@ namespace CorpusExplorer.Sdk.Extern.Xml.AnnotationPro
         File.Copy(path, nFile, false);
 
       using (var fs = new FileStream(path, FileMode.Open, FileAccess.ReadWrite))
-      using (var zip = ZipArchive.Update(fs))
+      using (var zip = new ZipArchive(fs, ZipArchiveMode.Update))
       {
         var stream = zip.GetEntry("annotation.xml").Open();
         var xml = new XmlSerializer(typeof(AnnotationSystemDataSet));

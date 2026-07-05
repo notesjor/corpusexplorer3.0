@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using CorpusExplorer.Sdk.Extern.Xml.Abstract;
 using CorpusExplorer.Sdk.Extern.Xml.AnnotationPro.Model;
 using CorpusExplorer.Sdk.Extern.Xml.Helper;
-using Telerik.Windows.Zip;
 
 namespace CorpusExplorer.Sdk.Extern.Xml.AnnotationPro
 {
@@ -15,17 +15,17 @@ namespace CorpusExplorer.Sdk.Extern.Xml.AnnotationPro
     protected override IEnumerable<Dictionary<string, object>> Execute(string file)
     {
       AnnotationSystemDataSet model = null;
-      using(var fs = new FileStream(file, FileMode.Open, FileAccess.Read))
-      using (var zip = ZipArchive.Read(fs))
+      using (var fs = new FileStream(file, FileMode.Open, FileAccess.Read))
+      using (var zip = new ZipArchive(fs, ZipArchiveMode.Read))
         model = XmlSerializerHelper.Deserialize<AnnotationSystemDataSet>(zip.GetEntry("annotation.xml").Open());
-      
+
       var guid = model?.Layer.Where(layer => layer.Name == "Text").Select(layer => layer.Id).FirstOrDefault();
       if (guid == null)
         return null;
 
       return from segment in model.Segment
-        where segment.IdLayer == guid
-        select new Dictionary<string, object>
+             where segment.IdLayer == guid
+             select new Dictionary<string, object>
         {
           {"Text", segment.Label},
           {"Duration", segment.Duration},

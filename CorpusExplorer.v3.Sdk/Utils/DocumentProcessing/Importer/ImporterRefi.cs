@@ -4,12 +4,12 @@ using CorpusExplorer.Sdk.Utils.DocumentProcessing.Importer.Abstract;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Text;
 using System.Xml.Serialization;
 using CorpusExplorer.Sdk.Diagnostic;
 using CorpusExplorer.Sdk.Extern.Xml.Refi.Strategy.Abstract;
-using Telerik.Windows.Zip;
 using CorpusExplorer.Sdk.Extern.Xml.Refi.Strategy;
 using CorpusExplorer.Sdk.Utils.DocumentProcessing.Importer.Helper;
 
@@ -24,7 +24,7 @@ namespace CorpusExplorer.Sdk.Extern.Xml.Refi
       var importer = new ImporterInternalStandoffHelper();
 
       using (var fs = new FileStream(importFilePath, FileMode.Open, FileAccess.Read, FileShare.Read))
-      using (var zip = ZipArchive.Read(fs))
+      using (var zip = new ZipArchive(fs, ZipArchiveMode.Read))
       {
         var entry = zip.Entries.FirstOrDefault(e => e.Name.Equals("project.qde", StringComparison.OrdinalIgnoreCase));
         if (entry == null)

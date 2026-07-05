@@ -1,17 +1,14 @@
 ﻿using CorpusExplorer.Sdk.Helper;
 using CorpusExplorer.Sdk.Utils.DocumentProcessing.Scraper.Abstract;
+using ICSharpCode.SharpZipLib.GZip;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using Telerik.Windows.Documents.Flow.FormatProviders.Docx;
 using Telerik.Windows.Documents.Flow.Model;
-using Telerik.Windows.Documents.Flow.Model.Editing;
-using Telerik.Windows.Zip;
-using ZipArchive = Telerik.Windows.Zip.ZipArchive;
 
 namespace CorpusExplorer.Sdk.Extern.Binary.NexisNew
 {
@@ -44,7 +41,7 @@ namespace CorpusExplorer.Sdk.Extern.Binary.NexisNew
       var res = new List<Dictionary<string, object>>();
 
       using (var stream = new FileStream(file, FileMode.Open, FileAccess.Read))
-      using (var archive = ZipArchive.Read(stream))
+      using (var archive = new ZipArchive(stream, ZipArchiveMode.Read))
         foreach (var entry in archive.Entries)
         {
           if (entry.Name.Contains("doclist"))
@@ -141,7 +138,7 @@ namespace CorpusExplorer.Sdk.Extern.Binary.NexisNew
                    .Trim();
     }
 
-    private static RadFlowDocument OpenDocx(Telerik.Windows.Zip.ZipArchiveEntry entry)
+    private static RadFlowDocument OpenDocx(ZipArchiveEntry entry)
     {
       RadFlowDocument doc = null;
       using (var ms = new MemoryStream())
@@ -150,7 +147,7 @@ namespace CorpusExplorer.Sdk.Extern.Binary.NexisNew
           entryStream.CopyTo(ms);
 
         ms.Seek(0, SeekOrigin.Begin);
-        doc = (new DocxFormatProvider()).Import(ms);
+        doc = (new DocxFormatProvider()).Import(ms, TimeSpan.FromMinutes(5));
       }
 
       return doc;
