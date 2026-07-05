@@ -18,7 +18,7 @@ namespace CorpusExplorer.Core.Utils.DocumentProcessing.Scraper.Cosmas
       RadFlowDocument doc;
       var provider = new RtfFormatProvider();
       using (var fs = new FileStream(file, FileMode.Open, FileAccess.Read))
-        doc = provider.Import(fs);
+        doc = provider.Import(fs, TimeSpan.FromMinutes(5));
 
       if (doc == null)
         return null;

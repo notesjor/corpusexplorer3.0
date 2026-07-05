@@ -37,7 +37,7 @@ namespace CorpusExplorer.Core.Utils.DocumentProcessing.Scraper.Abstract
           if (reader == null)
             return null;
 
-          doc = reader.Import(bs);
+          doc = reader.Import(bs, TimeSpan.FromMinutes(5));
         }
 
         if (doc == null)
@@ -46,7 +46,7 @@ namespace CorpusExplorer.Core.Utils.DocumentProcessing.Scraper.Abstract
         string text;
         using (var ms = new MemoryStream())
         {
-          _provider.Export(doc, ms);
+          _provider.Export(doc, ms, TimeSpan.FromMinutes(5));
           ms.Seek(0, SeekOrigin.Begin);
           var buffer = new byte[ms.Length];
           ms.Read(buffer, 0, buffer.Length);

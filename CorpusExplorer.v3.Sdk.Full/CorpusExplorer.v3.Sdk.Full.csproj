@@ -43,25 +43,25 @@
 
   <ItemGroup>
     <Reference Include="Telerik.Windows.Documents.Core">
-      <HintPath>..\..\..\Program Files (x86)\Progress\Telerik UI for WinForms 2026 Q1\Bin80\Telerik.Windows.Documents.Core.dll</HintPath>
+      <HintPath>..\..\..\Program Files (x86)\Progress\Telerik UI for WinForms 2026 Q2\Bin80\Telerik.Windows.Documents.Core.dll</HintPath>
     </Reference>
     <Reference Include="Telerik.Windows.Documents.Fixed">
-      <HintPath>..\..\..\Program Files (x86)\Progress\Telerik UI for WinForms 2026 Q1\Bin80\Telerik.Windows.Documents.Fixed.dll</HintPath>
+      <HintPath>..\..\..\Program Files (x86)\Progress\Telerik UI for WinForms 2026 Q2\Bin80\Telerik.Windows.Documents.Fixed.dll</HintPath>
     </Reference>
     <Reference Include="Telerik.Windows.Documents.Flow">
-      <HintPath>..\..\..\Program Files (x86)\Progress\Telerik UI for WinForms 2026 Q1\Bin80\Telerik.Windows.Documents.Flow.dll</HintPath>
+      <HintPath>..\..\..\Program Files (x86)\Progress\Telerik UI for WinForms 2026 Q2\Bin80\Telerik.Windows.Documents.Flow.dll</HintPath>
     </Reference>
-    <Reference Include="Telerik.Windows.Documents.Flow.FormatProviders.Doc">
-      <HintPath>..\..\..\Program Files (x86)\Progress\Telerik UI for WinForms 2026 Q1\Bin80\Telerik.Windows.Documents.Flow.FormatProviders.Doc.dll</HintPath>
-    </Reference>
-    <Reference Include="Telerik.Windows.Documents.Flow.FormatProviders.Pdf">
-      <HintPath>..\..\..\Program Files (x86)\Progress\Telerik UI for WinForms 2026 Q1\Bin80\Telerik.Windows.Documents.Flow.FormatProviders.Pdf.dll</HintPath>
+    <Reference Include="Telerik.Windows.Zip">
+      <HintPath>..\..\..\Program Files (x86)\Progress\Telerik UI for WinForms 2026 Q2\Bin80\Telerik.Windows.Zip.dll</HintPath>
     </Reference>
     <Reference Include="TelerikCommon">
-      <HintPath>..\..\..\Program Files (x86)\Progress\Telerik UI for WinForms 2026 Q1\Bin80\TelerikCommon.dll</HintPath>
+      <HintPath>..\..\..\Program Files (x86)\Progress\Telerik UI for WinForms 2026 Q2\Bin80\TelerikCommon.dll</HintPath>
     </Reference>
     <Reference Include="TelerikData">
-      <HintPath>..\..\..\Program Files (x86)\Progress\Telerik UI for WinForms 2026 Q1\Bin80\TelerikData.dll</HintPath>
+      <HintPath>..\..\..\Program Files (x86)\Progress\Telerik UI for WinForms 2026 Q2\Bin80\TelerikData.dll</HintPath>
+    </Reference>
+    <Reference Include="TelerikExport">
+      <HintPath>..\..\..\Program Files (x86)\Progress\Telerik UI for WinForms 2026 Q2\Bin80\TelerikExport.dll</HintPath>
     </Reference>
   </ItemGroup>
 

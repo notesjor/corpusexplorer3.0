@@ -23,7 +23,7 @@ namespace CorpusExplorer.Core.Utils.DocumentProcessing.Scraper.Pdf
         using (var bs = new BufferedStream(fs))
         {
           var importer = new PdfFormatProvider();
-          doc = importer.Import(bs);
+          doc = importer.Import(bs, TimeSpan.FromMinutes(5));
         }
 
         if (doc == null)
@@ -34,7 +34,7 @@ namespace CorpusExplorer.Core.Utils.DocumentProcessing.Scraper.Pdf
         {
           new Dictionary<string, object>
           {
-            {"Text", exporter.Export(doc, new TextFormatProviderSettings("\r\n", "\r\n"))},
+            {"Text", exporter.Export(doc, new TextFormatProviderSettings("\r\n", "\r\n"), TimeSpan.FromMinutes(5))},
             {"Pfad", file},
             {"Dateiname", Path.GetFileNameWithoutExtension(file)}
           }
