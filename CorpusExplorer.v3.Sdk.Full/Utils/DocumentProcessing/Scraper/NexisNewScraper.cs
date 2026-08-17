@@ -2,8 +2,8 @@
 using CorpusExplorer.Sdk.Utils.DocumentProcessing.Scraper.Abstract;
 using System.IO.Compression;
 using System.Text;
-using Telerik.Windows.Documents.Flow.FormatProviders.Docx;
-using Telerik.Windows.Documents.Flow.Model;
+using Telerik.Documents.Flow.FormatProviders.Docx;
+using Telerik.Documents.Flow.Model;
 
 namespace CorpusExplorer.Sdk.Extern.Binary.NexisNew
 {

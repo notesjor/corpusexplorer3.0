@@ -1,14 +1,11 @@
 ﻿#region
 
-using System;
-using System.Collections.Generic;
-using System.IO;
 using CorpusExplorer.Sdk.Ecosystem.Model;
 using CorpusExplorer.Sdk.Utils.DocumentProcessing.Scraper.Abstract;
-using Telerik.Windows.Documents.Common.FormatProviders;
-using Telerik.Windows.Documents.Flow.FormatProviders.Html;
-using Telerik.Windows.Documents.Flow.FormatProviders.Txt;
-using Telerik.Windows.Documents.Flow.Model;
+using Telerik.Documents.Common.FormatProviders;
+using Telerik.Documents.Flow.FormatProviders.Html;
+using Telerik.Documents.Flow.FormatProviders.Txt;
+using Telerik.Documents.Flow.Model;
 
 #endregion
 

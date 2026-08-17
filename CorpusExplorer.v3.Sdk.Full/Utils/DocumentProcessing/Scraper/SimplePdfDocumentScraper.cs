@@ -1,9 +1,7 @@
-﻿using System.Collections.Generic;
-using System.IO;
-using CorpusExplorer.Sdk.Utils.DocumentProcessing.Scraper.Abstract;
-using Telerik.Windows.Documents.Fixed.FormatProviders.Pdf;
-using Telerik.Windows.Documents.Fixed.FormatProviders.Text;
-using Telerik.Windows.Documents.Fixed.Model;
+﻿using CorpusExplorer.Sdk.Utils.DocumentProcessing.Scraper.Abstract;
+using Telerik.Documents.Fixed.FormatProviders.Pdf;
+using Telerik.Documents.Fixed.FormatProviders.Text;
+using Telerik.Documents.Fixed.Model;
 
 namespace CorpusExplorer.Core.Utils.DocumentProcessing.Scraper.Pdf
 {

@@ -1,7 +1,7 @@
 ﻿#region
 
 using CorpusExplorer.Core.Utils.DocumentProcessing.Scraper.Abstract;
-using Telerik.Windows.Documents.Flow.FormatProviders.Docx;
+using Telerik.Documents.Flow.FormatProviders.Docx;
 
 #endregion
 

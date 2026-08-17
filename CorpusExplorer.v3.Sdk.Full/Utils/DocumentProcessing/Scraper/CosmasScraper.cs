@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CorpusExplorer.Sdk.Utils.DocumentProcessing.Scraper.Abstract;
-using Telerik.Windows.Documents.Flow.FormatProviders.Rtf;
-using Telerik.Windows.Documents.Flow.Model;
+﻿using CorpusExplorer.Sdk.Utils.DocumentProcessing.Scraper.Abstract;
+using Telerik.Documents.Flow.FormatProviders.Rtf;
+using Telerik.Documents.Flow.Model;
 
 namespace CorpusExplorer.Core.Utils.DocumentProcessing.Scraper.Cosmas
 {
