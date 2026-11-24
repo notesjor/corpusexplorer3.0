@@ -59,7 +59,7 @@ namespace CorpusExplorer.Sdk.Ecosystem.Model
       }
     }
 
-    public static void AddBackend(string name, AbstractCorpusBuilder backend) => _addonBackends.Add(name, backend);
+    public static void AddBackend(string name, AbstractCorpusBuilder backend) => _addonBackends.TryAdd(name, backend);
 
     public static IEnumerable<T> GetSideloadFeature<T>()
     {
@@ -68,9 +68,9 @@ namespace CorpusExplorer.Sdk.Ecosystem.Model
 
     public static void AddSideloadFeature(object feature) => _addonSideLoadFeatures.Add(feature);
 
-    public static IEnumerable<IAction> AddonConsoleActions => _addonConsoleActions.OrderBy(x => x.Action);
+    public static IEnumerable<IAction> AddonConsoleActions => _addonConsoleActions.Values;
 
-    public static void AddConsoleAction(IAction action) => _addonConsoleActions.Add(action);
+    public static void AddConsoleAction(IAction action) => _addonConsoleActions.TryAdd(action.Action, action);
 
     public static IAction GetConsoleAction(string actionName)
     {
@@ -94,7 +94,7 @@ namespace CorpusExplorer.Sdk.Ecosystem.Model
       }
     }
 
-    public static void AddExporter(string name, AbstractExporter exporter) => _addonExporters.Add(name, exporter);
+    public static void AddExporter(string name, AbstractExporter exporter) => _addonExporters.TryAdd(name, exporter);
 
     public static AbstractExporter GetExporter(string exporter)
       => (from x in _addonExporters where x.Value.GetType().Name.EndsWith(exporter) select x.Value).FirstOrDefault();
@@ -113,7 +113,7 @@ namespace CorpusExplorer.Sdk.Ecosystem.Model
       }
     }
 
-    public static void AddImporter(string name, AbstractImporter importer) => _addonImporters.Add(name, importer);
+    public static void AddImporter(string name, AbstractImporter importer) => _addonImporters.TryAdd(name, importer);
 
     /// <summary>
     ///   Liste mit Scrapern die lokale Dateien (z. B. TXT, RTF, DOCX, PDF) in Korpusdokumente konvertieren.
@@ -121,14 +121,14 @@ namespace CorpusExplorer.Sdk.Ecosystem.Model
     /// </summary>
     public static IEnumerable<KeyValuePair<string, AbstractScraper>> AddonScrapers => _addonScrapers.OrderBy(x => x.Key);
 
-    public static void AddScraper(string name, AbstractScraper scraper) => _addonScrapers.Add(name, scraper);
+    public static void AddScraper(string name, AbstractScraper scraper) => _addonScrapers.TryAdd(name, scraper);
 
     /// <summary>
     /// Export für Analysedaten im Tabellenformat
     /// </summary>
     public static IEnumerable<KeyValuePair<string, AbstractTableWriter>> AddonTableWriter => _addonTableWriters.OrderBy(x => x.Key);
 
-    public static void AddTableWriter(string name, AbstractTableWriter tableWriter) => _addonTableWriters.Add(name, tableWriter);
+    public static void AddTableWriter(string name, AbstractTableWriter tableWriter) => _addonTableWriters.TryAdd(name, tableWriter);
 
     public static AbstractTableWriter GetTableWriter(string tableWriterTag)
     {
@@ -634,7 +634,7 @@ namespace CorpusExplorer.Sdk.Ecosystem.Model
     private static List<AbstractAdditionalTagger> _addonAdditionalTaggers = [];
     private static Dictionary<string, AbstractCorpusBuilder> _addonBackends = new();
     private static List<object> _addonSideLoadFeatures = [];
-    private static List<IAction> _addonConsoleActions = [];
+    private static Dictionary<string, IAction> _addonConsoleActions = new();
     private static List<AbstractCrawler> _addonCrawlers = new();
     private static Dictionary<string, AbstractExporter> _addonExporters = new();
     private static Dictionary<string, AbstractImporter> _addonImporters = new();

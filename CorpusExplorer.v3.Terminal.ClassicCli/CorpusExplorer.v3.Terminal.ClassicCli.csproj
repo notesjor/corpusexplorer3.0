@@ -5,6 +5,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <AssemblyName>cec</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
@@ -53,6 +54,13 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CorpusExplorer.v3.Sdk.Full\CorpusExplorer.v3.Sdk.Full.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\CorpusExplorer.Terminal.Console\Resources.resx">
+      <CustomToolNamespace>CorpusExplorer.Terminal.Console.Properties</CustomToolNamespace>
+      <LogicalName>CorpusExplorer.Terminal.Console.Properties.Resources.resources</LogicalName>
+    </EmbeddedResource>
   </ItemGroup>
 
 </Project>

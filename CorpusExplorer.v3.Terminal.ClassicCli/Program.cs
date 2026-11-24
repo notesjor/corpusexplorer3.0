@@ -1,15 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Globalization;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Xml.Serialization;
-using CorpusExplorer.Sdk.Ecosystem;
+﻿using CorpusExplorer.Sdk.Ecosystem;
 using CorpusExplorer.Sdk.Ecosystem.Model;
 using CorpusExplorer.Sdk.Helper;
 using CorpusExplorer.Sdk.Model.Cache;
@@ -20,6 +9,18 @@ using CorpusExplorer.Terminal.Console.Helper;
 using CorpusExplorer.Terminal.Console.Properties;
 using CorpusExplorer.Terminal.Console.Xml.Model;
 using CorpusExplorer.Terminal.Console.Xml.Processor;
+using CorpusExplorer.v3.Sdk.Full.Ecosystem;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace CorpusExplorer.Terminal.Console
 {
@@ -326,6 +327,10 @@ namespace CorpusExplorer.Terminal.Console
     {
       AppDomain.CurrentDomain.AssemblyResolve += CurrentDomain_AssemblyResolve;
       CorpusExplorerEcosystem.Initialize(cacheStrategy: new CacheStrategyDisableCaching());
+
+      var eco = new EcosystemLayerFull();
+      eco.Initialize();
+
       System.Console.InputEncoding = System.Console.OutputEncoding = Configuration.Encoding;
       CultureInfo.DefaultThreadCurrentCulture = Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
       Execute(args);

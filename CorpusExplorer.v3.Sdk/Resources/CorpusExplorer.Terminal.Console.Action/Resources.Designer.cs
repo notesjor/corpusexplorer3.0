@@ -39,7 +39,7 @@ namespace CorpusExplorer.Sdk.Action.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("CorpusExplorer.Sdk.Action.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("CorpusExplorer.v3.Sdk.Resources.CorpusExplorer.Terminal.Console.Action.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
