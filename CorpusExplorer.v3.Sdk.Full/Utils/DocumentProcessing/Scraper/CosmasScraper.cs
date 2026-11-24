@@ -1,4 +1,8 @@
-﻿using CorpusExplorer.Sdk.Utils.DocumentProcessing.Scraper.Abstract;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using CorpusExplorer.Sdk.Utils.DocumentProcessing.Scraper.Abstract;
 using Telerik.Documents.Flow.FormatProviders.Rtf;
 using Telerik.Documents.Flow.Model;
 

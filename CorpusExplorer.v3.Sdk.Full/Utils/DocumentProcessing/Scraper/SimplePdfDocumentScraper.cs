@@ -1,4 +1,7 @@
 ﻿using CorpusExplorer.Sdk.Utils.DocumentProcessing.Scraper.Abstract;
+using System;
+using System.Collections.Generic;
+using System.IO;
 using Telerik.Documents.Fixed.FormatProviders.Pdf;
 using Telerik.Documents.Fixed.FormatProviders.Text;
 using Telerik.Documents.Fixed.Model;

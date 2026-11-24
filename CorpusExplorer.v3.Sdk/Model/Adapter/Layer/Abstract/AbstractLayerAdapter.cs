@@ -366,5 +366,15 @@ namespace CorpusExplorer.Sdk.Model.Adapter.Layer.Abstract
     /// <param name="regEx">RegEx-Ausdruck</param>
     /// <returns>IEnumerable&lt;System.String&gt;.</returns>
     protected abstract IEnumerable<string> ValuesByRegex(string regEx);
+
+    /// <summary>
+    /// Warnung: Diese Funktion ist sehr gefährlich, da sie die Integrität des Layers zerstören kann.
+    /// Im Idealfall sollte der Layer in einen LayerState konvertiert werden, der dann in einen neuen Layer geschrieben wird.
+    /// Diese Funktion ist nur für sehr spezielle Fälle gedacht, in denen manuell ein Dokument hinzugefügt werden muss, obwohl es im Layer nicht vorhanden ist.
+    /// Das Problem: die int[][]-Indizes werden nicht gegen das Dictionary abgeglichen, sondern einfach übernommen. Das kann zu Fehlern führen, wenn die Indizes nicht korrekt sind.
+    /// </summary>
+    /// <param name="guid">Guid</param>
+    /// <param name="document">Document</param>
+    public abstract void AddDocumentByForce(Guid guid, int[][] document);
   }
 }

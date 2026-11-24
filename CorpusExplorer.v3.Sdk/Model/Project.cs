@@ -23,7 +23,6 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Reflection;
 
 #endregion
 
@@ -978,6 +977,17 @@ namespace CorpusExplorer.Sdk.Model
     }
 
     /// <summary>
+    ///  Rename a specific metadata entry for alle documents
+    /// </summary>
+    /// <param name="oldMetadataKey">The old metadata key</param>
+    /// <param name="newMetadataKey">The new metadata key</param>
+    public void RenameDocumentMetadata(string oldMetadataKey, string newMetadataKey)
+    {
+      foreach(var corpus in _corpora)
+        corpus.RenameDocumentMetadata(oldMetadataKey, newMetadataKey);
+    }
+
+    /// <summary>
     ///   Switch für die angegebene Position im Text für einen bestimmten Layerwert.
     /// </summary>
     /// <param name="documentGuid">Document GUID</param>
@@ -1273,7 +1283,7 @@ namespace CorpusExplorer.Sdk.Model
             }
             catch
             {
-              forceCorpusRoot = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+              forceCorpusRoot = "";
             }
 
           // Fallback

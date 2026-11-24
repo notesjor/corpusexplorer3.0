@@ -366,6 +366,14 @@ namespace CorpusExplorer.Sdk.Model.Adapter.Layer
       return from x in _dictionary where rx.IsMatch(x.Key) select x.Key;
     }
 
+    public override void AddDocumentByForce(Guid guid, int[][] document)
+    {
+      if (_documents.ContainsKey(guid))
+        _documents[guid] = document;
+      else
+        _documents.Add(guid, document);
+    }
+
     internal void Save(Stream fs)
     {
       // GUID

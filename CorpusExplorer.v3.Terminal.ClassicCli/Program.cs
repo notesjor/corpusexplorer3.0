@@ -157,7 +157,8 @@ namespace CorpusExplorer.Terminal.Console
 
       if (args[0].StartsWith("PORT:") || args[0].StartsWith("IP:"))
       {
-        ExecuteWebservice(args);
+        // TODO
+        System.Console.WriteLine("CEC WEB-SERVICE IS NOT IMPLEMENTED YET");
         return;
       }
 
@@ -239,42 +240,6 @@ namespace CorpusExplorer.Terminal.Console
       System.Console.WriteLine("---");
       Thread.CurrentThread.CurrentUICulture = Thread.CurrentThread.CurrentCulture = new CultureInfo("de-DE");
       PrintHelp(false);
-    }
-
-    private static void ExecuteWebservice(string[] args)
-    {
-      ConsoleHelper.PrintHeader();
-
-      var ip = "127.0.0.1";
-      var port = 2312;
-      var file = "";
-      var timeout = 120;
-
-      foreach (var arg in args)
-      {
-        if (arg.StartsWith("IP:"))
-          ip = arg.Replace("IP:", "");
-        else if (arg.StartsWith("PORT:"))
-          port = int.Parse(arg.Replace("PORT:", ""));
-        else if (arg.StartsWith("TIMEOUT:"))
-          timeout = int.Parse(arg.Replace("TIMEOUT:", ""));
-        else
-          file = arg;
-      }
-
-#if Featherweight
-#else
-      if (file.Contains("#"))
-      {
-        var ws = new WebService(_writer, ip, port, file, timeout);
-        ws.Run();
-      }
-      else
-      {
-        var ws = new WebService(_writer, ip, port, file, timeout);
-        ws.Run();
-      }
-#endif
     }
 
     private static void ExecuteDirect(string[] args)
@@ -360,7 +325,7 @@ namespace CorpusExplorer.Terminal.Console
     private static void Main(string[] args)
     {
       AppDomain.CurrentDomain.AssemblyResolve += CurrentDomain_AssemblyResolve;
-      CorpusExplorerEcosystem.Initialize(new CacheStrategyDisableCaching());
+      CorpusExplorerEcosystem.Initialize(cacheStrategy: new CacheStrategyDisableCaching());
       System.Console.InputEncoding = System.Console.OutputEncoding = Configuration.Encoding;
       CultureInfo.DefaultThreadCurrentCulture = Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
       Execute(args);

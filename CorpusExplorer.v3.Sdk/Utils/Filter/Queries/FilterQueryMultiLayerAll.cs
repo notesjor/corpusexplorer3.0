@@ -244,7 +244,8 @@ namespace CorpusExplorer.Sdk.Utils.Filter.Queries
             {
               var value = layer[layerValue.Value];
               if (value == -1)
-                return null;
+                if(layerValue.Value != "")
+                  return null;
 
               res.Add(new KeyValuePair<AbstractLayerAdapter, int>(layer, value));
             }

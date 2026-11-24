@@ -41,7 +41,7 @@ namespace CorpusExplorer.Terminal.Console.Xml.Processor
     private static readonly object _executeActionListLock = new object();
 
     private static bool _first = true;
-    private static TerminalController _terminal = CorpusExplorerEcosystem.Initialize(new CacheStrategyDisableCaching());
+    private static TerminalController _terminal = CorpusExplorerEcosystem.Initialize(cacheStrategy: new CacheStrategyDisableCaching());
 
     /// <summary>
     ///   Verarbeitete ein CEScript

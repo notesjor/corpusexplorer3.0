@@ -635,6 +635,13 @@ namespace CorpusExplorer.Sdk.Model.Interface
     void RemoveDocumentMetadata(string metadataKey);
 
     /// <summary>
+    ///  Rename a specific metadata entry for alle documents
+    /// </summary>
+    /// <param name="oldMetadataKey">The old metadata key</param>
+    /// <param name="newMetadataKey">The new metadata key</param>
+    void RenameDocumentMetadata(string oldMetadataKey, string newMetadataKey);
+
+    /// <summary>
     ///   Switch für die angegebene Position im Text für einen bestimmten Layerwert.
     /// </summary>
     /// <param name="documentGuid">Document GUID</param>

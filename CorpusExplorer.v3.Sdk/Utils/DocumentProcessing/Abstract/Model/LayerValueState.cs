@@ -103,7 +103,7 @@ namespace CorpusExplorer.Sdk.Utils.DocumentProcessing.Abstract.Model
 
     public override int RequestIndex(string[] data, int lastIndex)
     {
-      return RequestIndex(data[_valueIndex]);
+      return _valueIndex < data.Length ? RequestIndex(data[_valueIndex]) : -1;
     }
 
     public void AddCompleteDocument(Guid documentGuid, int[][] documentTokens)

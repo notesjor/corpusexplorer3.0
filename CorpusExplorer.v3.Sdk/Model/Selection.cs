@@ -1055,6 +1055,11 @@ namespace CorpusExplorer.Sdk.Model
       Project.RemoveDocumentMetadata(metadataKey);
     }
 
+    public void RenameDocumentMetadata(string oldMetadataKey, string newMetadataKey)
+    {
+      Project.RenameDocumentMetadata(oldMetadataKey, newMetadataKey);
+    }
+
     /// <summary>
     ///   Switch für die angegebene Position im Text für einen bestimmten Layerwert.
     /// </summary>

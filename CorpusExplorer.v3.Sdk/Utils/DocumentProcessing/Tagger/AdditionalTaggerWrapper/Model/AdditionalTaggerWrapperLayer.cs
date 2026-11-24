@@ -87,5 +87,8 @@ namespace CorpusExplorer.Sdk.Utils.DocumentProcessing.Tagger.AdditionalTaggerWra
     protected override CeDictionary GetValueDictionary() => throw new NotImplementedException();
 
     protected override IEnumerable<string> ValuesByRegex(string regEx) => throw new NotImplementedException();
+    public override void AddDocumentByForce(Guid guid, int[][] document)
+    {      
+    }
   }
 }

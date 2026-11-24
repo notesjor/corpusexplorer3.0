@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <Folder Include="Model\External\DeutscherBundestag\Plenarprotokolle\v2\" />
+    <Folder Include="Model\External\PoeTree\" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,14 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text.RegularExpressions;
-using CorpusExplorer.Sdk.Diagnostic;
+﻿using CorpusExplorer.Sdk.Diagnostic;
 using CorpusExplorer.Sdk.Ecosystem.Model;
 using CorpusExplorer.Sdk.Helper;
 using CorpusExplorer.Sdk.Model.Adapter.Layer.Abstract;
 using CorpusExplorer.Sdk.Model.CorpusExplorer;
 using CorpusExplorer.Sdk.Utils.DocumentProcessing.Abstract.Model.Abstract;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text.RegularExpressions;
+using System.Xml.Linq;
 
 namespace CorpusExplorer.Sdk.Model.Adapter.Layer
 {
@@ -261,6 +262,10 @@ namespace CorpusExplorer.Sdk.Model.Adapter.Layer
     {
       lock (_streamLock)
         return DocumentSerializerHelper.DeserializeDocumentFromStreamPosition(GetStream(), _documentInfo[dsel]);
+    }
+
+    public override void AddDocumentByForce(Guid guid, int[][] document)
+    {
     }
 
     private Stream GetStream()
