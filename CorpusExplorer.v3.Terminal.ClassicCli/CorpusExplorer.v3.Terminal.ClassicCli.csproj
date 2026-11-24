@@ -1,0 +1,58 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\..\Projekte-Kooperation\CorpusExplorer.Terminal.Console\Helper\CeScriptHelper.cs" Link="Helper\CeScriptHelper.cs" />
+    <Compile Include="..\..\..\Projekte-Kooperation\CorpusExplorer.Terminal.Console\Helper\ConsoleHelper.cs" Link="Helper\ConsoleHelper.cs" />
+    <Compile Include="..\..\..\Projekte-Kooperation\CorpusExplorer.Terminal.Console\Helper\CorpusLoadHelper.cs" Link="Helper\CorpusLoadHelper.cs" />
+    <Compile Include="..\..\..\Projekte-Kooperation\CorpusExplorer.Terminal.Console\Helper\CorpusNullHelper.cs" Link="Helper\CorpusNullHelper.cs" />
+    <Compile Include="..\..\..\Projekte-Kooperation\CorpusExplorer.Terminal.Console\Helper\CustomParallelConfigurationHelper.cs" Link="Helper\CustomParallelConfigurationHelper.cs" />
+    <Compile Include="..\..\..\Projekte-Kooperation\CorpusExplorer.Terminal.Console\Helper\SessionRunner.cs" Link="Helper\SessionRunner.cs" />
+    <Compile Include="..\..\..\Projekte-Kooperation\CorpusExplorer.Terminal.Console\Helper\XmlValueHelper.cs" Link="Helper\XmlValueHelper.cs" />
+    <Compile Include="..\..\..\Projekte-Kooperation\CorpusExplorer.Terminal.Console\Xml\Extensions\MetaExtension.cs" Link="Xml\Extensions\MetaExtension.cs" />
+    <Compile Include="..\..\..\Projekte-Kooperation\CorpusExplorer.Terminal.Console\Xml\Extensions\QueriesExtension.cs" Link="Xml\Extensions\QueriesExtension.cs" />
+    <Compile Include="..\..\..\Projekte-Kooperation\CorpusExplorer.Terminal.Console\Xml\Extensions\SourcesExtension.cs" Link="Xml\Extensions\SourcesExtension.cs" />
+    <Compile Include="..\..\..\Projekte-Kooperation\CorpusExplorer.Terminal.Console\Xml\Model\action.cs" Link="Xml\Model\action.cs" />
+    <Compile Include="..\..\..\Projekte-Kooperation\CorpusExplorer.Terminal.Console\Xml\Model\actions.cs" Link="Xml\Model\actions.cs" />
+    <Compile Include="..\..\..\Projekte-Kooperation\CorpusExplorer.Terminal.Console\Xml\Model\annotate.cs" Link="Xml\Model\annotate.cs" />
+    <Compile Include="..\..\..\Projekte-Kooperation\CorpusExplorer.Terminal.Console\Xml\Model\arguments.cs" Link="Xml\Model\arguments.cs" />
+    <Compile Include="..\..\..\Projekte-Kooperation\CorpusExplorer.Terminal.Console\Xml\Model\cescript.cs" Link="Xml\Model\cescript.cs" />
+    <Compile Include="..\..\..\Projekte-Kooperation\CorpusExplorer.Terminal.Console\Xml\Model\config.cs" Link="Xml\Model\config.cs" />
+    <Compile Include="..\..\..\Projekte-Kooperation\CorpusExplorer.Terminal.Console\Xml\Model\directory.cs" Link="Xml\Model\directory.cs" />
+    <Compile Include="..\..\..\Projekte-Kooperation\CorpusExplorer.Terminal.Console\Xml\Model\head.cs" Link="Xml\Model\head.cs" />
+    <Compile Include="..\..\..\Projekte-Kooperation\CorpusExplorer.Terminal.Console\Xml\Model\import.cs" Link="Xml\Model\import.cs" />
+    <Compile Include="..\..\..\Projekte-Kooperation\CorpusExplorer.Terminal.Console\Xml\Model\meta.cs" Link="Xml\Model\meta.cs" />
+    <Compile Include="..\..\..\Projekte-Kooperation\CorpusExplorer.Terminal.Console\Xml\Model\myFile.cs" Link="Xml\Model\myFile.cs" />
+    <Compile Include="..\..\..\Projekte-Kooperation\CorpusExplorer.Terminal.Console\Xml\Model\output.cs" Link="Xml\Model\output.cs" />
+    <Compile Include="..\..\..\Projekte-Kooperation\CorpusExplorer.Terminal.Console\Xml\Model\queries.cs" Link="Xml\Model\queries.cs" />
+    <Compile Include="..\..\..\Projekte-Kooperation\CorpusExplorer.Terminal.Console\Xml\Model\query.cs" Link="Xml\Model\query.cs" />
+    <Compile Include="..\..\..\Projekte-Kooperation\CorpusExplorer.Terminal.Console\Xml\Model\queryBuilder.cs" Link="Xml\Model\queryBuilder.cs" />
+    <Compile Include="..\..\..\Projekte-Kooperation\CorpusExplorer.Terminal.Console\Xml\Model\queryGroup.cs" Link="Xml\Model\queryGroup.cs" />
+    <Compile Include="..\..\..\Projekte-Kooperation\CorpusExplorer.Terminal.Console\Xml\Model\session.cs" Link="Xml\Model\session.cs" />
+    <Compile Include="..\..\..\Projekte-Kooperation\CorpusExplorer.Terminal.Console\Xml\Model\sessions.cs" Link="Xml\Model\sessions.cs" />
+    <Compile Include="..\..\..\Projekte-Kooperation\CorpusExplorer.Terminal.Console\Xml\Model\session_isp.cs" Link="Xml\Model\session_isp.cs" />
+    <Compile Include="..\..\..\Projekte-Kooperation\CorpusExplorer.Terminal.Console\Xml\Model\sources.cs" Link="Xml\Model\sources.cs" />
+    <Compile Include="..\..\..\Projekte-Kooperation\CorpusExplorer.Terminal.Console\Xml\Model\template.cs" Link="Xml\Model\template.cs" />
+    <Compile Include="..\..\..\Projekte-Kooperation\CorpusExplorer.Terminal.Console\Xml\Model\templates.cs" Link="Xml\Model\templates.cs" />
+    <Compile Include="..\..\..\Projekte-Kooperation\CorpusExplorer.Terminal.Console\Xml\Model\variable.cs" Link="Xml\Model\variable.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Helper\" />
+    <Folder Include="Resources\CorpusExplorer.Terminal.Console\" />
+    <Folder Include="Xml\Extensions\" />
+    <Folder Include="Xml\Model\" />
+    <Folder Include="Xml\Processor\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CorpusExplorer.v3.Sdk.Full\CorpusExplorer.v3.Sdk.Full.csproj" />
+  </ItemGroup>
+
+</Project>

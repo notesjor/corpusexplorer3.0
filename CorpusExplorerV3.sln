@@ -25,6 +25,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2025", "2025", "{B5C363DB-4
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CooccurrenceFieldSampler", "..\IDS\Tools\CooccurrenceFieldSampler\CooccurrenceFieldSampler\CooccurrenceFieldSampler.csproj", "{0275C5AA-2BD1-4600-93AA-D4E7DFABE49D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CorpusExplorer.v3.Terminal.ClassicCli", "CorpusExplorer.v3.Terminal.ClassicCli\CorpusExplorer.v3.Terminal.ClassicCli.csproj", "{1EBEF347-06C5-4A78-8225-38859412D06A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +57,10 @@ Global
 		{0275C5AA-2BD1-4600-93AA-D4E7DFABE49D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0275C5AA-2BD1-4600-93AA-D4E7DFABE49D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0275C5AA-2BD1-4600-93AA-D4E7DFABE49D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1EBEF347-06C5-4A78-8225-38859412D06A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1EBEF347-06C5-4A78-8225-38859412D06A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1EBEF347-06C5-4A78-8225-38859412D06A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1EBEF347-06C5-4A78-8225-38859412D06A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -65,6 +71,7 @@ Global
 		{F1652F2A-B2DA-41CF-B93F-EF2FFD70E50B} = {2E2D9B55-F1C4-4ABB-AE6F-EA99015240DB}
 		{B5C363DB-41D6-4F10-AA7E-CE75B1D8B6D5} = {F1652F2A-B2DA-41CF-B93F-EF2FFD70E50B}
 		{0275C5AA-2BD1-4600-93AA-D4E7DFABE49D} = {B5C363DB-41D6-4F10-AA7E-CE75B1D8B6D5}
+		{1EBEF347-06C5-4A78-8225-38859412D06A} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {16E64D64-2912-454F-A29F-8DA698C1B95B}
