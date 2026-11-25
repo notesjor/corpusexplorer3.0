@@ -29,7 +29,7 @@ namespace CorpusExplorer.Terminal.Console
     // private static readonly Dictionary<string, IAction> _actions = new Dictionary<string, IAction>();
 
     private static readonly string _appPath =
-      Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "cec.exe");
+      Path.Combine(Path.GetDirectoryName(AppContext.BaseDirectory), "cec.exe");
 
     private static AbstractTableWriter _writer = new TsvTableWriter();
 

@@ -246,7 +246,7 @@ namespace CorpusExplorer.Sdk.Ecosystem.Model
       {
         try
         {
-          return Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+          return Path.GetDirectoryName(AppContext.BaseDirectory);
         }
         catch
         {

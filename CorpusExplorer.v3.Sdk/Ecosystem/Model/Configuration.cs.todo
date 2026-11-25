@@ -317,7 +317,7 @@ namespace CorpusExplorer.Sdk.Ecosystem.Model
       {
         try
         {
-          return Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+          return Path.GetDirectoryName(AppContext.BaseDirectory);
         }
         catch
         {
@@ -675,7 +675,7 @@ namespace CorpusExplorer.Sdk.Ecosystem.Model
       try
       {
         location = Path.GetDirectoryName(string.IsNullOrEmpty(alternativePath)
-                                           ? Assembly.GetExecutingAssembly().Location
+                                           ? AppContext.BaseDirectory
                                            : alternativePath);
       }
       catch
