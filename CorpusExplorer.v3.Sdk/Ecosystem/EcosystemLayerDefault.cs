@@ -173,8 +173,11 @@ public class EcosystemLayerDefault : AbstractEcosystemLayer
     Configuration.AddConsoleAction(new MetaExportAction());
     Configuration.AddConsoleAction(new MetaImportAction());
     Configuration.AddConsoleAction(new MetaphoneValuesAction());
+    Configuration.AddConsoleAction(new MetaRemoveAction());
+    Configuration.AddConsoleAction(new MetaRenameAction());
     Configuration.AddConsoleAction(new MetaSelectedAction());
     Configuration.AddConsoleAction(new MetaSelectedDomainAction());
+    Configuration.AddConsoleAction(new MetaSetAction());
     Configuration.AddConsoleAction(new MetaUniqueAction());
     Configuration.AddConsoleAction(new MetaUniqueSelectAction());
     Configuration.AddConsoleAction(new MetaUniqueSelectValuesAction());
